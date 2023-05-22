@@ -18,9 +18,9 @@ R is many things…
 - A statistical software that can do simple or complex analyses, similar to SAS or S plus, and which makes really great looking graphs
 - R is not just a stats software, it’s a programming language that allows the user to do a limitless number of tasks
 - R is open source, so users can make it available to others
-  - This sharing of information is centered around the concept of open source development
-  - Open source means that everything is freely available (kind of a big deal if you are working under state budget restrictions)
-- Becoming widely used in academia and government, and making headway into industry, especially the biotech and finance sectors. Here is a link describing the increasing popularity of R.
+   restrictions)
+- Widely used in academia, government, and increasingly in industry, especially the biotech and finance sectors.
+Here is a link describing the [increasing popularity of R](https://r4stats.com/articles/popularity/).
 
 # R vs. Excel
 
@@ -68,14 +68,14 @@ R is many things…
 - RStudio is a nice integrated development environment (IDE) that makes it much easier to use R
 
 
-# R
+## R
 - To download R, [see this page](https://cran.r-project.org/)
 - If you open R itself, it will look very plain
 plain R console
 
 ![](img/r1.png)
 
-# RStudio
+## RStudio
 - RStudio makes R a little more user friendly
 - It’s free and can be downloaded from the [Posit website](https://posit.co/download/rstudio-desktop/) 
 - It’s not necessary to open RStudio to use R, but in these sessions we will assume that RStudio is your interface to R
@@ -86,7 +86,7 @@ plain R console
 
 
 - The left panel is the console for R
-Type 1 + 1 then hit “Enter” and R will return the answer
+Type `1 + 1` then hit "Enter" and R will return the answer
 
 
 ![RStudio 1 + 1](img/rstudio2.png)
@@ -94,15 +94,15 @@ Type 1 + 1 then hit “Enter” and R will return the answer
 
 
 - It’s a good idea to use a script so you can save your code
-- Open a new script by selecting “File” -> “New File” -> “R Script” and it will appear in the top left panel of RStudio
+- Open a new script by selecting "File" -> "New File" -> "R Script" and it will appear in the top left panel of RStudio
 
 
 ![RStudio open script](img/rstudio3.png)
 
 
 
-- This is basically a text document that can be saved (go to “File” -> “Save As”)
-- You can type and run more than one line at a time by highlighting and clicking the “Run” button on the script tool bar
+- This is basically a text document that can be saved (go to "File" -> "Save As")
+- You can type and run more than one line at a time by highlighting and clicking the "Run" button on the script tool bar
 
 
 ![RStudio many lines](img/rstudio4.png)
@@ -125,15 +125,17 @@ Type 1 + 1 then hit “Enter” and R will return the answer
 ```
 
 
-- Remember, to run the lines, highlight your code and click the “Run” button on the toolbar of the script panel
+- Remember, to run the lines, highlight your code and click the "Run" button on the toolbar of the script panel
+
 ## Reference table of arithmetic operators
-Operator|	Meaning       |	Example
---------|---------------|----------
-+       |	addition	    | 2 + 2
--	      | subtraction   | 2 - 2
-*       | multiplication|	2 * 2
-/	      | division	    | 2 / 2
-^       | exponentiation|	2 ^ 2
+
+|Operator  |Meaning         |Example |
+|:--|:--|:--|
+|+         |addition	      |2 + 2   |
+|-	       |subtraction     |2 - 2   |
+|*         |multiplication  |2 * 2   |
+|/	       |division	      |2 / 2   |
+|^         |exponentiation  |2 ^ 2   |
 
 ## Order of operations
 
