@@ -6,17 +6,9 @@ output:
 date: "2023-05-22"
 ---
 
-# Topics
-
-In this session we’ll be covering:
-
-- [Built-in functions](#Functions)
-- [Using R packages](#Packages)
-- [Importing data](#Importing-Data)
 
 
-
-# Functions {#Functions}
+# Functions
 
 - Now that we have learned how to hold data in R as a variable, we can
 start performing tasks on the data using functions. 
