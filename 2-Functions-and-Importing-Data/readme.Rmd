@@ -78,7 +78,7 @@ round(12.3456, digits=1)
 
 
 ## Other Common and Useful Functions
-### seq()
+### `seq()`
 The `seq()` function is used to create a vector with a certain sequence. This is used a lot when writing functions. seq(from = 1, to = 1, by = )
 
 ```{r}
@@ -207,11 +207,121 @@ But you do have to load the package to use any function that’s not in the R co
   
 ## CSV
 
-R has a built-in function for reading `.csv` files. 
+R has a built-in function called `read.csv()` for reading `.csv` files. Download
+the `chicago_daily.csv` file [here](../data/chicago.csv) and save it to your
+working directory. If you don't know what your working directory is, run this
+code in R and it will tell you.
+
+```{r, eval=FALSE}
+getwd()
+```
+
+Use `read.csv()` by providing the location and name of the file as the first
+argument. If the file is in your working directory, simply supply the name of the 
+file. Below, the data from the file is read into R and saved as a `data.frame`,
+which is the data type for storing tables. The function `head()` will show the 
+first few lines.
+
+```{r, eval=FALSE}
+chicago_daily <- read.csv("chicago_daily.csv")
+head(chicago_daily)
+```
+
+```{r, echo=FALSE}
+chicago_daily <- read.csv("../data/chicago_daily.csv")
+head(chicago_daily)
+```
   
 ## Excel
 
-- There are several packages that can be used to import data from an Excel file
-  - `xlsx`
-  - `XLConnect`
-  - `readxl`
+There are several packages that can be used to import data from an Excel file,
+such as `xlsx`, `XLConnect`, and `readxl`
+  
+In this example, we'll use the The `readxl` to get data into R. Use the `read_excel()` 
+function to read emissions data from [this Excel workbook](../data/emissions_IL_2022.xlsx).
+Download the file to your working directory and read the first worksheet,
+skipping the first 6 rows. (Remember, if the library is not available, you
+must install it first.)
+
+```{r, eval=FALSE}
+library(readxl)
+emissions <- read_excel("emissions_IL_2022.xlsx", sheet = "UNIT_DATA", skip = 6)
+head(emissions)
+```
+
+```{r, echo=FALSE}
+library(readxl)
+emissions <- read_excel("../data/emissions_IL_2022.xlsx", sheet = "UNIT_DATA", skip = 6)
+head(emissions)
+```
+
+# Quick Data exploration
+
+Now that we have imported some data let’s learn more about it.
+
+The data we imported in the previous section can actually be obtained in R by 
+using the data() function and a package we created for this training.
+
+Use the code below to obtain the data that we will use moving forward. This is 
+very similar to what is in the Excel file.
+```{r, eval=FALSE}
+library(devtools)
+install_github("natebyers/region5air")
+library(region5air)
+data(chicago_air)
+```
+
+```{r, echo=FALSE}
+load("../data/chicago_air.rda")
+```
+
+`chicago_air` is a data frame with ozone (ppm), temperature (F), and solar 
+radiation (W/m2) readings from a monitor in the Chicago area.
+
+
+What column names are in the data frame?
+
+```{r}
+colnames(chicago_air)
+```
+
+How many observations does the dataset contain?
+
+```{r}
+nrow(chicago_air) # number of rows
+```
+
+RStudio has a special function called `View()` that makes it easier to look at
+data in a data frame
+```{r, eval=FALSE}
+View(chicago_air)
+```
+
+Use `head()` to look at the first few lines of a dataset.
+```{r}
+head(chicago_air)   ##Looks at the first 5 lines in the dataset
+```
+Use `tail()` to look at the last lines.
+```{r}
+tail(chicago_air)  ##Looks at the last 5 lines in the dataset
+```
+The `str()` function is important because it describes the basic structure of a
+dataset. This lets you know if all the data was imported they way it was intended,
+i.e. numbers came in as numeric, text came in as characters, etc. This is great
+if you want a snapshot of the data structure.
+
+```{r}
+str(chicago_air)  ##Describes the basic structure of the dataset
+```
+The `summary()` function is a more robust version of `str()` if you are working 
+with a lot of numeric values, because it will automatically do summary statistics
+on any numbers in your data.frame.
+```{r}
+summary(chicago_air)
+```
+# The `$` operator
+You can refer to a specific column name in a `data.frame` with the $ operator. It
+will return that column as a vector.
+
+```{r}
+str(chicago_air$ozone) # Calculates the mean temperature of the ozone column. Because there is ```

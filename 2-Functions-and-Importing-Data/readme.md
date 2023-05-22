@@ -129,7 +129,7 @@ round(12.3456, digits=1)
 
 
 ## Other Common and Useful Functions
-### seq()
+### `seq()`
 The `seq()` function is used to create a vector with a certain sequence. This is used a lot when writing functions. seq(from = 1, to = 1, by = )
 
 
@@ -360,11 +360,213 @@ But you do have to load the package to use any function that’s not in the R co
   
 ## CSV
 
-R has a built-in function for reading `.csv` files. 
+R has a built-in function called `read.csv()` for reading `.csv` files. Download
+the `chicago_daily.csv` file [here](../data/chicago.csv) and save it to your
+working directory. If you don't know what your working directory is, run this
+code in R and it will tell you.
+
+
+```r
+getwd()
+```
+
+Use `read.csv()` by providing the location and name of the file as the first
+argument. If the file is in your working directory, simply supply the name of the 
+file. Below, the data from the file is read into R and saved as a `data.frame`,
+which is the data type for storing tables. The function `head()` will show the 
+first few lines.
+
+
+```r
+chicago_daily <- read.csv("chicago_daily.csv")
+head(chicago_daily)
+```
+
+
+```
+##         date  no2 ozone pm25 so2
+## 1 2021-02-06 19.1    NA  4.2 1.5
+## 2 2021-02-07 28.7    NA  9.0 3.1
+## 3 2021-02-08 51.2    NA 34.6 5.1
+## 4 2021-02-09 49.3    NA 16.8 4.6
+## 5 2021-02-10 46.0    NA 15.6 3.2
+## 6 2021-02-11 39.5    NA 13.1 2.0
+```
   
 ## Excel
 
-- There are several packages that can be used to import data from an Excel file
-  - `xlsx`
-  - `XLConnect`
-  - `readxl`
+There are several packages that can be used to import data from an Excel file,
+such as `xlsx`, `XLConnect`, and `readxl`
+  
+In this example, we'll use the The `readxl` to get data into R. Use the `read_excel()` 
+function to read emissions data from [this Excel workbook](../data/emissions_IL_2022.xlsx).
+Download the file to your working directory and read the first worksheet,
+skipping the first 6 rows. (Remember, if the library is not available, you
+must install it first.)
+
+
+```r
+library(readxl)
+emissions <- read_excel("emissions_IL_2022.xlsx", sheet = "UNIT_DATA", skip = 6)
+head(emissions)
+```
+
+
+```
+## # A tibble: 6 × 17
+##   `Facility Id` `FRS Id`     `Facility Name`    City  State `Primary NAICS Code`
+##           <dbl> <chr>        <chr>              <chr> <chr> <chr>               
+## 1       1003742 110043790804 31st Street Landf… WEST… IL    562212              
+## 2       1003742 110043790804 31st Street Landf… WEST… IL    562212              
+## 3       1003742 110043790804 31st Street Landf… WEST… IL    562212              
+## 4       1003742 110043790804 31st Street Landf… WEST… IL    562212              
+## 5       1003742 110043790804 31st Street Landf… WEST… IL    562212              
+## 6       1003742 110043790804 31st Street Landf… WEST… IL    562212              
+## # ℹ 11 more variables: `Reporting Year` <dbl>,
+## #   `Industry Type (subparts)` <chr>, `Industry Type (sectors)` <chr>,
+## #   `Unit Name` <chr>, `Unit Type` <chr>, `Unit Reporting Method` <chr>,
+## #   `Unit Maximum Rated Heat Input (mmBTU/hr)` <dbl>,
+## #   `Unit CO2 emissions (non-biogenic)` <dbl>,
+## #   `Unit Methane (CH4) emissions` <dbl>,
+## #   `Unit Nitrous Oxide (N2O) emissions` <dbl>, …
+```
+
+# Quick Data exploration
+
+Now that we have imported some data let’s learn more about it.
+
+The data we imported in the previous section can actually be obtained in R by 
+using the data() function and a package we created for this training.
+
+Use the code below to obtain the data that we will use moving forward. This is 
+very similar to what is in the Excel file.
+
+```r
+library(devtools)
+install_github("natebyers/region5air")
+library(region5air)
+data(chicago_air)
+```
+
+
+
+`chicago_air` is a data frame with ozone (ppm), temperature (F), and solar 
+radiation (W/m2) readings from a monitor in the Chicago area.
+
+
+What column names are in the data frame?
+
+
+```r
+colnames(chicago_air)
+```
+
+```
+## [1] "date"    "ozone"   "temp"    "solar"   "month"   "weekday"
+```
+
+How many observations does the dataset contain?
+
+
+```r
+nrow(chicago_air) # number of rows
+```
+
+```
+## [1] 365
+```
+
+RStudio has a special function called `View()` that makes it easier to look at
+data in a data frame
+
+```r
+View(chicago_air)
+```
+
+Use `head()` to look at the first few lines of a dataset.
+
+```r
+head(chicago_air)   ##Looks at the first 5 lines in the dataset
+```
+
+```
+##         date ozone temp solar month weekday
+## 1 2013-01-01 0.032   17  0.65     1       3
+## 2 2013-01-02 0.020   15  0.61     1       4
+## 3 2013-01-03 0.021   28  0.17     1       5
+## 4 2013-01-04 0.028   18  0.62     1       6
+## 5 2013-01-05 0.025   26  0.48     1       7
+## 6 2013-01-06 0.026   36  0.47     1       1
+```
+Use `tail()` to look at the last lines.
+
+```r
+tail(chicago_air)  ##Looks at the last 5 lines in the dataset
+```
+
+```
+##           date ozone temp solar month weekday
+## 360 2013-12-26 0.026   NA  0.41    12       5
+## 361 2013-12-27 0.021   NA  0.62    12       6
+## 362 2013-12-28 0.026   NA  0.61    12       7
+## 363 2013-12-29 0.029   NA  0.08    12       1
+## 364 2013-12-30 0.024   NA  0.44    12       2
+## 365 2013-12-31 0.021   NA  0.49    12       3
+```
+The `str()` function is important because it describes the basic structure of a
+dataset. This lets you know if all the data was imported they way it was intended,
+i.e. numbers came in as numeric, text came in as characters, etc. This is great
+if you want a snapshot of the data structure.
+
+
+```r
+str(chicago_air)  ##Describes the basic structure of the dataset
+```
+
+```
+## 'data.frame':	365 obs. of  6 variables:
+##  $ date   : chr  "2013-01-01" "2013-01-02" "2013-01-03" "2013-01-04" ...
+##  $ ozone  : num  0.032 0.02 0.021 0.028 0.025 0.026 0.024 0.021 0.031 0.024 ...
+##  $ temp   : num  17 15 28 18 26 36 25 30 41 33 ...
+##  $ solar  : num  0.65 0.61 0.17 0.62 0.48 0.47 0.65 0.39 0.65 0.42 ...
+##  $ month  : num  1 1 1 1 1 1 1 1 1 1 ...
+##  $ weekday: num  3 4 5 6 7 1 2 3 4 5 ...
+```
+The `summary()` function is a more robust version of `str()` if you are working 
+with a lot of numeric values, because it will automatically do summary statistics
+on any numbers in your data.frame.
+
+```r
+summary(chicago_air)
+```
+
+```
+##      date               ozone              temp            solar      
+##  Length:365         Min.   :0.00400   Min.   :-17.00   Min.   :0.040  
+##  Class :character   1st Qu.:0.02500   1st Qu.: 36.75   1st Qu.:0.510  
+##  Mode  :character   Median :0.03400   Median : 59.50   Median :0.910  
+##                     Mean   :0.03567   Mean   : 54.84   Mean   :0.841  
+##                     3rd Qu.:0.04500   3rd Qu.: 73.00   3rd Qu.:1.200  
+##                     Max.   :0.08100   Max.   : 92.00   Max.   :1.490  
+##                     NA's   :26        NA's   :109                     
+##      month           weekday     
+##  Min.   : 1.000   Min.   :1.000  
+##  1st Qu.: 4.000   1st Qu.:2.000  
+##  Median : 7.000   Median :4.000  
+##  Mean   : 6.526   Mean   :3.997  
+##  3rd Qu.:10.000   3rd Qu.:6.000  
+##  Max.   :12.000   Max.   :7.000  
+## 
+```
+# The `$` operator
+You can refer to a specific column name in a `data.frame` with the $ operator. It
+will return that column as a vector.
+
+
+```r
+str(chicago_air$ozone) # Calculates the mean temperature of the ozone column. Because there is ```
+```
+
+```
+##  num [1:365] 0.032 0.02 0.021 0.028 0.025 0.026 0.024 0.021 0.031 0.024 ...
+```
