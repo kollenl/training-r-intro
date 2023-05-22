@@ -10,8 +10,6 @@ date: "2023-05-22"
 
 # Functions
 
-- Now that we have learned how to hold data in R as a variable, we can
-start performing tasks on the data using functions. 
 - Functions are a way to repeat the same task on different data. 
 - R has many built-in functions that perform common tasks
 
