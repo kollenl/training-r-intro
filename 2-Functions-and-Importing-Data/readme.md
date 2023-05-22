@@ -10,13 +10,13 @@ date: "2023-05-22"
 
 In this session we’ll be covering:
 
-- [Built-in functions]{#functions}
-- [Using R packages]{#packages}
-- [Importing data]{#importing}
-- [Data exploration]{#exploration}
+- [Built-in functions](#Functions)
+- [Using R packages](#Packages)
+- [Importing data](#Importing-Data)
 
 
-# Functions {#functions}
+
+# Functions {#Functions}
 
 - Now that we have learned how to hold data in R as a variable, we can
 start performing tasks on the data using functions. 
@@ -237,7 +237,7 @@ mean(seq(from=1, to=10, by=3))  #Make sure you have the parentheses located in t
 
 _Note: Typically you don’t want to have too many nested functions because it becomes difficult to read._
 
-# Using R packages {#packages}
+# Packages
 
 - R comes with basic functionality, meaning that some functions will always be available when you start an R session
 - However, anyone can write functions for R that are not part of the base functionality and make it available to other R users in a package
@@ -360,7 +360,7 @@ Remember, when you close down RStudio, then start it up again, you don’t have 
 But you do have to load the package to use any function that’s not in the R core functionality (this is very easy to forget).
 
 
-# Importing data {#importing}
+# Importing Data
 
 - R can import data from just about any format, including
   - CSV
