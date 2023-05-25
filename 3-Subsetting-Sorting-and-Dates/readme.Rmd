@@ -6,11 +6,14 @@ output:
 date: "2023-05-23"
 ---
 
-# Working with R Data Frames
-We'll begin by loading the chicago_air data frame from last session
+# Working with R `data.frame`s
+
+We'll begin by loading the `chicago_air` `data.frame` from the `region5air`
+[package on GitHub](https://github.com/NateByers/region5air).
 
 ```{r, eval=FALSE}
 library(region5air)
+
 data(chicago_air)
 ```
 
@@ -22,7 +25,7 @@ We always want to make sure our data looks the way it is supposed to before we
 begin working with it.
 
 The best way to take a quick look at the first few rows of a data frame
-is to use the head() function
+is to use the `head()` function
 
 ```{r}
 head(chicago_air)  
@@ -33,13 +36,14 @@ You can specify the number of lines to display by using the n = parameter
 head(chicago_air, n = 3)
 ```
 
-You can also look at the bottom of the data frame by using tail()
+You can also look at the bottom of the data frame by using `tail()`
 
 ```{r}
 tail(chicago_air)
 ```
 
-The table function is helpful for summarizing your data by counts and the plot() and hist() functions allow you to quickly visualize the data
+The table function is helpful for summarizing your data by counts and the `plot()`
+and `hist()` functions allow you to quickly visualize the data
 
 ```{r}
 table(chicago_air$ozone)  ##Summarizes by counts
@@ -95,25 +99,25 @@ to the right of the comma. By leaving the row value blank, you are telling it to
 return all rows associated with column 1.
 
 ```{r}
-chicago_air[, 1]
+head( chicago_air[, 1] )
 ```
 
 You can obtain more than one column by supplying a vector of column numbers
 
 ```{r}
-chicago_air[, c(3, 4, 6)]
+head( chicago_air[, c(3, 4, 6)] )
 ```
 
 Column names can also be used.
 
 ```{r}
-chicago_air[, "solar"]
+head( chicago_air[, "solar"] )
 ```
 
 Or a vector of column names
 
 ```{r}
-chicago_air[, c("ozone", "temp", "month")]
+head( chicago_air[, c("ozone", "temp", "month")] )
 ```
 
 Both rows and columns can be specified at the same time. 
@@ -126,9 +130,6 @@ chicago_air[1:5, 3:5]  # Returns first 5 rows of data and the third through fift
 You can also subset a data frame by using logical expressions
 The logical expression is used to specify rows that you want to keep or discard
 
-```{r, eval=FALSE}
-chicago_air[<logical expression>, ]
-```
 
 ## Reference Table of Logical Operators
 |Operator |Description |
@@ -148,7 +149,7 @@ Here is an example using a logical expression to subset.
 ```{r}
 logical_vector <- chicago_air$solar > 1.45 # records with greater than 1.45 in the solar column
 
-chicago_air[logical_vector, ]
+chicago_air[logical_vector, ] 
 ```
 
 
@@ -185,7 +186,7 @@ air[(air$month == 7), ]
 Or if we want all days except the 6th day, we would use `!=`.
 
 ```{r}
-air[(air$weekday != 6), ]  #Excludes all data from the 6th day of the week
+head( air[(air$weekday != 6), ] ) #Excludes all data from the 6th day of the week
 ```
 
 We can combine logical conditions with `&` (the _AND_ operator)
@@ -198,7 +199,7 @@ air[(air$temp >= 80 & air$temp <= 85), ]
 
 We can also use `|` (the _OR_ operator) to select rows on days 3 or 5
 ```{r}
-air[(air$weekday == 3 | air$weekday == 5),]
+head( air[(air$weekday == 3 | air$weekday == 5),] )
 ```
 
 # Subsetting using the subset() function

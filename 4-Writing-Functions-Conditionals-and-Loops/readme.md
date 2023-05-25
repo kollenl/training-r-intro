@@ -1,0 +1,297 @@
+---
+title: "Writing Functions, Conditionals, and Loops"
+output: 
+  html_document: 
+    keep_md: yes
+date: "2023-05-25"
+---
+
+# Writing functions
+
+We already know that when we use a function, we need to know what the arguments 
+are. For example, if we want to use the `mean()` function, we look at the 
+documentation by typing 
+
+
+```r
+?mean()
+```
+
+The first function we write will be our own version of a function that calculates
+the mean of a numeric vector. Since we can’t just call it mean (or, if we do, 
+we will replace that base function in our environment), we will call our function
+`myMean()`.
+
+Here is the basic structure of creating a function.
+
+
+```r
+myMean <- function( ){
+  
+}
+```
+
+A function is created by using another function called `function()`. The 
+parentheses will contain the arguments we want our function to have, and the 
+curly braces will contain the operation that will be performed on the arguments.
+First, we'll need a vector of numbers, so we'll call it the `x` argument.
+
+
+```r
+myMean <- function(x){
+  #do something to x
+}
+```
+
+Now we’ll calculate the average of the numbers in x.
+
+
+```r
+myMean <- function(x){
+  total_count_of_values <- length(x)
+  total_sum_of_values <- sum(x)
+  average_of_values <- total_sum_of_values/total_count_of_values
+  average_of_values
+}
+```
+
+Inside the curly braces we've found how many numbers are in the x vector, we've
+added up all the values in that vector, and we've found the average. In a function,
+the last line will always be returned. 
+
+Let’s try our function.
+
+
+```r
+my_vector <- c(1, 3, 5, 2, 6, 9, 0)
+vector_mean <- myMean(x = my_vector)
+vector_mean
+```
+
+```
+## [1] 3.714286
+```
+
+Now let’s check our answer against the mean function that is built into R
+
+
+```r
+mean(my_vector)  
+```
+
+```
+## [1] 3.714286
+```
+
+# Conditionals
+
+Conditional statements are helpful if you want to write some code that will do
+one thing in some circumstances and something else the rest of the time. R has 
+the conditional functions `if()` and `ifelse()` that perform these operations. 
+These are very similar to the `IF` function used in Excel and they take the same 
+type of arguments
+
+`if()` uses braces after the parentheses to group operations based on whether or
+not the logical expression is true. Below is pseudo-code that will not run in
+R, but shows an outline of how to use the `if()` function:
+
+
+```r
+if(<logical expression>) {
+  
+  # code that will run if the logical expression is true
+  
+} else {
+  
+  # code that will run if the logical expression is false
+  
+}
+```
+
+For example, if we wanted to print a message based on the value of ozone, we 
+could use this construction:
+
+
+```r
+ozone_value <- 0.075
+
+if(ozone_value > 0.065) {
+  
+  print("Potential Health Effects")
+  
+} else {
+  
+  print("All Good")
+  
+}
+```
+
+```
+## [1] "Potential Health Effects"
+```
+
+The `ifelse()` function is a simplified version of `if()` and can be used when 
+you are returning simple values based on a conditional test.
+
+
+```r
+ifelse(<test>, <yes>, <no>)
+```
+
+The `test` argument is the logical expression, `yes` is the value returned if
+the expression is true, and `no` is returned if the expression is false.
+
+
+```r
+ozone_value <- 0.060
+
+message <- ifelse(ozone_value > 0.065, "Potential Health Effects", "All Good")
+
+print(message)
+```
+
+```
+## [1] "All Good"
+```
+
+
+# For loop
+
+Like most programming languages, R has for and while loops. This tutorial will
+cover just for loops and move on to apply() functions, which are more commonly 
+used in R.
+
+For loops are used to repeat an operation a set number of times. The basic outline is
+
+
+```r
+for(i in sequence){
+  
+}
+```
+
+The `sequence` parameter is typically a vector. The `i` parameter is a variable
+that will take on the values in the `sequence` vector. For instance, if `sequence`
+was the vector `c(1, 2, 3)` then the `i` variable will take on each of those values
+in turn.
+
+This example simply prints the values of the vector as they loop through.
+
+
+```r
+ints <- c(1, 2, 3)
+
+for(i in ints) {
+  
+  print(i)
+  
+}
+```
+
+```
+## [1] 1
+## [1] 2
+## [1] 3
+```
+
+Below is a more complicated example. Three vectors are saved in a `list` variable,
+and the mean of each vector is saved in a variable named `my_averages`. The 
+`my_averages` variable is created first as an empty vector `c()` then populated
+in the for loop. 
+
+
+```r
+my_averages <- c()
+
+my_list <- list(c(1, 5, 9, 3), 1:10, c(23, 42))
+
+for(i in my_list){
+  
+  my_averages <- mean(i) 
+  
+}
+
+my_averages
+```
+
+```
+## [1] 32.5
+```
+
+
+
+
+# The `apply()` functions
+
+In R, the most efficient way to do loops is to use the the `apply()` function 
+and related functions. These are functions that have `apply` at the end of their 
+names, such as `lapply()`, `tapply()`, and `mapply()`. 
+
+`apply()` takes a `data.frame` (or matrix) as the first argument. The second 
+argument specifies if you want to apply a function to the rows (1) or columns (2),
+and the third argument is the function you want to apply to each row or column.
+Additional arguments can be used to pass on to the function being applied to each row or column.
+
+The example below applies the max function to three of the columns of the `chicago_air` 
+`data.frame`. See the `region5air` [GitHub repository](https://github.com/NateByers/region5air)
+for instructions on how to 
+install the package.
+
+
+```r
+library(region5air)
+
+data(chicago_air)
+
+air <- chicago_air[, c("ozone", "temp", "solar")]
+
+air_max <- apply(air, 
+                 MARGIN = 2,  # we are applying the max() function to each column
+                 FUN = max, 
+                 na.rm = TRUE # the na.rm argument is passed to the max() function
+                 )
+air_max
+```
+
+
+```
+##  ozone   temp  solar 
+##  0.081 92.000  1.490
+```
+
+`lapply()` applies a function to each member of a list. Below we apply the 
+mean function to each vector in a list, similar to the for loop above. The output
+is also a list.
+
+
+```r
+my_list <- list(c(1, 5, 9, 3), 1:10, c(23, 42))
+my_averages <- lapply(my_list, myMean)
+my_averages
+```
+
+```
+## [[1]]
+## [1] 4.5
+## 
+## [[2]]
+## [1] 5.5
+## 
+## [[3]]
+## [1] 32.5
+```
+
+
+`sapply()` does the same thing as `lapply()`, but the output is simplified as 
+much as possible. In the example below, a vector is returned.
+
+
+```r
+my_list <- list(c(1, 5, 9, 3), 1:10, c(23, 42))
+my_averages <- sapply(my_list, myMean)
+my_averages
+```
+
+```
+## [1]  4.5  5.5 32.5
+```
