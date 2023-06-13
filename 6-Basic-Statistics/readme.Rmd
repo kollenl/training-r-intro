@@ -1,0 +1,293 @@
+---
+title: "Basic Statistics"
+output: html_document
+date: "2023-06-11"
+---
+
+## Basic Statistics
+
+R was originally developed as a statistical programming language and is commonly
+used to perform basic statistics. There are also many community developed packages
+that make it easy to perform statistical analyses. This tutorial will cover
+some statistical tests that might be used on environmental data.
+
+First we load the `chicago_air` ozone data so that we can run some basic 
+statistics on it. We will give the ozone column its own variable name so that we
+can access it quickly.
+
+
+```{r, eval=FALSE}
+library(region5air)
+data(chicago_air)
+ozone <- chicago_air$ozone
+
+```
+
+```{r, echo=FALSE}
+load("../data/chicago_air.rda")
+ozone <- chicago_air$ozone
+```
+
+### Descriptive and exploratory statistics
+
+There are several built-in functions for descriptive statistics. The functions
+below all have a parameter `na.rm` that tells the function to remove `NA` values
+when performing the calculation.
+
+```{r}
+
+min(ozone, na.rm=T)
+
+```
+
+```{r}
+
+max(ozone, na.rm=T)
+
+```
+
+```{r}
+
+range(ozone, na.rm=T)
+
+```
+
+```{r}
+
+summary(ozone)
+
+```
+
+The `hist()` and `boxplot()` functions plot a histogram and boxplot respectively,
+which helps to visualize the distribution of the values.
+
+```{r}
+
+hist(ozone)
+
+```
+
+```{r}
+
+boxplot(ozone)
+
+```
+
+
+### Measures of central tendency
+
+R has functions for finding the mean and median of a set of values.
+
+```{r}
+
+mean(ozone, na.rm=T)
+
+```
+
+```{r}
+
+median(ozone, na.rm=T)
+
+```
+
+
+### Measures of dispersion
+
+The functions `var()`, `sd()`, and `IQR()` calculate the variance, standard 
+deviation, and interquartile range respectively.
+
+```{r}
+
+var(ozone,na.rm=T)
+
+```
+
+```{r}
+
+sd(ozone,na.rm=T)
+
+```
+
+```{r}
+
+IQR(ozone,na.rm=T)
+
+```
+
+## Useful packages for statistics
+
+
+```{r}
+
+# install.packages("Hmisc")
+library(Hmisc)
+describe(ozone)
+
+```
+```{r, warning=FALSE, message=FALSE}
+# install.packages("psych")
+library(psych)
+describeBy(ozone)
+
+```
+
+
+```{r}
+# install.packages("pastecs")
+library(pastecs)
+
+stat.desc(ozone, norm=T) 
+
+```
+
+
+## Statistical tests
+
+R has many built-in functions for statistical tests. As an example, we'll use
+the `t.test()` function to perform a two sample t-test on the Chicago ozone data.
+
+First, let’s plot our dataset and look at ozone values by month.
+
+```{r, warning=FALSE, message=FALSE}
+
+library(ggplot2)
+ggplot(chicago_air, aes(factor(month), ozone)) + geom_boxplot()
+
+```
+We could compare ozone months in March and June and see if there is a significant
+difference in concentrations. 
+
+
+```{r, warning=FALSE, message=FALSE}
+
+ozone_march_june <- chicago_air[chicago_air$month %in% c(3, 6), ]
+
+ggplot(ozone_march_june, aes(factor(month), ozone)) + geom_boxplot()
+
+```
+
+
+We should also check for normality before doing any statistical tests.
+
+
+```{r}
+
+ggplot(ozone_march_june, aes(ozone)) + 
+  facet_grid(rows = "month") + 
+  geom_histogram()
+
+```
+
+
+d.mar <- density(March.data$ozone)
+d.aug <- density(August.data$ozone,na.rm=T)
+plot(d.mar, main="Kernel Density Plot of ozone data")
+par(new=TRUE)
+plot(d.aug, xlab="", main="", xaxt="n", yaxt="n")
+
+
+Now we can do some comparisons between these 2 months of readings using the student’s t test.
+
+t.test(March.data$ozone,August.data$ozone)
+## 
+##  Welch Two Sample t-test
+## 
+## data:  March.data$ozone and August.data$ozone
+## t = -3.7499, df = 43.053, p-value = 0.0005233
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.012861130 -0.003865751
+## sample estimates:
+##  mean of x  mean of y 
+## 0.03890323 0.04726667
+t.test results show that these means are in fact different.
+We may be curious as to how each of the months compares with each other. We can do a pairwise.t.test to look at all the months.
+# this takes the form pairwise.t.test(x,g), where x = the vector of values and g= the grouping vector or factor.
+pairwise.t.test(chicago_air$ozone,chicago_air$month)  
+## 
+##  Pairwise comparisons using t tests with pooled SD 
+## 
+## data:  chicago_air$ozone and chicago_air$month 
+## 
+##    1       2       3       4       5       6       7       8       9      
+## 2  0.15321 -       -       -       -       -       -       -       -      
+## 3  1.7e-08 0.01310 -       -       -       -       -       -       -      
+## 4  1.8e-15 2.6e-07 0.26779 -       -       -       -       -       -      
+## 5  < 2e-16 2.4e-11 0.00174 1.00000 -       -       -       -       -      
+## 6  < 2e-16 3.1e-12 0.00041 1.00000 1.00000 -       -       -       -      
+## 7  1.00000 1.00000 0.39405 0.00536 0.00014 5.7e-05 -       -       -      
+## 8  < 2e-16 4.0e-10 0.00857 1.00000 1.00000 1.00000 0.00041 -       -      
+## 9  5.7e-11 0.00039 1.00000 1.00000 0.05957 0.01853 0.09282 0.19596 -      
+## 10 1.00000 0.90415 1.1e-06 3.4e-13 < 2e-16 < 2e-16 1.00000 < 2e-16 5.7e-09
+## 11 1.00000 0.00645 4.1e-11 < 2e-16 < 2e-16 < 2e-16 1.00000 < 2e-16 9.1e-14
+## 12 1.00000 0.00526 2.2e-11 < 2e-16 < 2e-16 < 2e-16 1.00000 < 2e-16 4.3e-14
+##    10      11     
+## 2  -       -      
+## 3  -       -      
+## 4  -       -      
+## 5  -       -      
+## 6  -       -      
+## 7  -       -      
+## 8  -       -      
+## 9  -       -      
+## 10 -       -      
+## 11 1.00000 -      
+## 12 1.00000 1.00000
+## 
+## P value adjustment method: holm
+Correlation analysis
+If we want to look at how all the variables in our dataset relate to each other, correlation analysis is very useful.
+
+To run a correlation test, all of the values you give it must be numeric; therefore, dates or character values won’t work.
+We need to subset our data to just the numeric columns that we want to test for correlation.
+You will want to save the results to a variable so you can use it for plotting later.
+chi_air.cor <- cor(chicago_air[,2:5], 
+                   use= "complete.obs", 
+                   method="pearson") #subset to only numeric data, can choose between spearman, kendall, and pearson correlation coefficients
+chi_air.cor  #print data to console to see the correlation matrix
+##           ozone      temp     solar     month
+## ozone 1.0000000 0.6035925 0.5926064 0.3397222
+## temp  0.6035925 1.0000000 0.4923545 0.8138164
+## solar 0.5926064 0.4923545 1.0000000 0.4385685
+## month 0.3397222 0.8138164 0.4385685 1.0000000
+cor.test(chicago_air$solar, chicago_air$temp, method = "pearson")
+## 
+##  Pearson's product-moment correlation
+## 
+## data:  chicago_air$solar and chicago_air$temp
+## t = 9.4859, df = 254, p-value < 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.4148735 0.5966489
+## sample estimates:
+##       cor 
+## 0.5114604
+A package called corrplot has some really nice plotting options for correlation matrices.
+
+install.packages("corrplot")
+library(corrplot)
+corrplot(chi_air.cor, order='FPC')  #you can order the plots based on alphabetical order, first principal component order, hierarchical clustering order, and more
+
+corrplot(chi_air.cor, 
+         method='number', 
+         order='FPC')
+
+
+Pairwise plots
+pairs(chicago_air[,2:5], lower.panel=panel.smooth)  # simply does pairwise plotting for all numeric variables
+
+library(psych)
+
+pairs.panels(chicago_air[,2:3], lm = TRUE)  # shows the bivariate scatterplots, histogram, and Pearson correlation for each pair.
+pairs.panels(chicago_air[,2:5], lm = TRUE)
+
+
+Reference Table of a few popular tests for categorical data analysis in R
+test	function
+Chi Square Test	chisq.test()
+Fisher’s Test	fisher.test()
+Analysis of Variance	aov()
+The EnvStats package has a comprehensive list of basic and more advanced statistical tests for Environmental Data.
+library(EnvStats)
+?EnvStats
+Now let’s try some exercises to test our understanding of basic statistical analysis in R.
