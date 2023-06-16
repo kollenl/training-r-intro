@@ -265,8 +265,8 @@ using the data() function and a package we created for this training.
 Use the code below to obtain the data that we will use moving forward. This is 
 very similar to what is in the Excel file.
 ```{r, eval=FALSE}
-library(devtools)
-install_github("natebyers/region5air")
+library(remotes)
+install_github("fluentdata/region5air")
 library(region5air)
 data(chicago_air)
 ```
