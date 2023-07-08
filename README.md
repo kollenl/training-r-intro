@@ -8,7 +8,7 @@ This repository contains training materials for learning the R programming langu
 
 2. **Functions and Importing Data**: This lesson covers the use of functions in R, including built-in functions and how to create your own. It also discusses how to import data from various formats, such as CSV and Excel, and how to explore and manipulate this data in R.
 
-3. **Data Exploration and Visualization*: This lesson covers how to subset data using indexing and logical operators, sort data using the `order()` function, and combine data frames using `rbind()` and `cbind()` functions in R.
+3. **Data Exploration and Visualization**: This lesson covers how to subset data using indexing and logical operators, sort data using the `order()` function, and combine data frames using `rbind()` and `cbind()` functions in R.
 
 4. **Writing Functions, Conditionals, and Loops**: This lesson introduces the concept of writing functions in R, using conditionals to control the flow of execution, and implementing loops for repetitive tasks.
     
