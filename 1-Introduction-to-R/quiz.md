@@ -1,65 +1,212 @@
+## Quiz
 
-**Question 1:** What is R?
 
-- 1: A statistical software that is similar to SAS or S plus and makes really great looking graphs
-- 2: A simple word processing software
-- 3: A popular videogame among statisticians
-- 4: A project management tool
+### 1. What is R used for?
+
+1. A free, open-source language and environment for statistical analysis
+1. A word processor
+1. A video game
+1. A music mixing software
+<details><summary>Click for Hint</summary>
+
+* R is used for statistical analysis.
+</details>
 <details><summary>Click for Answer</summary>
 
-**Answer**: 1 - A statistical software that is similar to SAS or S plus and makes really great looking graphs
+#### Answer
 
-**Explanation**: R is a free programming language and environment for statistical analysis. It's similar to SAS or S plus and has great graphics capabilities.
+1.  A free, open-source language and environment for statistical analysis
+
+> R is a language and environment for performing statistical analysis and it is open-source.</details>
+
+---
+
+
+### 2. Why might someone choose to use Excel over R?
+
+1. Excel is easier to use and more familiar to many
+1. Excel offers more statistical analysis options
+1. Excel is open-source
+1. Excel can easily handle large datasets
+<details><summary>Click for Hint</summary>
+
+* Think about the user-friendliness of Excel compared to R.
 </details>
-<hr />
-**Question 2:** What is an advantage of R over Excel for data analysis?
-
-- 1: R is easy to use
-- 2: R allows easy scrolling through data
-- 3: R provides a vast, open-source community and rapid releases of new technology
-- 4: Error-free process in R
 <details><summary>Click for Answer</summary>
 
-**Answer**: 3 - R provides a vast, open-source community and rapid releases of new technology
+#### Answer
 
-**Explanation**: R has an active user community which means lots of internet sources and rapid releases of new technology. It can handle almost unlimited size of data and is highly reproducible and repeatable as compared to Excel.
+1.  Excel is easier to use and more familiar to many
+
+> Many people find Excel easier to use and more familiar than R, particularly if they are not used to coding.</details>
+
+---
+
+
+### 3. What is RStudio?
+
+1. A type of statistical software
+1. A data visualization tool
+1. An integrated development environment (IDE) for R
+1. A music production software
+<details><summary>Click for Hint</summary>
+
+* RStudio is related to R but offers a more user-friendly interface.
 </details>
-
-**Question 3:** What is a correct way to declare and assign a variable in R?
-
-- 1: x => 5
-- 2: 5 <- x
-- 3: x = 5
-- 4: x <- 5
 <details><summary>Click for Answer</summary>
 
-**Answer**: 4 - x <- 5
+#### Answer
 
-**Explanation**: In R, variables are assigned with the '<-' symbol. So 'x <- 5' is a correct way to assign the value 5 to the variable x.
+3.  An integrated development environment (IDE) for R
+
+> RStudio is an integrated development environment (IDE) for R. It provides a graphic user interface to make using R easier and more intuitive.</details>
+
+---
+
+
+### 4. What operations can be performed in R?
+
+1. Addition
+1. Subtraction
+1. Multiplication
+1. All of the above
+<details><summary>Click for Hint</summary>
+
+* R can perform a variety of mathematical processes.
 </details>
-
-**Question 4:** What is a common data type in R?
-
-- 1: character
-- 2: float
-- 3: byte
-- 4: double
 <details><summary>Click for Answer</summary>
 
-**Answer**: 1 - character
+#### Answer
 
-**Explanation**: R has several data types, including 'character' for letters and words, 'numeric' for numbers, and 'logical' for binary TRUE or FALSE values.
+4.  All of the above
+
+> R is capable of performing a range of mathematical operations, including addition, subtraction, and multiplication.</details>
+
+---
+
+
+### 5. How do you store information in R?
+
+1. Using vectors
+1. Creating objects
+1. Storing in variables
+1. All of the above
+<details><summary>Click for Hint</summary>
+
+* Information can be held in a variety of formats in R.
 </details>
-
-**Question 5:** What does the 'c()' function do in R?
-
-- 1: It creates character strings
-- 2: It calculates the correlation between two variables
-- 3: It combines values into a vector
-- 4: None of the above
 <details><summary>Click for Answer</summary>
 
-**Answer**: 3 - It combines values into a vector
+#### Answer
 
-**Explanation**: In R, the 'c()' function is used to create vectors, which are ordered sets of values of the same type.
+4.  All of the above
+
+> R can store information in the form of vectors, objects, and  variables.</details>
+
+---
+
+
+### 6. What is a vector in R?
+
+1. A two-dimensional object
+1. A variable with an ordered set of values
+1. A data type
+1. A three-dimensional object
+<details><summary>Click for Hint</summary>
+
+* A vector in R can hold multiple values of the same type.
 </details>
+<details><summary>Click for Answer</summary>
+
+#### Answer
+
+2.  A variable with an ordered set of values
+
+> A vector in R is a variable with an ordered set of values.</details>
+
+---
+
+
+### 7. What is a list in R?
+
+1. A type of graph
+1. A kind of matrix
+1. Like a vector but can contain any mix of data types
+1. A type of function
+<details><summary>Click for Hint</summary>
+
+* Think about how a list can hold multiple types of data.
+</details>
+<details><summary>Click for Answer</summary>
+
+#### Answer
+
+3.  Like a vector but can contain any mix of data types
+
+> A list in R can contain different kinds of data types.</details>
+
+---
+
+
+### 8. What is a data frame in R?
+
+1. A tool for storing image data
+1. A spreadsheet-like table
+1. A way of organizing variables
+1. A type of plot
+<details><summary>Click for Hint</summary>
+
+* Think of a data frame as a way to organize data in a table format.
+</details>
+<details><summary>Click for Answer</summary>
+
+#### Answer
+
+2.  A spreadsheet-like table
+
+> Data frames in R are like spreadsheet tables. They can hold many vectors of the same length.</details>
+
+---
+
+
+### 9. What are the three main object types in R?
+
+1. Character, numerical, logical
+1. Character, integer, boolean
+1. String, integer, binary
+1. Alphabetical, numerical, truth
+<details><summary>Click for Hint</summary>
+
+* Object types in R refer to the kind of data they hold.
+</details>
+<details><summary>Click for Answer</summary>
+
+#### Answer
+
+1.  Character, numerical, logical
+
+> The three main object types in R are character (letters and words), numeric (numbers), and logical (binary TRUE or FALSE values).</details>
+
+---
+
+
+### 10. What command would you use to group vectors into a data frame?
+
+1. group()
+1. vector()
+1. list()
+1. data.frame()
+<details><summary>Click for Hint</summary>
+
+* Think about how you would frame your data.
+</details>
+<details><summary>Click for Answer</summary>
+
+#### Answer
+
+4.  data.frame()
+
+> The command 'data.frame()' is used to group vectors into a data frame in R.</details>
+
+---
+

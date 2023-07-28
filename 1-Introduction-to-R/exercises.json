@@ -1,12 +1,62 @@
 [
     {
-        "exercise": "Create a vector named 'ages' that contains the ages of 5 different people: 25, 30, 35, 40, 45. Print the vector to check your result.",
-        "hint": "Remember to use the 'c()' function to combine elements into a vector.",
-        "solution": "ages <- c(25, 30, 35, 40, 45)\nprint(ages)"
+        "exercise": "Add two numbers in R, say 25 and 75.",
+        "solution": "25 + 75",
+        "output": "[1] 100",
+        "explanation": "R allows you to do simple arithmetic operations such as addition, subtraction, multiplication, etc. directly. Here, we're simply adding two numbers."
     },
     {
-        "exercise": "Create a data frame named 'students' with two columns: 'name' and 'grade'. Fill in the data frame with the following values:\n\n| name   | grade |\n|--------|-------|\n| Alice  | 85    |\n| Bob    | 92    |\n| Claire | 78    |\n| David  | 88    |\n\nPrint the data frame to check your result.",
-        "hint": "Use the 'data.frame()' function to create the data frame and specify the column names and values.",
-        "solution": "name <- c('Alice', 'Bob', 'Claire', 'David')\ngrade <- c(85, 92, 78, 88)\nstudents <- data.frame(name, grade)\nprint(students)"
+        "exercise": "Subtract 5 from 40 in R.",
+        "solution": "40 - 5",
+        "output": "[1] 35",
+        "explanation": "In this exercise, you're performing a simple subtraction operation in R."
+    },
+    {
+        "exercise": "Create an R variable `x` that stores the value 10.",
+        "solution": "x <- 10",
+        "output": "",
+        "explanation": "The arrow symbol (`<-`) is used to assign a value to a variable in R. In this case, we're storing the value 10 in a variable named `x`."
+    },
+    {
+        "exercise": "Create a vector `v` that contains the numbers 1 through 5.",
+        "solution": "v <- c(1, 2, 3, 4, 5)",
+        "output": "",
+        "explanation": "We use the `c()` function in R to combine elements into a vector."
+    },
+    {
+        "exercise": "Create a list `l` that contains a number (e.g., 5, a string (e.g., 'apple'), and a logical value (e.g., TRUE).",
+        "solution": "l <- list(5, 'apple', TRUE)",
+        "output": "",
+        "explanation": "In R, we create a list using the `list()` function. A list can contain elements of different types."
+    },
+    {
+        "exercise": "Create a data frame `df` with two columns, `name` and `age`, each containing three entries of your choosing.",
+        "solution": "df <- data.frame(name = c('Alice', 'Bob', 'Charlie'), age = c(25, 32, 28))",
+        "output": "",
+        "explanation": "In R, we can combine vectors of equal length into a data frame using the `data.frame()` function. Here, we're creating two vectors, `name` and `age`, and combining them into a data frame."
+    },
+    {
+        "exercise": "Calculate the result of the mathematical operation `(10 + 3 * 5) / (2 ^ 3)` in R.",
+        "solution": "(10 + 3 * 5) / (2 ^ 3)",
+        "output": "[1] 3.125",
+        "explanation": "In R, as well as other programming languages, we can use parentheses to specify the order of operations."
+    },
+    {
+        "exercise": "Calculate the remainder of 10 divided by 3 in R.",
+        "solution": "10 %% 3",
+        "output": "[1] 1",
+        "explanation": "We use the `%%` operator to calculate the remainder of a division operation in R."
+    },
+    {
+        "exercise": "Create a character vector `fruit` that contains the values 'apple', 'banana', and 'grape'.",
+        "solution": "fruit <- c('apple', 'banana', 'grape')",
+        "output": "",
+        "explanation": "We use the `c()` function in R to combine elements into a vector."
+    },
+    {
+        "exercise": "Create a numeric vector `nums` with the values 10, 20 and 30 and add 5 to each element of the vector.",
+        "solution": "nums <- c(10, 20, 30)\nnums + 5",
+        "output": "[1] 15 25 35",
+        "explanation": "We can operate on every element of a vector at once in R."
     }
 ]

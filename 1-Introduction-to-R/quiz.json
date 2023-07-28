@@ -1,62 +1,122 @@
 [
     {
-        "question": "What is the main advantage of using R over Excel?",
+        "question": "What is R used for?",
         "options": [
-            "Easy to sort and scroll through data",
-            "Limits on data size",
-            "Difficult to perform a series of steps",
-            "Easily reproducible and repeatable"
+            "A free, open-source language and environment for statistical analysis",
+            "A word processor",
+            "A video game",
+            "A music mixing software"
         ],
-        "hint": "Consider the advantages of R mentioned in the lesson",
-        "answer": 3,
-        "explanation": "R allows for easily reproducible and repeatable analyses, while Excel can be difficult to perform complex series of steps."
+        "answer": 0,
+        "hint": "R is used for statistical analysis.",
+        "explanation": "R is a language and environment for performing statistical analysis and it is open-source."
     },
     {
-        "question": "Which of the following is NOT a disadvantage of Excel compared to R?",
+        "question": "Why might someone choose to use Excel over R?",
         "options": [
-            "Easy to make a mistake",
-            "Limits on data size",
-            "Difficult to perform a series of steps",
-            "Relies on the user finding answers via Google searches"
+            "Excel is easier to use and more familiar to many",
+            "Excel offers more statistical analysis options",
+            "Excel is open-source",
+            "Excel can easily handle large datasets"
         ],
-        "hint": "Consider the disadvantages of Excel mentioned in the lesson",
-        "answer": 3,
-        "explanation": "Excel relies on the user finding answers via Google searches is a disadvantage of R, not Excel."
+        "answer": 0,
+        "hint": "Think about the user-friendliness of Excel compared to R.",
+        "explanation": "Many people find Excel easier to use and more familiar than R, particularly if they are not used to coding."
     },
     {
-        "question": "What is the purpose of RStudio?",
+        "question": "What is RStudio?",
         "options": [
-            "To download R software",
-            "To perform statistical analysis",
-            "To provide support for R users",
-            "To provide an integrated development environment for R"
+            "A type of statistical software",
+            "A data visualization tool",
+            "An integrated development environment (IDE) for R",
+            "A music production software"
         ],
-        "hint": "Consider the role of RStudio mentioned in the lesson",
-        "answer": 3,
-        "explanation": "RStudio provides an integrated development environment for R, making it easier to use."
+        "answer": 2,
+        "hint": "RStudio is related to R but offers a more user-friendly interface.",
+        "explanation": "RStudio is an integrated development environment (IDE) for R. It provides a graphic user interface to make using R easier and more intuitive."
     },
     {
-        "question": "Which is true about R object types?",
+        "question": "What operations can be performed in R?",
         "options": [
-            "Vectors can contain any mix of data types",
-            "Lists contain only one type of data",
-            "Data frames can only contain numeric data",
-            "Matrices are like spreadsheets with a mix of data types"
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "All of the above"
         ],
-        "hint": "Consider the different object types mentioned in the lesson",
+        "answer": 3,
+        "hint": "R can perform a variety of mathematical processes.",
+        "explanation": "R is capable of performing a range of mathematical operations, including addition, subtraction, and multiplication."
+    },
+    {
+        "question": "How do you store information in R?",
+        "options": [
+            "Using vectors",
+            "Creating objects",
+            "Storing in variables",
+            "All of the above"
+        ],
+        "answer": 3,
+        "hint": "Information can be held in a variety of formats in R.",
+        "explanation": "R can store information in the form of vectors, objects, and  variables."
+    },
+    {
+        "question": "What is a vector in R?",
+        "options": [
+            "A two-dimensional object",
+            "A variable with an ordered set of values",
+            "A data type",
+            "A three-dimensional object"
+        ],
         "answer": 1,
-        "explanation": "Vectors can only contain one type of data, while lists can contain any mix of data types."
+        "hint": "A vector in R can hold multiple values of the same type.",
+        "explanation": "A vector in R is a variable with an ordered set of values."
     },
     {
-        "question": "What does the `data.frame()` function in R do?",
+        "question": "What is a list in R?",
         "options": [
-            "Creates a vector",
-            "Creates a list",
-            "Creates a matrix",
-            "Creates a data frame"
+            "A type of graph",
+            "A kind of matrix",
+            "Like a vector but can contain any mix of data types",
+            "A type of function"
         ],
-        "hint": "Consider the purpose of the `data.frame()` function mentioned in the lesson",
+        "answer": 2,
+        "hint": "Think about how a list can hold multiple types of data.",
+        "explanation": "A list in R can contain different kinds of data types."
+    },
+    {
+        "question": "What is a data frame in R?",
+        "options": [
+            "A tool for storing image data",
+            "A spreadsheet-like table",
+            "A way of organizing variables",
+            "A type of plot"
+        ],
+        "answer": 1,
+        "hint": "Think of a data frame as a way to organize data in a table format.",
+        "explanation": "Data frames in R are like spreadsheet tables. They can hold many vectors of the same length."
+    },
+    {
+        "question": "What are the three main object types in R?",
+        "options": [
+            "Character, numerical, logical",
+            "Character, integer, boolean",
+            "String, integer, binary",
+            "Alphabetical, numerical, truth"
+        ],
+        "answer": 0,
+        "hint": "Object types in R refer to the kind of data they hold.",
+        "explanation": "The three main object types in R are character (letters and words), numeric (numbers), and logical (binary TRUE or FALSE values)."
+    },
+    {
+        "question": "What command would you use to group vectors into a data frame?",
+        "options": [
+            "group()",
+            "vector()",
+            "list()",
+            "data.frame()"
+        ],
         "answer": 3,
-        "explanation": "The `data.frame()` function in R creates a data frame, which is a spreadsheet-like table."
+        "hint": "Think about how you would frame your data.",
+        "explanation": "The command 'data.frame()' is used to group vectors into a data frame in R."
     }
 ]
