@@ -1,86 +1,66 @@
 ## Quiz
 
-**Question 1:** What is the main advantage of using R over Excel?
+**Question 1:** What is R?
 
-- 1: Easy to sort and scroll through data
-- 2: Limits on data size
-- 3: Difficult to perform a series of steps
-- 4: Easily reproducible and repeatable
-<details><summary>Click for Hint</summary>
-
-Consider the advantages of R mentioned in the lesson
-</details>
+- 1: A statistical software that is similar to SAS or S plus and makes really great looking graphs
+- 2: A simple word processing software
+- 3: A popular videogame among statisticians
+- 4: A project management tool
 <details><summary>Click for Answer</summary>
 
-Answer: 4 - Easily reproducible and repeatable
+**Answer**: 1 - A statistical software that is similar to SAS or S plus and makes really great looking graphs
 
-Explanation: R allows for easily reproducible and repeatable analyses, while Excel can be difficult to perform complex series of steps.
+**Explanation**: R is a free programming language and environment for statistical analysis. It's similar to SAS or S plus and has great graphics capabilities.
 </details>
 
-**Question 2:** Which of the following is NOT a disadvantage of Excel compared to R?
+**Question 2:** What is an advantage of R over Excel for data analysis?
 
-- 1: Easy to make a mistake
-- 2: Limits on data size
-- 3: Difficult to perform a series of steps
-- 4: Relies on the user finding answers via Google searches
-<details><summary>Click for Hint</summary>
-
-Consider the disadvantages of Excel mentioned in the lesson
-</details>
+- 1: R is easy to use
+- 2: R allows easy scrolling through data
+- 3: R provides a vast, open-source community and rapid releases of new technology
+- 4: Error-free process in R
 <details><summary>Click for Answer</summary>
 
-Answer: 4 - Relies on the user finding answers via Google searches
+**Answer**: 3 - R provides a vast, open-source community and rapid releases of new technology
 
-Explanation: Excel relies on the user finding answers via Google searches is a disadvantage of R, not Excel.
+**Explanation**: R has an active user community which means lots of internet sources and rapid releases of new technology. It can handle almost unlimited size of data and is highly reproducible and repeatable as compared to Excel.
 </details>
 
-**Question 3:** What is the purpose of RStudio?
+**Question 3:** What is a correct way to declare and assign a variable in R?
 
-- 1: To download R software
-- 2: To perform statistical analysis
-- 3: To provide support for R users
-- 4: To provide an integrated development environment for R
-<details><summary>Click for Hint</summary>
-
-Consider the role of RStudio mentioned in the lesson
-</details>
+- 1: x => 5
+- 2: 5 <- x
+- 3: x = 5
+- 4: x <- 5
 <details><summary>Click for Answer</summary>
 
-Answer: 4 - To provide an integrated development environment for R
+**Answer**: 4 - x <- 5
 
-Explanation: RStudio provides an integrated development environment for R, making it easier to use.
+**Explanation**: In R, variables are assigned with the '<-' symbol. So 'x <- 5' is a correct way to assign the value 5 to the variable x.
 </details>
 
-**Question 4:** Which is true about R object types?
+**Question 4:** What is a common data type in R?
 
-- 1: Vectors can contain any mix of data types
-- 2: Lists contain only one type of data
-- 3: Data frames can only contain numeric data
-- 4: Matrices are like spreadsheets with a mix of data types
-<details><summary>Click for Hint</summary>
-
-Consider the different object types mentioned in the lesson
-</details>
+- 1: character
+- 2: float
+- 3: byte
+- 4: double
 <details><summary>Click for Answer</summary>
 
-Answer: 2 - Lists contain only one type of data
+**Answer**: 1 - character
 
-Explanation: Vectors can only contain one type of data, while lists can contain any mix of data types.
+**Explanation**: R has several data types, including 'character' for letters and words, 'numeric' for numbers, and 'logical' for binary TRUE or FALSE values.
 </details>
 
-**Question 5:** What does the `data.frame()` function in R do?
+**Question 5:** What does the 'c()' function do in R?
 
-- 1: Creates a vector
-- 2: Creates a list
-- 3: Creates a matrix
-- 4: Creates a data frame
-<details><summary>Click for Hint</summary>
-
-Consider the purpose of the `data.frame()` function mentioned in the lesson
-</details>
+- 1: It creates character strings
+- 2: It calculates the correlation between two variables
+- 3: It combines values into a vector
+- 4: None of the above
 <details><summary>Click for Answer</summary>
 
-Answer: 4 - Creates a data frame
+**Answer**: 3 - It combines values into a vector
 
-Explanation: The `data.frame()` function in R creates a data frame, which is a spreadsheet-like table.
+**Explanation**: In R, the 'c()' function is used to create vectors, which are ordered sets of values of the same type.
 </details>
