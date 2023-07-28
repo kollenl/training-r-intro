@@ -1,0 +1,62 @@
+[
+    {
+        "question": "What is the main advantage of using R over Excel?",
+        "options": [
+            "Easy to sort and scroll through data",
+            "Limits on data size",
+            "Difficult to perform a series of steps",
+            "Easily reproducible and repeatable"
+        ],
+        "hint": "Consider the advantages of R mentioned in the lesson",
+        "answer": 3,
+        "explanation": "R allows for easily reproducible and repeatable analyses, while Excel can be difficult to perform complex series of steps."
+    },
+    {
+        "question": "Which of the following is NOT a disadvantage of Excel compared to R?",
+        "options": [
+            "Easy to make a mistake",
+            "Limits on data size",
+            "Difficult to perform a series of steps",
+            "Relies on the user finding answers via Google searches"
+        ],
+        "hint": "Consider the disadvantages of Excel mentioned in the lesson",
+        "answer": 3,
+        "explanation": "Excel relies on the user finding answers via Google searches is a disadvantage of R, not Excel."
+    },
+    {
+        "question": "What is the purpose of RStudio?",
+        "options": [
+            "To download R software",
+            "To perform statistical analysis",
+            "To provide support for R users",
+            "To provide an integrated development environment for R"
+        ],
+        "hint": "Consider the role of RStudio mentioned in the lesson",
+        "answer": 3,
+        "explanation": "RStudio provides an integrated development environment for R, making it easier to use."
+    },
+    {
+        "question": "Which is true about R object types?",
+        "options": [
+            "Vectors can contain any mix of data types",
+            "Lists contain only one type of data",
+            "Data frames can only contain numeric data",
+            "Matrices are like spreadsheets with a mix of data types"
+        ],
+        "hint": "Consider the different object types mentioned in the lesson",
+        "answer": 1,
+        "explanation": "Vectors can only contain one type of data, while lists can contain any mix of data types."
+    },
+    {
+        "question": "What does the `data.frame()` function in R do?",
+        "options": [
+            "Creates a vector",
+            "Creates a list",
+            "Creates a matrix",
+            "Creates a data frame"
+        ],
+        "hint": "Consider the purpose of the `data.frame()` function mentioned in the lesson",
+        "answer": 3,
+        "explanation": "The `data.frame()` function in R creates a data frame, which is a spreadsheet-like table."
+    }
+]

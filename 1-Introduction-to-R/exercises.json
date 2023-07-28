@@ -1,0 +1,12 @@
+[
+    {
+        "exercise": "Create a vector named 'ages' that contains the ages of 5 different people: 25, 30, 35, 40, 45. Print the vector to check your result.",
+        "hint": "Remember to use the 'c()' function to combine elements into a vector.",
+        "solution": "ages <- c(25, 30, 35, 40, 45)\nprint(ages)"
+    },
+    {
+        "exercise": "Create a data frame named 'students' with two columns: 'name' and 'grade'. Fill in the data frame with the following values:\n\n| name   | grade |\n|--------|-------|\n| Alice  | 85    |\n| Bob    | 92    |\n| Claire | 78    |\n| David  | 88    |\n\nPrint the data frame to check your result.",
+        "hint": "Use the 'data.frame()' function to create the data frame and specify the column names and values.",
+        "solution": "name <- c('Alice', 'Bob', 'Claire', 'David')\ngrade <- c(85, 92, 78, 88)\nstudents <- data.frame(name, grade)\nprint(students)"
+    }
+]
