@@ -32,35 +32,6 @@ Add two numbers in R, say 25 and 75.
 
 ### Exercise 2
 
-Subtract 5 from 40 in R.
-
-<details><summary>Click for Solution</summary>
-
-
-	
-> In this exercise, you're performing a simple subtraction operation in R.
-
-#### Solution
-
-```r
-40 - 5
-```
-
-#### Output
-
-```r
-[1] 35
-```
-
-
-
-</details>
-
----
-
-
-### Exercise 3
-
 Create an R variable `x` that stores the value 10.
 
 <details><summary>Click for Solution</summary>
@@ -82,7 +53,7 @@ x <- 10
 ---
 
 
-### Exercise 4
+### Exercise 3
 
 Create a vector `v` that contains the numbers 1 through 5.
 
@@ -105,7 +76,7 @@ v <- c(1, 2, 3, 4, 5)
 ---
 
 
-### Exercise 5
+### Exercise 4
 
 Create a list `l` that contains a number (e.g., 5, a string (e.g., 'apple'), and a logical value (e.g., TRUE).
 
@@ -128,7 +99,7 @@ l <- list(5, 'apple', TRUE)
 ---
 
 
-### Exercise 6
+### Exercise 5
 
 Create a data frame `df` with two columns, `name` and `age`, each containing three entries of your choosing.
 
@@ -151,65 +122,7 @@ df <- data.frame(name = c('Alice', 'Bob', 'Charlie'), age = c(25, 32, 28))
 ---
 
 
-### Exercise 7
-
-Calculate the result of the mathematical operation `(10 + 3 * 5) / (2 ^ 3)` in R.
-
-<details><summary>Click for Solution</summary>
-
-
-	
-> In R, as well as other programming languages, we can use parentheses to specify the order of operations.
-
-#### Solution
-
-```r
-(10 + 3 * 5) / (2 ^ 3)
-```
-
-#### Output
-
-```r
-[1] 3.125
-```
-
-
-
-</details>
-
----
-
-
-### Exercise 8
-
-Calculate the remainder of 10 divided by 3 in R.
-
-<details><summary>Click for Solution</summary>
-
-
-	
-> We use the `%%` operator to calculate the remainder of a division operation in R.
-
-#### Solution
-
-```r
-10 %% 3
-```
-
-#### Output
-
-```r
-[1] 1
-```
-
-
-
-</details>
-
----
-
-
-### Exercise 9
+### Exercise 6
 
 Create a character vector `fruit` that contains the values 'apple', 'banana', and 'grape'.
 
@@ -232,7 +145,7 @@ fruit <- c('apple', 'banana', 'grape')
 ---
 
 
-### Exercise 10
+### Exercise 7
 
 Create a numeric vector `nums` with the values 10, 20 and 30 and add 5 to each element of the vector.
 

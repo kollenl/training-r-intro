@@ -8,7 +8,6 @@
             "A music mixing software"
         ],
         "answer": 0,
-        "hint": "R is used for statistical analysis.",
         "explanation": "R is a language and environment for performing statistical analysis and it is open-source."
     },
     {
@@ -20,7 +19,6 @@
             "Excel can easily handle large datasets"
         ],
         "answer": 0,
-        "hint": "Think about the user-friendliness of Excel compared to R.",
         "explanation": "Many people find Excel easier to use and more familiar than R, particularly if they are not used to coding."
     },
     {
@@ -32,7 +30,6 @@
             "A music production software"
         ],
         "answer": 2,
-        "hint": "RStudio is related to R but offers a more user-friendly interface.",
         "explanation": "RStudio is an integrated development environment (IDE) for R. It provides a graphic user interface to make using R easier and more intuitive."
     },
     {
@@ -44,7 +41,6 @@
             "All of the above"
         ],
         "answer": 3,
-        "hint": "R can perform a variety of mathematical processes.",
         "explanation": "R is capable of performing a range of mathematical operations, including addition, subtraction, and multiplication."
     },
     {
@@ -56,7 +52,6 @@
             "All of the above"
         ],
         "answer": 3,
-        "hint": "Information can be held in a variety of formats in R.",
         "explanation": "R can store information in the form of vectors, objects, and  variables."
     },
     {
@@ -68,7 +63,6 @@
             "A three-dimensional object"
         ],
         "answer": 1,
-        "hint": "A vector in R can hold multiple values of the same type.",
         "explanation": "A vector in R is a variable with an ordered set of values."
     },
     {
@@ -80,7 +74,6 @@
             "A type of function"
         ],
         "answer": 2,
-        "hint": "Think about how a list can hold multiple types of data.",
         "explanation": "A list in R can contain different kinds of data types."
     },
     {
@@ -92,7 +85,6 @@
             "A type of plot"
         ],
         "answer": 1,
-        "hint": "Think of a data frame as a way to organize data in a table format.",
         "explanation": "Data frames in R are like spreadsheet tables. They can hold many vectors of the same length."
     },
     {
@@ -104,7 +96,6 @@
             "Alphabetical, numerical, truth"
         ],
         "answer": 0,
-        "hint": "Object types in R refer to the kind of data they hold.",
         "explanation": "The three main object types in R are character (letters and words), numeric (numbers), and logical (binary TRUE or FALSE values)."
     },
     {
@@ -116,7 +107,6 @@
             "data.frame()"
         ],
         "answer": 3,
-        "hint": "Think about how you would frame your data.",
         "explanation": "The command 'data.frame()' is used to group vectors into a data frame in R."
     }
 ]

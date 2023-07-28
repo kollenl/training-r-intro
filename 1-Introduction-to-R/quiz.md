@@ -7,10 +7,6 @@
 1. A word processor
 1. A video game
 1. A music mixing software
-<details><summary>Click for Hint</summary>
-
-* R is used for statistical analysis.
-</details>
 <details><summary>Click for Answer</summary>
 
 #### Answer
@@ -28,10 +24,6 @@
 1. Excel offers more statistical analysis options
 1. Excel is open-source
 1. Excel can easily handle large datasets
-<details><summary>Click for Hint</summary>
-
-* Think about the user-friendliness of Excel compared to R.
-</details>
 <details><summary>Click for Answer</summary>
 
 #### Answer
@@ -49,10 +41,6 @@
 1. A data visualization tool
 1. An integrated development environment (IDE) for R
 1. A music production software
-<details><summary>Click for Hint</summary>
-
-* RStudio is related to R but offers a more user-friendly interface.
-</details>
 <details><summary>Click for Answer</summary>
 
 #### Answer
@@ -70,10 +58,6 @@
 1. Subtraction
 1. Multiplication
 1. All of the above
-<details><summary>Click for Hint</summary>
-
-* R can perform a variety of mathematical processes.
-</details>
 <details><summary>Click for Answer</summary>
 
 #### Answer
@@ -91,10 +75,6 @@
 1. Creating objects
 1. Storing in variables
 1. All of the above
-<details><summary>Click for Hint</summary>
-
-* Information can be held in a variety of formats in R.
-</details>
 <details><summary>Click for Answer</summary>
 
 #### Answer
@@ -112,10 +92,6 @@
 1. A variable with an ordered set of values
 1. A data type
 1. A three-dimensional object
-<details><summary>Click for Hint</summary>
-
-* A vector in R can hold multiple values of the same type.
-</details>
 <details><summary>Click for Answer</summary>
 
 #### Answer
@@ -133,10 +109,6 @@
 1. A kind of matrix
 1. Like a vector but can contain any mix of data types
 1. A type of function
-<details><summary>Click for Hint</summary>
-
-* Think about how a list can hold multiple types of data.
-</details>
 <details><summary>Click for Answer</summary>
 
 #### Answer
@@ -154,10 +126,6 @@
 1. A spreadsheet-like table
 1. A way of organizing variables
 1. A type of plot
-<details><summary>Click for Hint</summary>
-
-* Think of a data frame as a way to organize data in a table format.
-</details>
 <details><summary>Click for Answer</summary>
 
 #### Answer
@@ -175,10 +143,6 @@
 1. Character, integer, boolean
 1. String, integer, binary
 1. Alphabetical, numerical, truth
-<details><summary>Click for Hint</summary>
-
-* Object types in R refer to the kind of data they hold.
-</details>
 <details><summary>Click for Answer</summary>
 
 #### Answer
@@ -196,10 +160,6 @@
 1. vector()
 1. list()
 1. data.frame()
-<details><summary>Click for Hint</summary>
-
-* Think about how you would frame your data.
-</details>
 <details><summary>Click for Answer</summary>
 
 #### Answer
