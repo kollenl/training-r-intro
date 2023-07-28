@@ -1,4 +1,3 @@
-## Quiz
 
 **Question 1:** What is R?
 
@@ -12,7 +11,7 @@
 
 **Explanation**: R is a free programming language and environment for statistical analysis. It's similar to SAS or S plus and has great graphics capabilities.
 </details>
-
+<hr />
 **Question 2:** What is an advantage of R over Excel for data analysis?
 
 - 1: R is easy to use
