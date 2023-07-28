@@ -6,12 +6,6 @@
         "explanation": "R allows you to do simple arithmetic operations such as addition, subtraction, multiplication, etc. directly. Here, we're simply adding two numbers."
     },
     {
-        "exercise": "Subtract 5 from 40 in R.",
-        "solution": "40 - 5",
-        "output": "[1] 35",
-        "explanation": "In this exercise, you're performing a simple subtraction operation in R."
-    },
-    {
         "exercise": "Create an R variable `x` that stores the value 10.",
         "solution": "x <- 10",
         "output": "",
@@ -34,18 +28,6 @@
         "solution": "df <- data.frame(name = c('Alice', 'Bob', 'Charlie'), age = c(25, 32, 28))",
         "output": "",
         "explanation": "In R, we can combine vectors of equal length into a data frame using the `data.frame()` function. Here, we're creating two vectors, `name` and `age`, and combining them into a data frame."
-    },
-    {
-        "exercise": "Calculate the result of the mathematical operation `(10 + 3 * 5) / (2 ^ 3)` in R.",
-        "solution": "(10 + 3 * 5) / (2 ^ 3)",
-        "output": "[1] 3.125",
-        "explanation": "In R, as well as other programming languages, we can use parentheses to specify the order of operations."
-    },
-    {
-        "exercise": "Calculate the remainder of 10 divided by 3 in R.",
-        "solution": "10 %% 3",
-        "output": "[1] 1",
-        "explanation": "We use the `%%` operator to calculate the remainder of a division operation in R."
     },
     {
         "exercise": "Create a character vector `fruit` that contains the values 'apple', 'banana', and 'grape'.",
