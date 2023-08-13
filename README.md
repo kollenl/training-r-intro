@@ -1,8 +1,8 @@
-# Introduction to R for Air Quality Data Analysis
+# Introduction to R for Air Quality Data Science
 
 This repository contains training materials for learning the R programming language,
-specifically tailored towards air quality data analysis. The training is structured into
-distinct lessons, each focusing on a different aspect of R programming. Each lesson
+specifically tailored towards air quality data science. The training is structured into
+distinct lessons, each focusing on a different aspect using R. Each lesson
 is contained in a separate folder, and includes a README.md file with the lesson 
 material.
 
@@ -33,9 +33,8 @@ These lessons are meant to be self-learning materials for air quality data scien
 using R. It also provides some instructions on how to program with R. These two
 topics are related but it's helpful to understand the distinction.
 
-- _Data Science_ is the science of getting things done with data. (In retrospect,
-a better phrase for this would have been Data Engineering, but that was already
-taken). We are not using this phrase to include machine learning, as many do. In
+- _Data Science_ is a collection of skills and methods for extracting insights from
+data. We are not using this phrase to include machine learning, as many do. In
 our use of the term, data science focuses on obtaining, storing, transforming, 
 and visualizing data. Modeling data and communicating results are also aspects
 of data science that we touch on. 
@@ -49,9 +48,9 @@ The topics in these lessons are not necessarily divided into data science lesson
 and programming lessons. But it may be helpful to keep these two topics separate
 in your mind as you progress through the material. Programming topics such as conditionals
 and loops (and the R version of loops called `apply` functions) are difficult
-to understand at first, if you have never learned a programming language. However, they are
+to understand at first. However, they are
 not essential for using R to read air quality data, transform it, and visualize
-the output for use in a presentation. Data science tasks will be more straight 
+the output for use in a report or presentation. Data science tasks will be more straight 
 forward and they are the main topics in these lessons.
 
 
