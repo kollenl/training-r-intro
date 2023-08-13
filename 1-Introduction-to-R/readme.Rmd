@@ -158,13 +158,14 @@ the R language.
 ## Order of operations
 
 R follows the usual order of arithmetical operations and uses parentheses for grouping
-operations.
+operations. Run the two lines of code below and you can see the the different
+values that are returned.
 
-```{r}
+```{r, eval=FALSE}
 10 - 3 / 5    # R will first do division operation then subtraction
 ```
 
-```{r}
+```{r, eval=FALSE}
 (10 - 3) / 5  # Use parentheses to group and prioritize operations.
 ```
 
@@ -225,7 +226,8 @@ changed.
 There are 3 important rules to remember when creating variable names:
 
   1. You can't start your variable with a number.
-  2. You can't use spaces or special characters ($,%,#,-). Periods `.` are ok.
+  2. You can't use spaces or special characters ($,%,#,-). Periods `.` and underscores
+  `_` are ok.
   3. Capitalization __DOES__ matter in R. That is, R will consider `x` and
   `X` to be different variables.
 
@@ -255,16 +257,16 @@ The `character` type requires single or double quotes. The logical values
 
 There are several ways to group data to make them easier to work with:
 
-- Vectors: stores multiple values of the same type (e.g. all numeric values)
-- Lists: stores multiple values of different types (e.g. some numbers and character values)
-- Matrices: a table of values with only one data type
-- Data Frames: a table that can have columns with different data types (e.g. a numeric
+- Vector: stores multiple values of the same type (e.g. all numeric values)
+- List: stores multiple values of different types (e.g. some numbers and character values)
+- Matrix: a table of values with only one data type
+- Data Frame: a table that can have columns with different data types (e.g. a numeric
 column and a logical column)
 
 ## Vectors
 
-Vectors are variables that contain only one type of data (numeric, character, or 
-logical). We use `c( )` as a container for vector elements.
+A vector variable can contain only one type of data (numeric, character, or 
+logical). We use `c( )` to create vectors.
 
 ```{r}
 x <- c(1, 2, 3, 4, 5)
@@ -276,8 +278,9 @@ fruit <- c("apples","bananas","oranges")
 fruit
 ```
 
-If you try to type in text without using quotations marks (either single or double),
-R will throw an error. Try running the code below.
+If you try to type in text without using quotations marks for character values
+(either single or double quotes), then R will throw an error. Try running the code 
+below.
 
 ```{r, eval=FALSE}
 fruit <- c(apples, bananas, oranges)
@@ -285,7 +288,7 @@ fruit
 ```
 
 
-R will interpret text without quotes as the names of variables. Since we don’t 
+R will interpret the text without quotes as the names of variables. Since we don't 
 have any variables named `apples`, `bananas`, or `oranges`, R can't find them and
 it returns an error.
 
@@ -294,14 +297,14 @@ it returns an error.
 ## Lists
 
 Lists are like vectors but can contain any mix of data types. We use `list( )` 
-as a container for grouping items together in a variable.
+to create a list variable.
 
 ```{r}
 x <- list("Benzene", 1.3, TRUE)
 x
 ```
 
-Lists can also contain vectors, and other lists.
+Lists can also contain vectors and other lists.
 
 ```{r}
 

@@ -159,24 +159,17 @@ the R language.
 ## Order of operations
 
 R follows the usual order of arithmetical operations and uses parentheses for grouping
-operations.
+operations. Run the two lines of code below and you can see the the different
+values that are returned.
 
 
 ```r
 10 - 3 / 5    # R will first do division operation then subtraction
 ```
 
-```
-## [1] 9.4
-```
-
 
 ```r
 (10 - 3) / 5  # Use parentheses to group and prioritize operations.
-```
-
-```
-## [1] 1.4
 ```
 
 ## Note on commenting
@@ -252,7 +245,8 @@ changed.
 There are 3 important rules to remember when creating variable names:
 
   1. You can't start your variable with a number.
-  2. You can't use spaces or special characters ($,%,#,-). Periods `.` are ok.
+  2. You can't use spaces or special characters ($,%,#,-). Periods `.` and underscores
+  `_` are ok.
   3. Capitalization __DOES__ matter in R. That is, R will consider `x` and
   `X` to be different variables.
 
