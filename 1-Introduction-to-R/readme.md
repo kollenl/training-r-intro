@@ -15,6 +15,7 @@ set up R and RStudio, an overview of R syntax, and how to perform simple operati
 - [Why Use a Programming Language](#why-use-a-programming-language)
 - [Install R and RStudio](#install-r-and-rstudio)
 - [Basic Math](#basic-math)
+- [Note on Comments and Code Blocks](#note-on-comments-and-code-blocks)
 - [Variables](#variables)
 - [Data Types](#data-types)
 - [Grouping Data](#grouping-data)
@@ -101,7 +102,8 @@ When you first open RStudio, this is what you see:
 ![](img/rstudio1.png)
 
 
-The left panel is the console for R. Type `1 + 1` then hit "Enter" and R will return the answer
+The left panel is the console for R. Type `1 + 1` in the console then hit "Enter"
+and R will return the answer.
 
 
 ![](img/rstudio2.png)
@@ -167,12 +169,20 @@ values that are returned.
 10 - 3 / 5    # R will first do division operation then subtraction
 ```
 
+```
+## [1] 9.4
+```
+
 
 ```r
 (10 - 3) / 5  # Use parentheses to group and prioritize operations.
 ```
 
-## Note on commenting
+```
+## [1] 1.4
+```
+
+# Note on Comments and Code Blocks
 
 To write a comment in your script that will not be evaluated, type `#` in front 
 of your comment. The text after `#` will not be evaluated. There is no multi-line
@@ -184,8 +194,38 @@ panel in RStudio).
 
 ```r
 # Full line comment
-x # partial line comment
+5^2 # partial line comment
 ```
+
+```
+## [1] 25
+```
+
+In the example above and the previous section, you have see the R code and it's
+output. The code blocks with output look like this, with `1+1` being the R code
+and `## [1] 2` being the output:
+
+
+```r
+1+1
+```
+
+```
+## [1] 2
+```
+
+However, in the R console the code and output would look like this:
+
+
+```shell
+> 1 + 1
+[1] 2
+```
+
+The R code in code blocks do not show the `>` part of the console, called the 
+prompt, and the output block places two comment marks `##` before the output.
+This is to make it possible to copy and paste the text into your R console and run
+it without causing an error. 
 
 # Variables
 
@@ -205,11 +245,8 @@ x + y
 ## [1] 15
 ```
 
-_Above, the top panel is what you run in your script or in the command line. The 
-bottom panel is the output_
 
-
-In RStudio, you will see the variables we created in the top right panel
+In RStudio, you will see the variables we created in the top right panel.
 
 
 ![](img/rstudio5.png)
@@ -300,7 +337,7 @@ x
 
 
 ```r
-fruit <- c("apples","bananas","oranges")
+fruit <- c("apples", "bananas", "oranges")
 fruit
 ```
 
@@ -315,7 +352,10 @@ below.
 
 ```r
 fruit <- c(apples, bananas, oranges)
-fruit
+```
+
+```
+## Error in eval(expr, envir, enclos): object 'apples' not found
 ```
 
 
@@ -323,7 +363,20 @@ R will interpret the text without quotes as the names of variables. Since we don
 have any variables named `apples`, `bananas`, or `oranges`, R can't find them and
 it returns an error.
 
+The members of a vector can be accessed by using single brackets `[ ]`. For example,
+to print the 3rd member of the `fruit` vector, you can use the single bracket
+with the number 3:
 
+
+```r
+fruit[3]
+```
+
+```
+## [1] "oranges"
+```
+We will cover more about accessing members of vectors in the 
+[lesson on subsetting](3-Subsetting-Sorting-and-Dates/readme.md).
 
 ## Lists
 
@@ -346,6 +399,22 @@ x
 ## [[3]]
 ## [1] TRUE
 ```
+
+When a list is printed to the console, you will see double brackets `[[ ]]` with
+the index number inside. In the example above, the numeric value `1.3` is the 
+second value in the list, so it is show below the double bracket `[[2]]`. You can
+access the second value by using the double brackets on the list.
+
+
+```r
+x[[2]]
+```
+
+```
+## [1] 1.3
+```
+
+
 
 Lists can also contain vectors and other lists.
 
@@ -378,19 +447,33 @@ y
 ## [1] TRUE
 ```
 
+In this example, you can use two double brackets to access the value `1.3` by
+selecting the 3rd member of the list `y` and the 2nd member of the list
+`my_list`:
+
+
+```r
+y[[3]][[2]]
+```
+
+```
+## [1] 1.3
+```
 
 ## Data frames
 
 Data frames are data tables in R. We use `data.frame( )` to create a data frame
-of vectors of the same length. 
+of vectors of the same length. In the example below we create three vectors of
+the same length and use them to create a data frame.
 
 
 ```r
 pollutant <- c("Benzene", "Toluene", "Xylenes")
 concentration <- c(1.3, 5.5, 6.0)
 carcinogen <- c(TRUE, FALSE, FALSE)
-my.data <- data.frame(pollutant, concentration, carcinogen)
-my.data
+
+my_data_frame <- data.frame(pollutant, concentration, carcinogen)
+my_data_frame
 ```
 
 ```
@@ -400,16 +483,23 @@ my.data
 ## 3   Xylenes           6.0      FALSE
 ```
 
+The output above shows a table with the vector variable names as column names,
+and the vector values below the respective column name.
 
 If you try to create a data frame where the vectors are not all the same length, 
-this will cause an error. Try to run the code below.
+you will see the error shown below.
 
 
 ```r
 pollutant <- c("Benzene", "Toluene")
 concentration <- c(1.3, 5.5, 6.0)
 carcinogen <- c(TRUE, FALSE, FALSE)
-my.data <- data.frame(pollutant, concentration, carcinogen)
+
+my_data_frame <- data.frame(pollutant, concentration, carcinogen)
+```
+
+```
+## Error in data.frame(pollutant, concentration, carcinogen): arguments imply differing number of rows: 2, 3
 ```
 
 
