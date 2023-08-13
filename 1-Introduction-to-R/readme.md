@@ -277,16 +277,16 @@ The `character` type requires single or double quotes. The logical values
 
 There are several ways to group data to make them easier to work with:
 
-- Vectors: stores multiple values of the same type (e.g. all numeric values)
-- Lists: stores multiple values of different types (e.g. some numbers and character values)
-- Matrices: a table of values with only one data type
-- Data Frames: a table that can have columns with different data types (e.g. a numeric
+- Vector: stores multiple values of the same type (e.g. all numeric values)
+- List: stores multiple values of different types (e.g. some numbers and character values)
+- Matrix: a table of values with only one data type
+- Data Frame: a table that can have columns with different data types (e.g. a numeric
 column and a logical column)
 
 ## Vectors
 
-Vectors are variables that contain only one type of data (numeric, character, or 
-logical). We use `c( )` as a container for vector elements.
+A vector variable can contain only one type of data (numeric, character, or 
+logical). We use `c( )` to create vectors.
 
 
 ```r
@@ -308,8 +308,9 @@ fruit
 ## [1] "apples"  "bananas" "oranges"
 ```
 
-If you try to type in text without using quotations marks (either single or double),
-R will throw an error. Try running the code below.
+If you try to type in text without using quotations marks for character values
+(either single or double quotes), then R will throw an error. Try running the code 
+below.
 
 
 ```r
@@ -318,7 +319,7 @@ fruit
 ```
 
 
-R will interpret text without quotes as the names of variables. Since we don’t 
+R will interpret the text without quotes as the names of variables. Since we don't 
 have any variables named `apples`, `bananas`, or `oranges`, R can't find them and
 it returns an error.
 
@@ -327,7 +328,7 @@ it returns an error.
 ## Lists
 
 Lists are like vectors but can contain any mix of data types. We use `list( )` 
-as a container for grouping items together in a variable.
+to create a list variable.
 
 
 ```r
@@ -346,7 +347,7 @@ x
 ## [1] TRUE
 ```
 
-Lists can also contain vectors, and other lists.
+Lists can also contain vectors and other lists.
 
 
 ```r
