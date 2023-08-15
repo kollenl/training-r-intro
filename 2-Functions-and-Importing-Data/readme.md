@@ -11,6 +11,11 @@ This lesson covers the use of functions in R, including built-in functions and
 functions from packages. It also discusses how to import data from in formats
 such as CSV and Excel.
 
+- [Functions](#functions)
+- [Useful Built-in Functions](#useful-built-in-functions)
+- [Packages](#packages)
+- [Importing Data](#importing-data)
+
 # Functions
 
 In R, there are two main types of objects: variables and functions. We covered 
