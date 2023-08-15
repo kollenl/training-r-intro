@@ -3,7 +3,7 @@ title: "Basic Statistics"
 output: 
   html_document: 
     keep_md: yes
-date: "2023-06-11"
+date: "`r Sys.Date()`"
 ---
 
 ## Basic Statistics

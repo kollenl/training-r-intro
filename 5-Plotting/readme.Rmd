@@ -3,7 +3,7 @@ title: "Plotting in R"
 output: 
   html_document: 
     keep_md: yes
-date: "2023-06-06"
+date: "`r Sys.Date()`"
 ---
 
 ## Plotting

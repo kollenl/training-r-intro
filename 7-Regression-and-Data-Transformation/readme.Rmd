@@ -3,7 +3,7 @@ title: "Linear Regression"
 output: 
   html_document: 
     keep_md: yes
-date: "2023-06-14"
+date: "`r Sys.Date()`"
 ---
 
 ## Linear regression

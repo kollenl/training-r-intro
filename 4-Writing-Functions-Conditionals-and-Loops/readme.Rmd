@@ -3,7 +3,7 @@ title: "Writing Functions, Conditionals, and Loops"
 output: 
   html_document: 
     keep_md: yes
-date: "2023-05-25"
+date: "`r Sys.Date()`"
 ---
 
 # Writing functions

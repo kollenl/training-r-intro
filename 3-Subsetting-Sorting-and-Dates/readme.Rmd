@@ -3,7 +3,7 @@ title: "Subsetting and Sorting Data"
 output: 
   html_document: 
     keep_md: yes
-date: "2023-05-23"
+date: "`r Sys.Date()`"
 ---
 
 # Working with R `data.frame`s
