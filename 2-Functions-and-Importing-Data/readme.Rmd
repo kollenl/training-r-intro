@@ -7,21 +7,38 @@ date: "2023-05-22"
 ---
 
 
+This lesson covers the use of functions in R, including built-in functions and 
+functions from packages. It also discusses how to import data from in formats
+such as CSV and Excel.
+
+
 
 # Functions
 
-- Functions are a way to repeat the same task on different data. 
-- R has many built-in functions that perform common tasks
+In R, there are two main types of objects: variables and functions. We covered 
+variables in the [introductory lesson](1-Introduction-to-R/readme.md). A variable
+is used to create and reference data. The data can be a character, numeric, or 
+logical data type. Variables can reference various "containers" for data, such as
+a vector or list or data frame. 
+
+Functions are similar to variables in that they are short names that reference
+something saved in R. In this case, a function is not referencing data but a piece
+of code. A function is saved code that can be used to do some operation on data.
+
+R has many built-in functions that perform common tasks. When you open RStudio
+you can immediately use a function called `mean( )`. Here is an example of using
+the `mean( )` function to find the average of a vector of integers. We first
+save a vector of integers in the `x` variable then put the variable inside the
+parentheses of the function.
 
 ```{r}
 x <- c(4, 8, 1, 14, 34)
-mean(x) # Calculate the mean of the data set
+
+mean(x)
 ```
 
-```{r}
-y <- c(1, 4, 3, 5, 10, NA)
-mean(y, na.rm = TRUE) # Tell the mean function to remove missing data before calculating
-```
+As you would expect, R has many built-in math functions. Below
+are a series of examples.
 
 ```{r}
 log(27)  #Natural logarithm
@@ -39,33 +56,35 @@ sqrt(225) # Square root
 abs(-5) #Absolute value 
 ```
 
-- They all have the form `function()`
-- `function` is the name, which usually gives you a clue about what it does (such as the `mean()` function)
-- `()` is where you put your data or indicate options. These are referred to as the _arguments_ of the function.
-- To see what goes inside `()`, type a question mark in front of the function and run it
+All of the examples show that the general form is `function_name( )`. The name
+of the function should give you some clue as to what it does, and the `( )`
+is where you provide the data to the function. 
+
+Many functions also have additional options you can choose, which are called the 
+_arguments_. To see what needs to go inside `( )`, type a 
+question mark in front of the function and run it in the R console.
 
 ```{r, eval=FALSE}
 ?mean()
 ```
 
-In RStudio, you will see the help page for mean() in the bottom right corner help page
+In RStudio, you will see the help page for `mean()` in the bottom right corner help 
+page.
 
 ![](img/rstudio_help.png)
 
-- On the help page, under `Usage`, you see `mean(x, ...)`
-- This means that the only necessary thing that has to go into `()` is `x`
-- On the help page under `Arguments` you will find a description of what `x `needs to be
-- You can also use functions in combination with objects you have created
+
+On the help page, under `Usage`, you see `mean(x, ...)`. This means that the only 
+thing that necessarily has to go into `( )` is `x`. On the help page under `Arguments`
+you will find a description of what `x` needs to be: a numeric or logical vector. 
+
+Many built-in functions in R have multiple arguments. This allows you to give the 
+function some more information to perform calculation you want. The example below
+shows how to use the `digits` argument in the `round( )` function. Providing 
+different values to the `digits` argument will return different values.
 
 ```{r}
-answer <- 1+1
-log(25 + answer)
-```
-
-Many built-in functions in R have multiple arguments, so you have to give the function some more information so that it can perform the correct calculation.
-
-```{r}
-round(12.3456) # default is to round to the nearest integer
+round(12.3456) 
 ```
 
 ```{r}
@@ -75,25 +94,58 @@ round(12.3456, digits=3)
 ```{r}
 round(12.3456, digits=1)
 ```
+In the first example, you can see that we did not provide a value for the 
+`digits` argument. That's because there is a default value `digits = 0` (see
+the `Usage` section on the help page `?round`). If there is a default value,
+then that argument does not need to be specified inside `( )`. If there is no
+default value for an argument, then the function will error and tell you that
+you forgot to supply a value for the argument.
 
 
-## Other Common and Useful Functions
-### `seq()`
-The `seq()` function is used to create a vector with a certain sequence. This is used a lot when writing functions. seq(from = 1, to = 1, by = )
+# Useful Built-in Functions
+
+When you start an R session there are many built-in functions that are immediately
+available for you to use. Other functions are available in community developed
+packages, as explained in a later section of this lesson. Below is a list of a 
+few commonly used built-in functions in R.
+
+### 1. `sum( )` 
+Returns the sum of a vector of numeric values.
 
 ```{r}
-seq(1, 5, by = 1)
+sum(c(2.3, 7.5, 9, -10))
 ```
+
+### 2. `min()`
+Get the minimum value from a numeric vector.
 
 ```{r}
-x <- 1:5  # the colon is a shortcut to create a sequence of integers by 1
-x
+ 
+
+min(c(6, 9, 3, 11, -2))
+```
+### 3. `max()`
+Get the maximum value from a numeric vector.
+
+
+### 4. `seq()`
+Create a numeric vector with a certain sequence. The example below creates a 
+vector of integers from 1 to 5.
+
+```{r}
+seq(from = 1, to = 5, by = 1)
+```
+
+Another way to create a sequence of integers is to use the colon.
+
+```{r}
+1:5
 ```
 
 
-### `paste()`
-The paste function will concatenate two or more strings. Paste only works with 
-characters so if you give it numbers to paste, it will convert them to characters first.
+
+### 5. `paste()`
+Concatenate two or more strings. 
 
 ```{r}
 x <- "Hello"
@@ -101,17 +153,20 @@ y <- "world!"
 paste(x, y, sep = " ")
 ```
 
+Any numbers will be converted to strings.
+
 ```{r}
 x <- "You're number "
 y <- 1
 z <- "!"
-z <- paste(x, y, z, sep = "")
+paste(x, y, z, sep = "")
 ```
 
 
-### `substr()`
-The `substr()` function allows you to pull out only the elements you care about 
-in a character vector of dates, addresses, monitor IDs, parameter descriptions, etc.
+### 6. `substr()`
+The `substr()` function allows you to pull out a section from a string
+based on the position of the characters in the string. This is useful for vectors
+of dates, addresses, monitor IDs, parameter descriptions, etc.
 
 For example, in AQS data a monitor ID may be written in the following format: 
 
@@ -127,10 +182,11 @@ site_id
 
 
 ## Nesting functions
-You can place a function inside another function to perform multiple tasks on data in one step.
+R allows you to place a function inside another function to perform multiple tasks 
+on data in one step.
 
-For instance, if you want to create a sequence of numbers and then take the mean of that sequence,
-you could either do it in a couple of steps, or all at once.
+For instance, if you want to create a sequence of numbers and then take the mean
+of that sequence, you could either do it in a couple of steps, or all at once.
 
 ```{r}
 #Two steps
@@ -140,21 +196,31 @@ mean(x)
 
 ```{r}
 #One step
-mean(seq(from=1, to=10, by=3))  #Make sure you have the parentheses located in the correct spot as R will evaluate from the inside out.
+mean(seq(from=1, to=10, by=3))  
 ```
 
 _Note: Typically you don’t want to have too many nested functions because it becomes difficult to read._
 
 # Packages
 
-- R comes with basic functionality, meaning that some functions will always be available when you start an R session
-- However, anyone can write functions for R that are not part of the base functionality and make it available to other R users in a package
-- Packages must be installed first then loaded before using it
-- This is similar to a mobile app: you must first install the R package (like first downloading an app) then you must load the package before using its functions (like opening an app to use it)
-- If base R doesn’t have a function you need, just ask Google. Use a search with key words describing what you want the function to do and just add "R package" at the end
+R comes with basic functionality, meaning that some functions will always be 
+available when you start an R session. But anyone can write functions for R that
+are not part of the base functionality and make it available to other R users in
+a package.
 
-For example, if you wanted to  find serial correlation in an environmental data set,
-Google would tell you that the R package `EnvStats` has a function called `serialCorrelationTest()`.
+
+Packages must be installed on your computer first then loaded before using it.
+This is similar to a mobile app: you must first install the R package (like first
+downloading an app) then you must load the package before using its functions 
+(like opening an app to use it). 
+
+If base R doesn't have a function you need, the best thing to do is a Google
+search. Use a search with key words describing what you want the function to do 
+and just add "R package" at the end.
+
+For example, if you wanted to  find serial correlation in an environmental data 
+set, Google would tell you that the R package `EnvStats` has a function called
+`serialCorrelationTest()`.
 
 First, you might try to use the function.
 
@@ -163,9 +229,11 @@ x <- c(1.3, 3.5, 2.6, 3.4, 6.4)
 serialCorrelationTest(x)
 ```
 
-It’s not available because we need to install the package first (again, like initially downloading an app).
+It's not available because we need to install the package first (again, like 
+initially downloading an app).
 
-In the bottom right panel of RStudio, click on the "Packages" tab then click "Install Packages" in the tool bar packages.
+In the bottom right panel of RStudio, click on the "Packages" tab then click
+"Install Packages" in the tool bar packages.
 
 ![](img/rstudio_install_package.png)
 
@@ -174,7 +242,7 @@ package, and click "Install".
 
 ![](img/rstudio_install_package2.png)
 
-Now that we’ve installed the package, we still can’t use the function we want.
+Now that we've installed the package, we still can't use the function we want.
 We need to load the package first (opening the app). We use the `library()` function
 to do this.
 
@@ -184,26 +252,30 @@ library(EnvStats)
 ```
 
 
-Now we can use the function we want
+Now we can use the function we want.
 
 ```{r}
 x <- c(1.3, 3.5, 2.6, 3.4, 6.4)
 serialCorrelationTest(x)
 ```
 
-Here is a link to a page that lists many, many useful packages for environmental data analysis: https://cran.r-project.org/web/views/Environmetrics.html
+Here is a link to a page that lists many useful packages for environmental data
+analysis: https://cran.r-project.org/web/views/Environmetrics.html
 
-Remember, when you close down RStudio, then start it up again, you don’t have to download the package again.
-But you do have to load the package to use any function that’s not in the R core functionality (this is very easy to forget).
+Remember, when you close down RStudio, then start it up again, you don’t have to
+download the package again. But you do have to load the package to use any function
+that's not in the R core functionality (this is very easy to forget).
 
 
 # Importing Data
 
-- R can import data from just about any format, including
+R can import data from just about any format, including
   - CSV
   - Excel
   - Databases
   - GIS shapefiles
+  
+This section will demonstrate how to import CSV and Excel files. 
   
 ## CSV
 
@@ -218,7 +290,7 @@ getwd()
 
 Use `read.csv()` by providing the location and name of the file as the first
 argument. If the file is in your working directory, simply supply the name of the 
-file. Below, the data from the file is read into R and saved as a `data.frame`,
+file. Below, the data from the file is read into R and saved as a data frame,
 which is the data type for storing tables. The function `head()` will show the 
 first few lines.
 
@@ -235,16 +307,34 @@ head(chicago_daily)
 ## Excel
 
 There are several packages that can be used to import data from an Excel file,
-such as `xlsx`, `XLConnect`, and `readxl`
-  
-In this example, we'll use the The `readxl` to get data into R. Use the `read_excel()` 
-function to read emissions data from [this Excel workbook](../data/emissions_IL_2022.xlsx).
-Download the file to your working directory and read the first worksheet,
-skipping the first 6 rows. (Remember, if the library is not available, you
-must install it first.)
+such as `xlsx`, `XLConnect`, and `readxl`. In this example, we'll use the `readxl`
+package. If you do not have the package installed, you can use RStudio to install
+as described in the section above on packages. You can also use the function
+`install.packages( )`.
 
 ```{r, eval=FALSE}
+install.packages("readxl")
+```
+
+Once you have the package installed, remember to load the package by using
+the `library()` function.
+
+```{r}
+
 library(readxl)
+
+```
+
+
+Use the `read_excel()` function from the `readxl` package to read emissions data 
+from [this Excel workbook](../data/emissions_IL_2022.xlsx).
+Download the file to your working directory and read the first worksheet,
+skipping the first 6 rows. 
+
+
+
+```{r, eval=FALSE}
+
 emissions <- read_excel("emissions_IL_2022.xlsx", sheet = "UNIT_DATA", skip = 6)
 head(emissions)
 ```
@@ -255,73 +345,5 @@ emissions <- read_excel("../data/emissions_IL_2022.xlsx", sheet = "UNIT_DATA", s
 head(emissions)
 ```
 
-# Quick Data exploration
-
-Now that we have imported some data let’s learn more about it.
-
-The data we imported in the previous section can actually be obtained in R by 
-using the data() function and a package we created for this training.
-
-Use the code below to obtain the data that we will use moving forward. This is 
-very similar to what is in the Excel file.
-```{r, eval=FALSE}
-library(devtools)
-install_github("natebyers/region5air")
-library(region5air)
-data(chicago_air)
-```
-
-```{r, echo=FALSE}
-load("../data/chicago_air.rda")
-```
-
-`chicago_air` is a data frame with ozone (ppm), temperature (F), and solar 
-radiation (W/m2) readings from a monitor in the Chicago area.
 
 
-What column names are in the data frame?
-
-```{r}
-colnames(chicago_air)
-```
-
-How many observations does the dataset contain?
-
-```{r}
-nrow(chicago_air) # number of rows
-```
-
-RStudio has a special function called `View()` that makes it easier to look at
-data in a data frame
-```{r, eval=FALSE}
-View(chicago_air)
-```
-
-Use `head()` to look at the first few lines of a dataset.
-```{r}
-head(chicago_air)   ##Looks at the first 5 lines in the dataset
-```
-Use `tail()` to look at the last lines.
-```{r}
-tail(chicago_air)  ##Looks at the last 5 lines in the dataset
-```
-The `str()` function is important because it describes the basic structure of a
-dataset. This lets you know if all the data was imported they way it was intended,
-i.e. numbers came in as numeric, text came in as characters, etc. This is great
-if you want a snapshot of the data structure.
-
-```{r}
-str(chicago_air)  ##Describes the basic structure of the dataset
-```
-The `summary()` function is a more robust version of `str()` if you are working 
-with a lot of numeric values, because it will automatically do summary statistics
-on any numbers in your data.frame.
-```{r}
-summary(chicago_air)
-```
-# The `$` operator
-You can refer to a specific column name in a `data.frame` with the $ operator. It
-will return that column as a vector.
-
-```{r}
-str(chicago_air$ozone) # Calculates the mean temperature of the ozone column. Because there is ```

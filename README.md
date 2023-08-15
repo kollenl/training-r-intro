@@ -56,9 +56,14 @@ these lessons.
 
 ## Lessons
 
-1. [Introduction to R](1-Introduction-to-R/readme.md): This lesson provides a basic introduction to R, including how to install and set up R and RStudio, an overview of R syntax, and how to perform simple operations.
+1. [Introduction to R](1-Introduction-to-R/readme.md): This lesson provides a 
+basic introduction to R, including how to install and set up R and RStudio, an 
+overview of R syntax, and how to perform simple operations.
 
-2. [Functions and Importing Data](2-Functions-and-Importing-Data/readme.md): This lesson covers the use of functions in R, including built-in functions and how to create your own. It also discusses how to import data from various formats, such as CSV and Excel, and how to explore and manipulate this data in R.
+2. [Functions and Importing Data](2-Functions-and-Importing-Data/readme.md): This
+lesson covers the use of functions in R, including built-in functions and 
+functions from packages. It also discusses how to import data from in formats
+such as CSV and Excel.
 
 3. [Data Exploration and Visualization](3-Subsetting-Sorting-and-Dates/readme.md): This lesson covers how to subset data using indexing and logical operators, sort data using the `order()` function, and combine data frames using `rbind()` and `cbind()` functions in R.
 
