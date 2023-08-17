@@ -24,8 +24,6 @@ for instructions on downloading.
 - `region5air`: The R package with air quality data used throughout the lessons.
 See [install instructions on GitHub](https://github.com/FluentData/region5air/blob/main/README.md).
 
-- `tidyverse`: The R package that installs a series of "tidyverse" packages.
-See the [package site for install instructions](https://www.tidyverse.org/packages/).
 
 ## Data Science and Programming
 
@@ -65,7 +63,7 @@ lesson covers the use of functions in R, including built-in functions and
 functions from packages. It also discusses how to import data from in formats
 such as CSV and Excel.
 
-3. [Data Exploration and Visualization](3-Subsetting-Sorting-and-Dates/readme.md): This lesson covers how to subset data using indexing and logical operators, sort data using the `order()` function, and combine data frames using `rbind()` and `cbind()` functions in R.
+3. [Subsetting, Sorting, and Dates](3-Subsetting-Sorting-and-Dates/readme.md): This lesson covers how to subset data using indexing and logical operators, sort data using the `order()` function, and combine data frames using `rbind()` and `cbind()` functions in R.
 
 4. [Writing Functions, Conditionals, and Loops](4-Writing-Functions-Conditionals-and-Loops): This lesson introduces the concept of writing functions in R, using conditionals to control the flow of execution, and implementing loops for repetitive tasks.
     
