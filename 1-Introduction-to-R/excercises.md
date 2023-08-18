@@ -3,7 +3,7 @@
 
 ### Exercise 1
 
-Add two numbers in R, say 25 and 75.
+Add 25 and 75 in R.
 
 <details><summary>Click for Solution</summary>
 

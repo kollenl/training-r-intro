@@ -3,7 +3,7 @@ title: "QA and Common Pitfalls"
 output: 
   html_document: 
     keep_md: yes
-date: "2023-06-14"
+date: "`r Sys.Date()`"
 ---
 
 ## Quality Assurance
