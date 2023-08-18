@@ -8,13 +8,14 @@ date: "`r Sys.Date()`"
 
 
 This lesson covers the use of functions in R, including built-in functions and 
-functions from packages. It also discusses how to import data from in formats
-such as CSV and Excel.
+functions from packages. It also discusses how to import data from CSV text
+files and Excel documents.
 
 - [Functions](#functions)
 - [Useful Built-in Functions](#useful-built-in-functions)
 - [Packages](#packages)
 - [Importing Data](#importing-data)
+- [Exercises](#exercises)
 
 # Functions
 
@@ -250,7 +251,6 @@ We need to load the package first (opening the app). We use the `library()` func
 to do this.
 
 ```{r, message=FALSE}
-install.packages("EnvStats")
 library(EnvStats)
 ```
 
@@ -283,7 +283,7 @@ This section will demonstrate how to import CSV and Excel files.
 ## CSV
 
 R has a built-in function called `read.csv()` for reading `.csv` files. Download
-the `chicago_daily.csv` file [here](../data/chicago.csv) and save it to your
+the `chicago_daily.csv` file [here](../data/chicago_daily.csv) and save it to your
 working directory. If you don't know what your working directory is, run this
 code in R and it will tell you.
 
@@ -351,6 +351,99 @@ head(emissions)
 
 # Exercises
 
-See the [exercises document](2-Functions-and-Importing-Data/exercises.md) to test your 
-comprehension of material in this lesson.
+Try these exercises to test your comprehension of material in this lesson.
+
+### Exercise 1
+
+Use the `seq()` function to create a vector from 1 to 20 by 2. For help with the
+parameters, run `?seq()` in the console and use the documentation.
+
+<details><summary>Click for Solution</summary>
+
+> In the `seq()` function, set `by = 2`.
+
+#### Solution
+
+```{r}
+
+seq(from = 1, to = 20, by = 2)
+
+```
+
+</details>
+
+---
+
+### Exercise 2
+
+Use the `round( )` to round the number 13.5678 to two digits after the decimal
+point.
+
+<details><summary>Click for Solution</summary>
+
+> Set the `digits` parameter to 2.
+
+#### Solution
+
+```{r}
+round(3.5678, digits=2)
+```
+
+</details>
+
+---
+
+### Exercise 3
+
+Concatenate the strings "Hello" and "R" using the `paste()` function.
+
+<details><summary>Click for Solution</summary>
+
+#### Solution
+
+```{r}
+paste("Hello", "R")
+```
+
+</details>
+
+---
+
+### Exercise 4 
+
+Sum the numbers 1 through 10 using the `sum()` function.
+
+<details><summary>Click for Solution</summary>
+
+> Use `:` to create the sequence of integers and place it inside the `sum()` function.
+
+#### Solution
+
+```{r}
+sum(1:10)
+```
+
+</details>
+
+---
+
+### Exercise 5
+
+Read in the first 10 rows of the `chicago_daily.csv` file [here](../data/chicago_daily.csv).
+
+<details><summary>Click for Solution</summary>
+
+> Save the file to  your working directory and use `nrows = 10` in the `read.csv()`
+function
+
+#### Solution
+
+```{r, eval=FALSE}
+read.csv("chicago_daily.csv", nrows = 10)
+```
+
+```{r, echo=FALSE}
+read.csv("../data/chicago_daily.csv", nrows = 10)
+```
+
 

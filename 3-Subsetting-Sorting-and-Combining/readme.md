@@ -1,21 +1,22 @@
 ---
-title: "Subsetting, Sorting, and Dates"
+title: "Subsetting, Sorting, and Combining Data Frames"
 output: 
   html_document: 
     keep_md: yes
-date: "2023-08-17"
+date: "2023-08-18"
 ---
 
 This lesson covers how to subset data using indexing, logical operators, and
-the `filter( )` function from `dplyr`. It also covers how to sort data,
-combine data frames, and use the `Date` class.
+the `filter( )` function from `dplyr`. It also covers how to sort and 
+combine data frames.
 
 - [Prerequisites](#prerequisites)
 - [Viewing Data Frames](#viewing-data-frames)
 - [Subsetting](#subsetting)
-- [Sortting](#sorting)
+- [Sorting](#sorting)
 - [Combinging Data Frames](#combining-data-frames)
-- [Dates](#dates)
+- [Exercises](#exercises)
+
 
 <br>
 <hr>
@@ -52,6 +53,14 @@ You should see the `chicago_air` variable in the top right panel of RStudio, whi
 means the data frame has been loaded to your R session from the `region5air`
 package.
 
+
+We will also use some functions from the `dplyr` [package](https://dplyr.tidyverse.org/). 
+You will need to install the package if you haven't already.
+
+
+```r
+install.package("dplyr")
+```
 
 # Viewing Data Frames
 
@@ -518,331 +527,356 @@ chicago_air[hot, ]
 ## 239 2021-08-27 0.044   91   1003.3     8       6
 ```
 
+### Subset with filter()
 
-Another helpful tool when subsetting is the complete.cases function.
-This function allows us to only look at data where observations for all columns are complete.
-The function returns a logical vector that can be used to subset a `data.frame`.
+A logical vector can also be used in combination with the function `filter( )`.
 
-
-```r
-complete <- complete.cases(chicago_air)
-
-air <- chicago_air[complete,] 
-```
-
-
-_We will use the `air` `data.frame` for the rest of the subsetting
-examples._
-
-
-Let's say we only want rows in this `data.frame` where ozone was above 70 ppb (.070 ppm).
+The `filter( )` function is from a package called `dplyr` which provides many
+functions for manipulating data frames. 
 
 
 ```r
-ozone_violation <- air[(air$ozone > .070), ]  # This returns all the days with readings above .070 ppm
+# if you have not installed dplyr
+# install.packages("dplyr")
 
-ozone_violation
+library(dplyr)
 ```
 
-```
-## [1] date     ozone    temp     pressure month    weekday 
-## <0 rows> (or 0-length row.names)
-```
+The benefit of using `filter( )` is that it works the way other functions in R
+typically work. It used braces with parameters, and not brackets `[ , ]`. The
+first parameter is the data frame you want to subset, and the second parameter
+is a logical expression. It also allows you to reference the columns in the data
+frame by name, without having to access the column using `$`.
 
-
-If we wanted all of the days in the 7th month, we could use the `==` operator.
+If we want to filter down to records in the `chicago_air` data frame where ozone
+was above 60 ppb (.060 ppm), we would use the following code.
 
 
 ```r
-air[(air$month == 7), ]
+high_ozone <- filter(chicago_air, ozone > 0.060)
+
+high_ozone
 ```
 
 ```
-##           date ozone temp pressure month weekday
-## 182 2021-07-01 0.040   81   1000.4     7       5
-## 183 2021-07-02 0.034   76   1002.0     7       6
-## 184 2021-07-03 0.041   77   1002.9     7       7
-## 185 2021-07-04 0.039   83   1000.7     7       1
-## 186 2021-07-05 0.042   85   1002.6     7       2
-## 187 2021-07-06 0.043   86   1003.7     7       3
-## 188 2021-07-07 0.046   85   1000.4     7       4
-## 189 2021-07-08 0.041   84    999.3     7       5
-## 190 2021-07-09 0.032   76   1002.6     7       6
-## 191 2021-07-10 0.043   76   1000.4     7       7
-## 192 2021-07-11 0.040   77    997.7     7       1
-## 193 2021-07-12 0.038   80    999.9     7       2
-## 194 2021-07-13 0.035   78   1005.1     7       3
-## 195 2021-07-14 0.037   83   1006.7     7       4
-## 196 2021-07-15 0.031   85   1002.8     7       5
-## 197 2021-07-16 0.025   75   1000.4     7       6
-## 198 2021-07-17 0.041   79   1004.3     7       7
-## 199 2021-07-18 0.038   82   1005.5     7       1
-## 200 2021-07-19 0.037   82   1005.3     7       2
-## 201 2021-07-20 0.053   83   1003.3     7       3
-## 202 2021-07-21 0.049   83   1004.8     7       4
-## 203 2021-07-22 0.041   81   1007.0     7       5
-## 204 2021-07-23 0.047   84   1005.9     7       6
-## 205 2021-07-24 0.041   86   1001.5     7       7
-## 206 2021-07-25 0.034   84    999.3     7       1
-## 207 2021-07-26 0.050   87   1001.1     7       2
-## 208 2021-07-27 0.048   86   1002.6     7       3
-## 209 2021-07-28 0.043   85   1003.0     7       4
-## 210 2021-07-29 0.028   86   1000.5     7       5
-## 211 2021-07-30 0.034   79   1003.7     7       6
-## 212 2021-07-31 0.030   67   1002.8     7       7
+## # A tibble: 6 × 6
+##   date       ozone  temp pressure month weekday
+##   <date>     <dbl> <dbl>    <dbl> <dbl>   <dbl>
+## 1 2021-05-24 0.061    86    1006.     5       2
+## 2 2021-06-04 0.064    83    1001.     6       6
+## 3 2021-06-13 0.062    86     999.     6       1
+## 4 2021-06-14 0.065    87    1000.     6       2
+## 5 2021-06-17 0.062    86    1002.     6       5
+## 6 2021-06-18 0.062    93     998.     6       6
 ```
 
-Or if we want all days except the 6th day, we would use `!=`.
+If we wanted all of the high ozone days in the 6th month, we add another expression
+separated by a comma.
 
 
 ```r
-head( air[(air$weekday != 6), ] ) #Excludes all data from the 6th day of the week
+high_ozone_june <- filter(chicago_air, ozone > 0.060, month == 6)
+
+high_ozone_june
 ```
 
 ```
-##         date ozone temp pressure month weekday
-## 2 2021-01-02 0.020   35   1002.6     1       7
-## 3 2021-01-03 0.026   34   1002.1     1       1
-## 4 2021-01-04 0.022   44   1001.8     1       2
-## 5 2021-01-05 0.028   37   1008.8     1       3
-## 6 2021-01-06 0.027   38   1012.1     1       4
-## 7 2021-01-07 0.029   39   1009.8     1       5
+## # A tibble: 5 × 6
+##   date       ozone  temp pressure month weekday
+##   <date>     <dbl> <dbl>    <dbl> <dbl>   <dbl>
+## 1 2021-06-04 0.064    83    1001.     6       6
+## 2 2021-06-13 0.062    86     999.     6       1
+## 3 2021-06-14 0.065    87    1000.     6       2
+## 4 2021-06-17 0.062    86    1002.     6       5
+## 5 2021-06-18 0.062    93     998.     6       6
 ```
 
-We can combine logical conditions with `&` (the _AND_ operator)
-
-If we wanted only rows where the temperature was between 80 and 85 (including those numbers)
+Additional logical expressions can be added by separating each expression with
+a comma. The comma serves as a logical AND. Below is an equivalent output to the
+output above, using `&` instead of a comma.
 
 
 ```r
-air[(air$temp >= 80 & air$temp <= 85), ]
+high_ozone_june <- filter(chicago_air, ozone > 0.060 & month == 6)
+
+high_ozone_june
 ```
 
 ```
-##           date ozone temp pressure month weekday
-## 97  2021-04-07 0.039   81    997.0     4       4
-## 117 2021-04-27 0.057   82    996.9     4       3
-## 140 2021-05-20 0.049   82   1009.2     5       5
-## 141 2021-05-21 0.056   82   1013.2     5       6
-## 142 2021-05-22 0.056   83   1013.7     5       7
-## 143 2021-05-23 0.054   85   1009.2     5       1
-## 145 2021-05-25 0.050   85   1003.9     5       3
-## 146 2021-05-26 0.042   80   1002.7     5       4
-## 147 2021-05-27 0.047   82   1002.8     5       5
-## 155 2021-06-04 0.064   83   1001.4     6       6
-## 158 2021-06-07 0.032   81    999.9     6       2
-## 160 2021-06-09 0.035   81   1000.7     6       4
-## 161 2021-06-10 0.038   84    998.3     6       5
-## 166 2021-06-15 0.047   82   1002.6     6       3
-## 167 2021-06-16 0.047   82   1003.3     6       4
-## 170 2021-06-19 0.046   82    999.7     6       7
-## 172 2021-06-21 0.036   80    997.8     6       2
-## 175 2021-06-24 0.046   80   1003.0     6       5
-## 176 2021-06-25 0.032   81   1000.0     6       6
-## 177 2021-06-26 0.035   85    998.2     6       7
-## 181 2021-06-30 0.035   82   1004.4     6       4
-## 182 2021-07-01 0.040   81   1000.4     7       5
-## 185 2021-07-04 0.039   83   1000.7     7       1
-## 186 2021-07-05 0.042   85   1002.6     7       2
-## 188 2021-07-07 0.046   85   1000.4     7       4
-## 189 2021-07-08 0.041   84    999.3     7       5
-## 193 2021-07-12 0.038   80    999.9     7       2
-## 195 2021-07-14 0.037   83   1006.7     7       4
-## 196 2021-07-15 0.031   85   1002.8     7       5
-## 199 2021-07-18 0.038   82   1005.5     7       1
-## 200 2021-07-19 0.037   82   1005.3     7       2
-## 201 2021-07-20 0.053   83   1003.3     7       3
-## 202 2021-07-21 0.049   83   1004.8     7       4
-## 203 2021-07-22 0.041   81   1007.0     7       5
-## 204 2021-07-23 0.047   84   1005.9     7       6
-## 206 2021-07-25 0.034   84    999.3     7       1
-## 209 2021-07-28 0.043   85   1003.0     7       4
-## 216 2021-08-04 0.046   80   1004.6     8       4
-## 217 2021-08-05 0.050   80   1005.0     8       5
-## 218 2021-08-06 0.043   81   1003.7     8       6
-## 219 2021-08-07 0.040   84   1001.9     8       7
-## 220 2021-08-08 0.037   85   1000.0     8       1
-## 221 2021-08-09 0.034   81   1000.3     8       2
-## 225 2021-08-13 0.037   83   1004.5     8       6
-## 226 2021-08-14 0.041   81   1007.8     8       7
-## 228 2021-08-16 0.038   81   1002.1     8       2
-## 229 2021-08-17 0.036   83   1000.9     8       3
-## 230 2021-08-18 0.035   84   1003.2     8       4
-## 231 2021-08-19 0.041   85   1003.3     8       5
-## 233 2021-08-21 0.031   84    997.1     8       7
-## 242 2021-08-30 0.027   82   1000.4     8       2
-## 243 2021-08-31 0.038   83    995.9     8       3
-## 244 2021-09-01 0.041   80   1000.0     9       4
-## 249 2021-09-06 0.045   85   1000.5     9       2
-## 251 2021-09-08 0.040   80    997.2     9       4
-## 253 2021-09-10 0.037   80   1004.6     9       6
-## 259 2021-09-16 0.045   84   1003.3     9       5
-## 263 2021-09-20 0.026   85    999.9     9       2
-## 269 2021-09-26 0.042   80   1003.6     9       1
-## 274 2021-10-01 0.049   84   1006.8    10       6
-## 282 2021-10-09 0.049   83   1000.0    10       7
-## 284 2021-10-11 0.040   81    994.1    10       2
-```
-
-We can also use `|` (the _OR_ operator) to select rows on days 3 or 5
-
-```r
-head( air[(air$weekday == 3 | air$weekday == 5),] )
-```
-
-```
-##          date ozone temp pressure month weekday
-## 5  2021-01-05 0.028   37   1008.8     1       3
-## 7  2021-01-07 0.029   39   1009.8     1       5
-## 12 2021-01-12 0.022   41   1009.7     1       3
-## 14 2021-01-14 0.026   46    991.7     1       5
-## 19 2021-01-19 0.033   40   1009.7     1       3
-## 21 2021-01-21 0.032   49    998.1     1       5
-```
-
-# Subsetting using the subset() function
-
-You can also use the `subset()` function to filter a `data.frame` down to the records
-you want. The first argument in the function is the name of the `data.frame` and
-the second argument is the logical expression. No need to use `$` for column names.
-
-
-```r
-high_temp <- subset(air, temp > 90)  
-
-head(high_temp)
-```
-
-```
-##           date ozone temp pressure month weekday
-## 163 2021-06-12 0.053   91    995.4     6       7
-## 169 2021-06-18 0.062   93    997.5     6       6
-## 239 2021-08-27 0.044   91   1003.3     8       6
-```
-
-By using the select = parameter you can specify which columns to keep
-
-```r
-high_temp_ozone <- subset(air, temp > 90, select = c(ozone, temp))
-
-head(high_temp_ozone)
-```
-
-```
-##     ozone temp
-## 163 0.053   91
-## 169 0.062   93
-## 239 0.044   91
+## # A tibble: 5 × 6
+##   date       ozone  temp pressure month weekday
+##   <date>     <dbl> <dbl>    <dbl> <dbl>   <dbl>
+## 1 2021-06-04 0.064    83    1001.     6       6
+## 2 2021-06-13 0.062    86     999.     6       1
+## 3 2021-06-14 0.065    87    1000.     6       2
+## 4 2021-06-17 0.062    86    1002.     6       5
+## 5 2021-06-18 0.062    93     998.     6       6
 ```
 
 
+# Sorting 
 
-# Sorting data 
+The `dplyr` package also has a function named `arrange()` that will sort a data
+frame. It also take the data frame as the first parameter. The output will be
+sorted by the column names that are provided as additional parameters.
 
-You can sort the rows of a `data.frame` using the `order()` function. For 
-example, we can sort the `chicago_air` dataset by ozone. The output of the `order()`
-function is a vector of integers that map to the ascending order of the input. 
+Below, the `chicago_air` data frame is ordered by the `ozone` column. The default
+is descending order.
 
 
 
 ```r
-ozone_ordered <- order(air$ozone)
+# if the dplyr library is not already loaded
+library(dplyr)
+
+ozone_ordered <- arrange(chicago_air, ozone)
 
 head(ozone_ordered)
 ```
 
 ```
-## [1] 293 299 361 350   1  25
+## # A tibble: 6 × 6
+##   date       ozone  temp pressure month weekday
+##   <date>     <dbl> <dbl>    <dbl> <dbl>   <dbl>
+## 1 2021-10-22 0.012    52    1003.    10       6
+## 2 2021-10-28 0.015    53     989.    10       5
+## 3 2021-12-29 0.017    42     998.    12       4
+## 4 2021-12-18 0.018    42    1009.    12       7
+## 5 2021-01-01 0.019    42    1007.     1       6
+## 6 2021-01-25 0.019    35    1002.     1       2
 ```
 
-We can use the output to arrange the rows of the `data.frame` by placing the 
-ordered vector on the left side of the `[, ]` operator.
+To use descending order, wrap the column in the `desc( )` function (also from the
+`dplyr` package).
 
 
 ```r
-air_ozone_ascending <- air[ozone_ordered, ] 
+ozone_descending <- arrange(chicago_air, desc(ozone))
 
-head(air_ozone_ascending)
+head(ozone_descending)
 ```
 
 ```
-##           date ozone temp pressure month weekday
-## 295 2021-10-22 0.012   52   1002.6    10       6
-## 301 2021-10-28 0.015   53    989.2    10       5
-## 363 2021-12-29 0.017   42    997.5    12       4
-## 352 2021-12-18 0.018   42   1009.1    12       7
-## 1   2021-01-01 0.019   42   1006.8     1       6
-## 25  2021-01-25 0.019   35   1002.3     1       2
+## # A tibble: 6 × 6
+##   date       ozone  temp pressure month weekday
+##   <date>     <dbl> <dbl>    <dbl> <dbl>   <dbl>
+## 1 2021-06-14 0.065    87    1000.     6       2
+## 2 2021-06-04 0.064    83    1001.     6       6
+## 3 2021-06-13 0.062    86     999.     6       1
+## 4 2021-06-17 0.062    86    1002.     6       5
+## 5 2021-06-18 0.062    93     998.     6       6
+## 6 2021-05-24 0.061    86    1006.     5       2
 ```
 
+Additional columns can be used to sort the data frame, separated by a comma.
 
-You can easily sort the `data.frame` in descending order by reversing the
-ordered vector, using the `rev()` function.
 
 
 ```r
-air_ozone_descending <- air[rev(ozone_ordered), ] 
+ozone_temp <- arrange(chicago_air, desc(ozone), desc(temp))
 
-head(air_ozone_descending)
+head(ozone_temp)
 ```
 
 ```
-##           date ozone temp pressure month weekday
-## 165 2021-06-14 0.065   87   1000.4     6       2
-## 155 2021-06-04 0.064   83   1001.4     6       6
-## 169 2021-06-18 0.062   93    997.5     6       6
-## 168 2021-06-17 0.062   86   1001.7     6       5
-## 164 2021-06-13 0.062   86    998.8     6       1
-## 144 2021-05-24 0.061   86   1006.4     5       2
+## # A tibble: 6 × 6
+##   date       ozone  temp pressure month weekday
+##   <date>     <dbl> <dbl>    <dbl> <dbl>   <dbl>
+## 1 2021-06-14 0.065    87    1000.     6       2
+## 2 2021-06-04 0.064    83    1001.     6       6
+## 3 2021-06-18 0.062    93     998.     6       6
+## 4 2021-06-13 0.062    86     999.     6       1
+## 5 2021-06-17 0.062    86    1002.     6       5
+## 6 2021-05-24 0.061    86    1006.     5       2
 ```
 
-# Combining `data.frame`s
+# Combining Data Frames
 
-`data.frame`s can be combined using the `rbind()`  and `cbind()` functions, standing
-for "row bind" and "column bind" respectively. 
+If we are working with multiple data frames in R, it might be useful to combine
+two or more. The `dplyr` package has another convenient function called
+`bind_rows()` that will let you attach two data frames together that have the same
+columns.
 
-The `rbind()` function requires that there to be an an equal number of columns
-among the `data.frame`s. To illustrate, we will make two subsets of the `air`
-`data.frame` and then combine them using `rbind()`.
+To illustrate, we will make two subsets of the `chicago_air` data frame, then 
+combine them together using the `bind_rows()` function. Below, the original
+number of records in the `chicago_air` data frame is shown using the `nrow()`
+function. We will split the data frame and recombine to a data frame with the
+original number of records.
+
 
 
 ```r
-nrow(air) # show the original number of records
+# if you have not loaded the dplyr package
+library(dplyr)
+
+nrow(chicago_air)
 ```
 
 ```
-## [1] 363
+## [1] 365
+```
+
+Now we split the data frame into warm and cool data frames using the 
+`filter( )` function.
+
+
+```r
+warm <- filter(chicago_air, temp > 80) 
+
+nrow(warm) 
+```
+
+```
+## [1] 95
 ```
 
 ```r
-air_warm <- subset(air, temp > 80) # get warm air records
+cool <- filter(chicago_air, temp <= 80) # get cool air records
 
-nrow(air_warm) # show the number of records
-```
-
-```
-## [1] 93
-```
-
-```r
-air_cool <- subset(air, temp <= 80) # get cool air records
-
-nrow(air_cool) # show number of records
+nrow(cool) 
 ```
 
 ```
 ## [1] 270
 ```
 
+We can confirm that the rows from these two data frames add up to the original
+data frame.
+
+
 ```r
-air_recombined <- rbind(air_warm, air_cool) # combine the data.frames
-
-nrow(air_recombined) # number of records
+nrow(warm) + nrow(cool) == nrow(chicago_air)
 ```
 
 ```
-## [1] 363
+## [1] TRUE
 ```
+
+Now we combine using the `bind_rows()` function and confirm that the new `recombined`
+data frame has the same number of records as the original data frame.
+
+
+```r
+recombined <- bind_rows(warm, cool) 
+
+nrow(recombined) == nrow(chicago_air)
+```
+
+```
+## [1] TRUE
+```
+
+# Exercises
+
+Try these exercises to test your comprehension of material in this lesson.
+
+### Exercise 1
+
+Load the `chicago_air` dataset from the `region5air` package and display the first 
+10 rows of the dataset using the numeric index.
+
+<details><summary>Click for Solution</summary>
+
+> Use the `data()` function to load the data frame into your R session and a
+vector from 1 to 10 in the first position of the brackets `[ , ]`. Make sure the
+`regionair` package is loaded first with the `library()` function.
+
+
+```r
+library(region5air)
+
+data("chicago_air")
+
+chicago_air[1:10, ]
+```
+
+```
+## # A tibble: 10 × 6
+##    date       ozone  temp pressure month weekday
+##    <date>     <dbl> <dbl>    <dbl> <dbl>   <dbl>
+##  1 2021-01-01 0.019    42    1007.     1       6
+##  2 2021-01-02 0.02     35    1003.     1       7
+##  3 2021-01-03 0.026    34    1002.     1       1
+##  4 2021-01-04 0.022    44    1002.     1       2
+##  5 2021-01-05 0.028    37    1009.     1       3
+##  6 2021-01-06 0.027    38    1012.     1       4
+##  7 2021-01-07 0.029    39    1010.     1       5
+##  8 2021-01-08 0.031    35    1007.     1       6
+##  9 2021-01-09 0.032    32    1012.     1       7
+## 10 2021-01-10 0.032    29    1014.     1       1
+```
+
+</details>
+
+---
+
+
+### Exercise 2
+
+Use the `filter()` function to subset the `chicago_air` data frame to values where
+ozone is above 0.060 ppm and the temperature is above 90 degrees.
+
+
+<details><summary>Click for Solution</summary>
+
+> Load the `dplyr` package using `library()` and use logical expressions to 
+get records where `ozone` is greater than 0.06 and `temp` is greater than 90.
+
+#### Solution
+
+
+```r
+library(dplyr)
+
+filter(chicago_air, ozone > .06, temp > 90)
+```
+
+```
+## # A tibble: 1 × 6
+##   date       ozone  temp pressure month weekday
+##   <date>     <dbl> <dbl>    <dbl> <dbl>   <dbl>
+## 1 2021-06-18 0.062    93     998.     6       6
+```
+
+</details>
+
+---
+
+
+### Exercise 3
+
+Use the `arrange( )` function to sort the `chicago_air` data frame in descending
+chronological order.
+
+<details><summary>Click for Solution</summary>
+
+> Wrap the `date` column in the `desc( )` function.
+
+#### Solution
+
+
+```r
+descending <- arrange(chicago_air, desc(date))
+
+head(descending)
+```
+
+```
+## # A tibble: 6 × 6
+##   date       ozone  temp pressure month weekday
+##   <date>     <dbl> <dbl>    <dbl> <dbl>   <dbl>
+## 1 2021-12-31 0.023    62     995.    12       6
+## 2 2021-12-30 0.022    48     997     12       5
+## 3 2021-12-29 0.017    42     998.    12       4
+## 4 2021-12-28 0.021    42     997.    12       3
+## 5 2021-12-27 0.019    66     997.    12       2
+## 6 2021-12-26 0.022    53    1003.    12       1
+```
+
+</details>
+
+
+
 
 
 

@@ -15,6 +15,7 @@ combine data frames.
 - [Subsetting](#subsetting)
 - [Sorting](#sorting)
 - [Combinging Data Frames](#combining-data-frames)
+- [Exercises](#exercises)
 
 
 <br>
@@ -370,7 +371,7 @@ A logical vector can also be used in combination with the function `filter( )`.
 The `filter( )` function is from a package called `dplyr` which provides many
 functions for manipulating data frames. 
 
-```{r, eval=FALSE, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
 
 # if you have not installed dplyr
 # install.packages("dplyr")
@@ -456,33 +457,134 @@ head(ozone_temp)
 
 # Combining Data Frames
 
-The last topic in this lesson 
+If we are working with multiple data frames in R, it might be useful to combine
+two or more. The `dplyr` package has another convenient function called
+`bind_rows()` that will let you attach two data frames together that have the same
+columns.
 
-`data.frame`s can be combined using the `rbind()`  and `cbind()` functions, standing
-for "row bind" and "column bind" respectively. 
+To illustrate, we will make two subsets of the `chicago_air` data frame, then 
+combine them together using the `bind_rows()` function. Below, the original
+number of records in the `chicago_air` data frame is shown using the `nrow()`
+function. We will split the data frame and recombine to a data frame with the
+original number of records.
 
-The `rbind()` function requires that there to be an an equal number of columns
-among the `data.frame`s. To illustrate, we will make two subsets of the `air`
-`data.frame` and then combine them using `rbind()`.
+
+```{r}
+# if you have not loaded the dplyr package
+library(dplyr)
+
+nrow(chicago_air)
+
+```
+
+Now we split the data frame into warm and cool data frames using the 
+`filter( )` function.
 
 ```{r}
 
-nrow(air) # show the original number of records
+warm <- filter(chicago_air, temp > 80) 
 
-air_warm <- subset(air, temp > 80) # get warm air records
+nrow(warm) 
 
-nrow(air_warm) # show the number of records
+cool <- filter(chicago_air, temp <= 80) # get cool air records
 
-air_cool <- subset(air, temp <= 80) # get cool air records
-
-nrow(air_cool) # show number of records
-
-air_recombined <- rbind(air_warm, air_cool) # combine the data.frames
-
-nrow(air_recombined) # number of records
-
+nrow(cool) 
 
 ```
+
+We can confirm that the rows from these two data frames add up to the original
+data frame.
+
+```{r}
+nrow(warm) + nrow(cool) == nrow(chicago_air)
+```
+
+Now we combine using the `bind_rows()` function and confirm that the new `recombined`
+data frame has the same number of records as the original data frame.
+
+```{r}
+recombined <- bind_rows(warm, cool) 
+
+nrow(recombined) == nrow(chicago_air)
+
+```
+
+# Exercises
+
+Try these exercises to test your comprehension of material in this lesson.
+
+### Exercise 1
+
+Load the `chicago_air` dataset from the `region5air` package and display the first 
+10 rows of the dataset using the numeric index.
+
+<details><summary>Click for Solution</summary>
+
+> Use the `data()` function to load the data frame into your R session and a
+vector from 1 to 10 in the first position of the brackets `[ , ]`. Make sure the
+`regionair` package is loaded first with the `library()` function.
+
+```{r}
+library(region5air)
+
+data("chicago_air")
+
+chicago_air[1:10, ]
+```
+
+</details>
+
+---
+
+
+### Exercise 2
+
+Use the `filter()` function to subset the `chicago_air` data frame to values where
+ozone is above 0.060 ppm and the temperature is above 90 degrees.
+
+
+<details><summary>Click for Solution</summary>
+
+> Load the `dplyr` package using `library()` and use logical expressions to 
+get records where `ozone` is greater than 0.06 and `temp` is greater than 90.
+
+#### Solution
+
+```{r}
+library(dplyr)
+
+filter(chicago_air, ozone > .06, temp > 90)
+
+```
+
+</details>
+
+---
+
+
+### Exercise 3
+
+Use the `arrange( )` function to sort the `chicago_air` data frame in descending
+chronological order.
+
+<details><summary>Click for Solution</summary>
+
+> Wrap the `date` column in the `desc( )` function.
+
+#### Solution
+
+```{r}
+
+descending <- arrange(chicago_air, desc(date))
+
+head(descending)
+
+```
+
+</details>
+
+
+
 
 
 
