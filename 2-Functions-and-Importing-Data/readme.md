@@ -20,7 +20,7 @@ files and Excel documents.
 # Functions
 
 In R, there are two main types of objects: variables and functions. We covered 
-variables in the [introductory lesson](1-Introduction-to-R/readme.md). A variable
+variables in the [introductory lesson](../1-Introduction-to-R/readme.md). A variable
 is used to create and reference data. The data can be a character, numeric, or 
 logical data type. Variables can reference various "containers" for data, such as
 a vector or list or data frame. 
@@ -498,6 +498,10 @@ head(emissions)
 ## #   `Unit Nitrous Oxide (N2O) emissions` <dbl>, …
 ```
 
+# Next Lesson
+
+The next lesson in this series is on 
+[Subsetting, Sorting, and Combining Data Frames](../3-Subsetting-Sorting-and-Combining/readme.md).
 
 # Exercises
 

@@ -39,7 +39,7 @@ used in many industries for performing a variety of data science tasks such as:
 
 R is one of several programming languages that can be used for data science, including
 [Python](https://www.python.org/) and [Julia](https://julialang.org/). They each 
-have advantages and disadvantages, but they are all powerful tools for air quality
+have advantages and disadvantages, but they are all powerful tools for 
 data science. These 
 [high-level languages](https://en.wikipedia.org/wiki/High-level_programming_language) 
 give you access to modern algorithms for processing
@@ -63,7 +63,7 @@ way, can be done in R
 BI tools are more advantageous if you need enterprise wide dashboards, or tools
 that are more easily accessible to a wider audience. If there are few occasions
 where you need custom visualizations or transformations, or if you do not
-need automation in your work, you may not need to learn a high-level programming
+need automation in your work, you may not need to learn a programming
 language.
 
 
@@ -120,7 +120,8 @@ panel of RStudio.
 
 
 
-This is a text document that can be saved (go to "File" -> "Save As"). You can 
+This is a text document that can be saved. Go to "File" -> "Save As" and you can
+save the file with a `.R` extension. You can 
 type and run more than one line at a time by highlighting and clicking the "Run"
 button on the script tool bar.
 
@@ -176,7 +177,7 @@ values that are returned.
 
 
 ```r
-(10 - 3) / 5  # Use parentheses to group and prioritize operations.
+(10 - 3) / 5  # subtraction is done first because of the parentheses
 ```
 
 ```
@@ -315,11 +316,11 @@ The `character` type requires single or double quotes. The logical values
 
 There are several ways to group data to make them easier to work with:
 
-- Vector: stores multiple values of the same type (e.g. all numeric values)
-- List: stores multiple values of different types (e.g. some numbers and character values)
-- Matrix: a table of values with only one data type
-- Data Frame: a table that can have columns with different data types (e.g. a numeric
-column and a logical column)
+- A __vector__ stores multiple values of the same type (e.g. all numeric values)
+- A __list__ stores multiple values of different types (e.g. some numbers and character values)
+- A __matrix__ is a table of values with only one data type
+- A __data frame__ is a table of values that can have columns with different data 
+types (e.g. a numeric column and a logical column)
 
 ## Vectors
 
@@ -377,7 +378,7 @@ fruit[3]
 ## [1] "oranges"
 ```
 We will cover more about accessing members of vectors in the 
-[lesson on subsetting](3-Subsetting-Sorting-and-Dates/readme.md).
+[lesson on subsetting](3-Subsetting-Sorting-and-Combining/readme.md).
 
 ## Lists
 
@@ -502,6 +503,17 @@ my_data_frame <- data.frame(pollutant, concentration, carcinogen)
 ```
 ## Error in data.frame(pollutant, concentration, carcinogen): arguments imply differing number of rows: 2, 3
 ```
+
+# Further Reading
+
+The next lesson in this series is on 
+[R Functions and Importing Data](../2-Functions-and-Importing-Data/readme.md).
+
+For a comprehensive introduction to data science using R, see 
+[R For Data Science, 2nd Edition](https://r4ds.hadley.nz/).
+
+For a good introduction to R programming, see 
+[Hands on R Programming](https://rstudio-education.github.io/hopr/).
 
 # Exercises
 

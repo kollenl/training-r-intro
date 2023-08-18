@@ -35,12 +35,12 @@ topics are related but it's helpful to understand the distinction.
 data. We are not using this phrase to include machine learning, as many do. In
 our use of the term, data science focuses on obtaining, storing, transforming, 
 and visualizing data. Modeling data and communicating results are also aspects
-of data science that we also touch on. 
+of data science that we touch on. 
 
 - _Programming_, in our use of the term, is automating tasks using a computer
-language. In our case, we want to use programming to automate data science tasks
-to make our life easier. We also want to use programming to handle a high volume
-of data and a wide variety of analyses.
+language. In our case, we want to use programming to automate air quality data 
+science tasks to make our life easier. We also want to use programming to handle
+a high volume of data and a wide variety of analyses.
 
 The topics in these lessons are not necessarily divided into data science lessons
 and programming lessons. But it may be helpful to keep these two topics separate
