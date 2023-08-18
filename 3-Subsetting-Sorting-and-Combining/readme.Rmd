@@ -25,10 +25,11 @@ combine data frames.
 # Prerequisites
 
 This lesson assumes you are familiar with the material in the previous lesson on
-[Functions and Importing Data](2-Functions-and_Importing-Data/readme.md).
+[Functions and Importing Data](../2-Functions-and_Importing-Data/readme.md).
 
 The data from the R package `region5air` is used throughout these lessons.
-To install the package from GitHub, use the `remotes` package.
+To install the package from GitHub, use the `remotes` package. Run the code
+below to install the `remotes` package and install `region5air` from GitHub.
 
 ```{r, eval=FALSE}
 # if you have not installed remotes
@@ -39,7 +40,8 @@ install_github("FluentData/region5air")
 ```
 
 To load the `chicago_air` data frame we will be using in the lesson, use the 
-`data( )` function. 
+`library()` function to load the `region5air` package, then the `data( )` function
+to load the data frame. 
 
 ```{r}
 
@@ -109,7 +111,7 @@ in the console.
 
 ```
 
-From the `Description` section of the help page:
+From the `Description` section of the help page, the `chicago_air` data frame is:
 
 > A dataset containing daily values of ozone, temperature, and barometric pressure
 > from a Chicago monitor between January 1, 2021 and December 31, 2021.
@@ -146,7 +148,7 @@ my_data
 
 To select a particular cell from the `my_data` data frame, we use the `[row, column]`
 construction. We place those square brackets at the end of the data frame variable
-`my_data[ ]` and use integers to select a value. If we wanted to select the "grape"
+`my_data[ ]` and use integers to select a value. If we wanted to select the "green"
 value, we would use `my_data[2, 1]`.
 
 ```{r}
@@ -233,13 +235,13 @@ head( chicago_air[, c("ozone", "temp", "month")] )
 ```
 
 Both rows and columns can be specified at the same time. The example below
-returns the first 5 rows of data and temperature and pressure columns.
+returns the first 5 rows of the temperature and pressure columns.
 
 ```{r}
 chicago_air[1:5, c("temp", "pressure")]  
 ```
 
-## Access Column with `$`
+## Access a Column with `$`
 
 In R, the dollar sign `$` is a special character that can be used to access a 
 data frame column by name. The dollar sign is placed immediately after the variable
@@ -256,7 +258,7 @@ the rest of these lessons.
 
 ## Logical Expressions
 
-It's useful to understand how indexing works with data frames. But often,
+It's useful to understand how numeric indexing works with data frames. But often,
 if we want a subset of data, we want to use a logical expression to keep data
 (or discard it).
 
@@ -303,13 +305,13 @@ c(25, 80, 55) > 60
 
 ```
 
-This concept can be used to subset data frame. A logical vector
-can be used in the the similar way to an index vector in the brackets of a data
+This concept can be used to subset a data frame. A logical vector
+can be used in a similar way to an index vector in the brackets of a data
 frame `data_frame[rows, columns]`. Instead of providing a numeric vector that 
 corresponds to row numbers, a logical vector that is as long as the data frame
 can be used to keep records (`TRUE`) and drop records (`FALSE`).
 
-We can use the data frame of color and fruit again to demonstrate.
+We can use the data frame of colors and fruit again to demonstrate.
 
 ```{r}
 my_data <- data.frame(colors = c("red", "green", "yellow"), 
@@ -327,7 +329,7 @@ my_data[c(FALSE, FALSE, TRUE), ]
 ```
 
 A data frame is returned. The only record is from the 3rd row of the logical vector,
-because that was the only `TRUE` value.
+because that was the only `TRUE` value in the logical vector.
 
 But a more useful way of creating the logical vector is with a logical expression.
 Below we access the "color" column as a vector using the `$` operator. Then we
@@ -418,11 +420,11 @@ high_ozone_june
 # Sorting 
 
 The `dplyr` package also has a function named `arrange()` that will sort a data
-frame. It also take the data frame as the first parameter. The output will be
+frame. It also takes a data frame as the first parameter. The output will be
 sorted by the column names that are provided as additional parameters.
 
 Below, the `chicago_air` data frame is ordered by the `ozone` column. The default
-is descending order.
+is ascending order.
 
 
 ```{r}
@@ -457,7 +459,7 @@ head(ozone_temp)
 
 # Combining Data Frames
 
-If we are working with multiple data frames in R, it might be useful to combine
+If we are working with multiple data frames in R, it is sometimes useful to combine
 two or more. The `dplyr` package has another convenient function called
 `bind_rows()` that will let you attach two data frames together that have the same
 columns.

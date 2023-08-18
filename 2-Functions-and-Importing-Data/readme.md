@@ -23,7 +23,7 @@ In R, there are two main types of objects: variables and functions. We covered
 variables in the [introductory lesson](../1-Introduction-to-R/readme.md). A variable
 is used to create and reference data. The data can be a character, numeric, or 
 logical data type. Variables can reference various "containers" for data, such as
-a vector or list or data frame. 
+a __vector__, __list__, or __data frame__. 
 
 Functions are similar to variables in that they are short names that reference
 something saved in R. In this case, a function is not referencing data but a piece
@@ -98,8 +98,7 @@ question mark in front of the function and run it in the R console.
 ?mean()
 ```
 
-In RStudio, you will see the help page for `mean()` in the bottom right corner help 
-page.
+In RStudio, you will see the help page for `mean()` in the bottom right corner panel.
 
 ![](img/rstudio_help.png)
 
@@ -326,7 +325,7 @@ It's not available because we need to install the package first (again, like
 initially downloading an app).
 
 In the bottom right panel of RStudio, click on the "Packages" tab then click
-"Install Packages" in the tool bar packages.
+"Install Packages" in the tool bar.
 
 ![](img/rstudio_install_package.png)
 
@@ -467,8 +466,8 @@ library(readxl)
 
 Use the `read_excel()` function from the `readxl` package to read emissions data 
 from [this Excel workbook](../data/emissions_IL_2022.xlsx).
-Download the file to your working directory and read the first worksheet,
-skipping the first 6 rows. 
+Download the file to your working directory and read the first worksheet (named
+"UNIT_DATA"), skipping the first 6 rows. 
 
 
 
