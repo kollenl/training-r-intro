@@ -398,4 +398,7 @@ carcinogen <- c(TRUE, FALSE, FALSE)
 my_data_frame <- data.frame(pollutant, concentration, carcinogen)
 ```
 
+# Exercises
 
+See the [exercises document](1-Introduction-to-R/exercises.md) to test your 
+comprehension of material in this lesson.

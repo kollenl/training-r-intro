@@ -349,4 +349,8 @@ head(emissions)
 ```
 
 
+# Exercises
+
+See the [exercises document](2-Functions-and-Importing-Data/exercises.md) to test your 
+comprehension of material in this lesson.
 

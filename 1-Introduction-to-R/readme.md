@@ -3,7 +3,7 @@ title: "Introduction to R"
 output: 
   html_document: 
     keep_md: yes
-date: "2023-05-21"
+date: "2023-08-18"
 ---
 
 
@@ -502,4 +502,7 @@ my_data_frame <- data.frame(pollutant, concentration, carcinogen)
 ## Error in data.frame(pollutant, concentration, carcinogen): arguments imply differing number of rows: 2, 3
 ```
 
+# Exercises
 
+See the [exercises document](1-Introduction-to-R/exercises.md) to test your 
+comprehension of material in this lesson.

@@ -154,27 +154,68 @@ is `[row, column]`. Below is a table that shows the index values in each cell.
 | `[1, 1]`| `[1, 2]`|
 | `[2, 1]`| `[2, 2]`|
 
-Below is an example of how you access a particular value in a `data.frame` based on its index.
+
+Below is a data frame called `my_data` that has 3 rows and 2 columns.
 
 
 ```r
-my_data <- data.frame(x = 1:5, y = 6:10)
-my_data[4, 2] ## This should grab the value in the 4th row and 2nd column 
+my_data <- data.frame(colors = c("red", "green", "yellow"), 
+                      fruit = c("apple", "grape", "banana"))
+
+my_data
 ```
 
 ```
-## [1] 9
+##   colors  fruit
+## 1    red  apple
+## 2  green  grape
+## 3 yellow banana
 ```
 
+To select a particular cell from the `my_data` data frame, we use the `[row, column]`
+construction. We place those square brackets at the end of the data frame variable
+`my_data[ ]` and use integers to select a value. If we wanted to select the "grape"
+value, we would use `my_data[2, 1]`.
+
+
+```r
+my_data[2, 1]
+```
+
+```
+## [1] "green"
+```
+
+To select "banana", we use `my_data[3, 3]`.
+
+
+```r
+my_data[3, 2]
+```
+
+```
+## [1] "banana"
+```
 
 We can also access data from a vector using the same indexing idea. In this case,
 you don’t need the comma to separate the rows and columns since you are accessing 
-one dimensional data.
+one dimensional data. Below is a vector of numbers.
 
 
 ```r
 x <- c(1, 3, 2, 7, 25.3, 6)
-x[5]  # This will access the fifth element in the vector
+x
+```
+
+```
+## [1]  1.0  3.0  2.0  7.0 25.3  6.0
+```
+
+If we want to access the 5th element of the vector, we would use `x[5]`.
+
+
+```r
+x[5]
 ```
 
 ```
@@ -182,10 +223,10 @@ x[5]  # This will access the fifth element in the vector
 ```
 
 
-Now that we understand indexing we can subset the `chicago_air` data frame by using the 
-`[` function.
+Now that we understand indexing we can subset the `chicago_air` data frame by 
+using the brackets `[ , ]` function. (This is a rare example of a function in
+R that does not have the form `function_name( )`.)
 
-# Subsetting Using Indexing
 To get one row of the data frame, specify the row number you would like in the 
 brackets, on the left side of the comma. By leaving the column value on the right
 side of the comma blank, it returns all the columns associated with row number 1.
@@ -201,11 +242,12 @@ chicago_air[1, ]
 ```
 
 
-If you want more than one row, you can supply a vector of row numbers
+If you want more than one row, you can supply a vector of row numbers. Below,
+the vector access the 1st, 2nd, and 5th rows of the data frame.
 
 
 ```r
-chicago_air[c(1, 2, 5), ] #Accesses the 1, 2 and 5th rows of data
+chicago_air[c(1, 2, 5), ] 
 ```
 
 ```
@@ -217,7 +259,8 @@ chicago_air[c(1, 2, 5), ] #Accesses the 1, 2 and 5th rows of data
 
 To get a column from the data frame, specify the column number in the brackets, 
 to the right of the comma. By leaving the row value blank, you are telling it to
-return all rows associated with column 1.
+return all rows associated with column 1. Below, we wrap the output in the 
+`head()` function to limit the number of rows printed.
 
 
 ```r
@@ -229,7 +272,13 @@ head( chicago_air[, 1] )
 ## [6] "2021-01-06"
 ```
 
-You can obtain more than one column by supplying a vector of column numbers
+As you can see, a vector is returned. When a column of a data frame is selected
+a data frame is not returned. This is because a column in a data frame is all the
+same data type, and a vector is a simpler representation of the values. But if a
+row is selected, the values will not necessarily be the same data type, so a data
+frame is returned.
+
+You can also obtain more than one column by supplying a vector of column numbers.
 
 
 ```r
@@ -246,7 +295,9 @@ head( chicago_air[, c(3, 4, 6)] )
 ## 6   38   1012.1       4
 ```
 
-Column names can also be used.
+Since more than one column is selected, then a data frame is returned.
+
+A column name can be used to select a vector.
 
 
 ```r
@@ -257,7 +308,7 @@ head( chicago_air[, "pressure"] )
 ## [1] 1006.8 1002.6 1002.1 1001.8 1008.8 1012.1
 ```
 
-Or a vector of column names
+Or a vector of column names can subset to a slimmed down data frame.
 
 
 ```r
@@ -274,28 +325,54 @@ head( chicago_air[, c("ozone", "temp", "month")] )
 ## 6 0.027   38     1
 ```
 
-Both rows and columns can be specified at the same time. 
+Both rows and columns can be specified at the same time. The example below
+returns the first 5 rows of data and temperature and pressure columns.
 
 
 ```r
-chicago_air[1:5, 3:5]  # Returns first 5 rows of data and the third through fifth columns.
+chicago_air[1:5, c("temp", "pressure")]  
 ```
 
 ```
-##   temp pressure month
-## 1   42   1006.8     1
-## 2   35   1002.6     1
-## 3   34   1002.1     1
-## 4   44   1001.8     1
-## 5   37   1008.8     1
+##   temp pressure
+## 1   42   1006.8
+## 2   35   1002.6
+## 3   34   1002.1
+## 4   44   1001.8
+## 5   37   1008.8
 ```
 
-# Logical Operators
-You can also subset a data frame by using logical expressions
-The logical expression is used to specify rows that you want to keep or discard
+## Access Column with `$`
+
+In R, the dollar sign `$` is a special character that can be used to access a 
+data frame column by name. The dollar sign is placed immediately after the variable
+name. For example, if we wanted to access the temperature values in the `chicago_air`
+data frame, then we would use `chicago_air$temp`. 
 
 
-## Reference Table of Logical Operators
+```r
+head( chicago_air$temp )
+```
+
+```
+## [1] 42 35 34 44 37 38
+```
+
+Again, a vector is returned because a single column is being accessed. Using `$`
+is a  convenient way to grab a column from a data frame, and we will use it throughout
+the rest of these lessons.
+
+## Logical Expressions
+
+It's useful to understand how indexing works with data frames. But often,
+if we want a subset of data, we want to use a logical expression to keep data
+(or discard it).
+
+Below is a table of logical operators in R that can be used to create logical
+conditions.
+
+
+### Reference Table of Logical Operators
 |Operator |Description |
 | :---    | :---       |
 | <	      | less than  |
@@ -308,18 +385,137 @@ The logical expression is used to specify rows that you want to keep or discard
 | x & y   | x AND y |
 | x <code>&#124;</code> y |	x OR y|
 
-Here is an example using a logical expression to subset.
+The result of a logical expression is a logical data type, a boolean value `TRUE`
+or `FALSE`.
 
 
 ```r
-logical_vector <- chicago_air$solar > 1.45 # records with greater than 1.45 in the solar column
-
-chicago_air[logical_vector, ] 
+1 + 1 == 2
 ```
 
 ```
-## [1] date     ozone    temp     pressure month    weekday 
-## <0 rows> (or 0-length row.names)
+## [1] TRUE
+```
+
+
+```r
+10 > 20
+```
+
+```
+## [1] FALSE
+```
+
+Vectors can also be used in a logical expression. A vector of values on the left
+hand side of a logical operator will return a vector of the same length with
+boolean values. 
+
+Here, we check if any of the integers in a vector are above 60. A logical vector
+is returned.
+
+
+```r
+c(25, 80, 55) > 60
+```
+
+```
+## [1] FALSE  TRUE FALSE
+```
+
+This concept can be used to subset data frame. A logical vector
+can be used in the the similar way to an index vector in the brackets of a data
+frame `data_frame[rows, columns]`. Instead of providing a numeric vector that 
+corresponds to row numbers, a logical vector that is as long as the data frame
+can be used to keep records (`TRUE`) and drop records (`FALSE`).
+
+We can use the data frame of color and fruit again to demonstrate.
+
+
+```r
+my_data <- data.frame(colors = c("red", "green", "yellow"), 
+                      fruit = c("apple", "grape", "banana"))
+
+my_data
+```
+
+```
+##   colors  fruit
+## 1    red  apple
+## 2  green  grape
+## 3 yellow banana
+```
+
+If we only wanted records with the "yellow" color, we could use the vector 
+`c(FALSE, FALSE, TRUE)`. Place this vector in the brackets of the data frame, 
+where we select rows.
+
+
+```r
+my_data[c(FALSE, FALSE, TRUE), ]
+```
+
+```
+##   colors  fruit
+## 3 yellow banana
+```
+
+A data frame is returned. The only record is from the 3rd row of the logical vector,
+because that was the only `TRUE` value.
+
+But a more useful way of creating the logical vector is with a logical expression.
+Below we access the "color" column as a vector using the `$` operator. Then we
+create a logical vector using a logical expression. 
+
+
+```r
+colors <- my_data$colors
+
+colors
+```
+
+```
+## [1] "red"    "green"  "yellow"
+```
+
+```r
+yellow <- colors == "yellow"
+
+yellow
+```
+
+```
+## [1] FALSE FALSE  TRUE
+```
+
+Now we can use the logical vector `yellow` to subset the data frame down to records
+that have the color yellow.
+
+
+```r
+my_data[yellow, ]
+```
+
+```
+##   colors  fruit
+## 3 yellow banana
+```
+
+The `chicago_air` data frame can be subset in a similar way. Below, a logical
+vector `hot` is created to represent hot days above 90 degrees. The data frame
+is subset down to records with hot days.
+
+
+```r
+hot <- chicago_air$temp > 90 
+
+chicago_air[hot, ]
+```
+
+```
+##           date ozone temp pressure month weekday
+## 163 2021-06-12 0.053   91    995.4     6       7
+## 169 2021-06-18 0.062   93    997.5     6       6
+## 239 2021-08-27 0.044   91   1003.3     8       6
 ```
 
 
