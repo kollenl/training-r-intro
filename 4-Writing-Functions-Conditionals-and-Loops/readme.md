@@ -3,7 +3,7 @@ title: "Writing Functions, Conditionals, and Loops"
 output: 
   html_document: 
     keep_md: yes
-date: "2023-08-27"
+date: "2023-08-28"
 ---
 
 
@@ -11,7 +11,7 @@ date: "2023-08-27"
 
 
 This lesson covers how to write your own R functions. It also explains how to automate
-your code using `if()` and `ifelse()` functions, `for` loops, and the `apply`
+your code using `if()` and `ifelse()` functions, for loops, and the `apply`
 function.
 
 
@@ -171,7 +171,7 @@ the default is `70`. It may be that we typically want to use this function to
 check against the current 8-hour ozone standard in parts per billion, but have
 then flexibility to use a different value. 
 
-To set a default value, we use `=` when we create the function.
+To set a default value, we use `= 70` when we create the function.
 
 
 ```r
@@ -227,10 +227,10 @@ check_standard(70, 60)
 
 # if Functions
 
-Functions are a good way to write some R code that can be reused on different 
-data sets. It's also helpful to write code that will execute different lines of
-code depending on different scenarios. The functions `if()` and `ifelse()` allow
-you to control what code is executed based on a logical condition.
+Writing custom functions is a good way to standardize some R code that can be reused
+on different data sets. It's also helpful to write code that will execute different
+lines of code depending on different scenarios. The functions `if()` and `ifelse()`
+allow you to control what code is executed based on a logical condition.
 
 The `if()` function takes the logical condition in the parentheses. The code that
 will run if the logical expression is `TRUE` is placed inside curly braces. Below
@@ -307,8 +307,8 @@ if(ozone > 0.065) {
 ## [1] "All Good"
 ```
 
-The `ifelse()` function is a simplified version of `if()` and can be used when 
-you are returning simple values based on a conditional test.
+The `ifelse()` function is another way to use a logical condition that determines
+which output is returned. Here is the outline.
 
 
 ```r
@@ -316,8 +316,8 @@ ifelse(<test>, <yes>, <no>)
 ```
 
 The `test` argument is the logical expression, `yes` is the value returned if
-the expression resolves to `TRUE`, and `no` is returned if the expression resolves
-to `FALSE`. 
+the expression resolves to `TRUE`, and `no` is the value returned if the expression
+resolves to `FALSE`. 
 
 Here we accomplish the same task as the previous example. This time we use the
 `ifelse()` function to create a variable named `message`.
@@ -336,14 +336,15 @@ print(message)
 ```
 
 
+
 # For loop
 
 Like most programming languages, R has for and while loops. This tutorial will
-cover just for loops and move on to apply() functions, which are more commonly 
+cover just for loops and move on to `apply()` functions, which are more commonly 
 used in R.
 
-For loops are used to repeat an operation a set number of times. The basic outline
-below shows is
+For loops are used to repeat an operation a set number of times. Here is the 
+basic outline:
 
 
 ```r
@@ -359,7 +360,7 @@ that will take on the values in the `sequence` vector. For instance, if `sequenc
 was the vector `c(1, 2, 3)` then the `i` variable will take on each of those values
 in turn.
 
-This example simply prints the values of the vector as they loop through.
+This example simply prints the values of the vector as the for loop progresses.
 
 
 ```r
@@ -483,7 +484,8 @@ ppm_to_ppb <- function(value) {
 
 ### Exercise 2
 
-Write a function named `check_value` that prints "warning" if a value is above a threshold, and "OK" if it's below. Make the threshold an argument in the function.
+Write a function named `check_value` that prints "warning" if a value is above a 
+threshold, and "OK" if it's below. Make the threshold an argument in the function.
 
 <details><summary>Click for Solution</summary>
 
@@ -505,12 +507,6 @@ check_value <- function(value, threshold) {
   }
   
 }
-
-check_value(value = 70, threshold = 65)
-```
-
-```
-## [1] "warning"
 ```
 
 </details>
@@ -563,7 +559,7 @@ columns in the `chicago_air` data frame.
 
 > Subset the `chicago_air` data frame to a new data frame with just the numeric
 columns: `ozone`, `temp`, and `pressure`. Pass the subset data frame, and the 
-`mean` function to the `apply()` function. Use `na.rm = TRUE` to make sure all
+`mean` function, to the `apply()` function. Use `na.rm = TRUE` to make sure all
 `NA` values are removed.
 
 
