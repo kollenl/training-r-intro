@@ -3,7 +3,7 @@ title: "Functions and Importing Data"
 output: 
   html_document: 
     keep_md: yes
-date: "2023-08-18"
+date: "2023-08-28"
 ---
 
 
@@ -287,6 +287,61 @@ mean(seq(from=1, to=10, by=3))
 ```
 
 _Note: Typically you don’t want to have too many nested functions because it becomes difficult to read._
+
+## NA Values
+
+Most of the statistical summary functions in R have the argument `na.rm`. This
+stands for `NA` remove. `NA` value is how R represents a missing value, similar
+to the NULL value in a SQL database. 
+
+For example, there is a built-in data frame in R called `airquality` with 
+daily measurements from a monitor in New York from 1973 (see `?airquality`).
+If we load the data frame using the `data()` function and take a look at the top
+6 rows using the `head()` function, we can see some missing values represented
+as `NA`.
+
+
+```r
+data("airquality")
+
+head(airquality)
+```
+
+```
+##   Ozone Solar.R Wind Temp Month Day
+## 1    41     190  7.4   67     5   1
+## 2    36     118  8.0   72     5   2
+## 3    12     149 12.6   74     5   3
+## 4    18     313 11.5   62     5   4
+## 5    NA      NA 14.3   56     5   5
+## 6    28      NA 14.9   66     5   6
+```
+
+The `mean()` function, for example, has the argument `na.rm` set to `FALSE`. This
+means that the `NA` values will not be removed from the vector for which it
+is calculating the mean. As a result, it will return an `NA` because it cannot
+properly calculate the average. Here we use the `Ozone` column from the `airquality`
+data frame.
+
+
+```r
+mean(airquality$Ozone)
+```
+
+```
+## [1] NA
+```
+
+To get the mean value, we set `na.rm = TRUE`.
+
+
+```r
+mean(airquality$Ozone, na.rm = TRUE)
+```
+
+```
+## [1] 42.12931
+```
 
 # Packages
 
