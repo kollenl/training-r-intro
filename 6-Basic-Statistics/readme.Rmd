@@ -6,57 +6,114 @@ output:
 date: "`r Sys.Date()`"
 ---
 
-## Basic Statistics
+R was originally developed as a statistical programming language and its built-in
+functions are commonly used for basic statistics. There are also many community 
+developed packages that make it easy to perform statistical analyses. This tutorial
+will cover descriptive statistics functions and some statistical tests that might
+be used on environmental data.
 
-R was originally developed as a statistical programming language and is commonly
-used to perform basic statistics. There are also many community developed packages
-that make it easy to perform statistical analyses. This tutorial will cover
-some statistical tests that might be used on environmental data.
 
-First we load the `chicago_air` ozone data so that we can run some basic 
-statistics on it. We will give the ozone column its own variable name so that we
-can access it quickly.
+- [Prerequisites](#prerequisites)
+- [Descriptive Statistics](#descriptive-statistics)
+- [Statistical Tests](#statistical-tests)
+- [The envstats package](#the-envstats-package)
+- [Exercises](#exercises)
 
+<br>
+<hr>
+<br>
+
+# Prerequisites
+
+This lesson assumes you are familiar with the material in the lesson on
+[Functions and Importing Data](../2-Functions-and-Importing-Data/readme.md).
+
+Statistical functions are used in this lesson that require installation of the
+following packages. 
 
 ```{r, eval=FALSE}
+install.packages("envstats")
+```
+
+The data from the R package `region5air` is used throughout these lessons.
+To install the package from GitHub, use the `remotes` package. Run the code
+below to install the `remotes` package and install `region5air` from GitHub.
+
+```{r, eval=FALSE}
+# if you have not installed remotes
+install.packages("remotes")
+
+library(remotes)
+install_github("FluentData/region5air")
+```
+
+To load the `chicago_air` data frame we will be using in the lesson, use the 
+`library()` function to load the `region5air` package, then the `data( )` function
+to load the data frame. 
+
+```{r}
+
 library(region5air)
+
 data(chicago_air)
+
+```
+
+
+
+# Descriptive Statistics
+
+R has many built-in functions for descriptive statistics. We will use these 
+functions to understand the ozone data in the `chicago_air` data frame.
+
+```{r}
+
 ozone <- chicago_air$ozone
 
 ```
 
-```{r, echo=FALSE}
-load("../data/chicago_air.rda")
-ozone <- chicago_air$ozone
-```
+Most of the functions we'll be using have an argument named `na.rm` that stands 
+for `NA` remove. If the argument is set to `TRUE` then the function will remove
+all missing values from the data set. Otherwise the function will error.
 
-### Descriptive and exploratory statistics
-
-There are several built-in functions for descriptive statistics. The functions
-below all have a parameter `na.rm` that tells the function to remove `NA` values
-when performing the calculation.
+These functions let us know the range of the ozone values, i.e. the highest and 
+lowest values.
 
 ```{r}
 
-min(ozone, na.rm=T)
+min(ozone, na.rm=TRUE)
 
 ```
 
 ```{r}
 
-max(ozone, na.rm=T)
+max(ozone, na.rm=TRUE)
 
 ```
 
 ```{r}
 
-range(ozone, na.rm=T)
+range(ozone, na.rm=TRUE)
 
 ```
+
+We can also get the range and the quartile values from the `summary()` function.
 
 ```{r}
 
 summary(ozone)
+
+```
+
+The `1st Qu.` value is the first quartile. This means that a quarter of the ozone
+values are between the minimum value `r min(ozone, na.rm = TRUE)` and the first
+quartile value `r quantile(ozone, .25, TRUE)`. The `Median` value is the second
+quartile, meaning half the values are between the minimum and the second quartile
+value of `r median(ozone, na.rm = TRUE)`.
+
+```{r}
+
+IQR(ozone, na.rm=TRUE)
 
 ```
 
