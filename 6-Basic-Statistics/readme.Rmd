@@ -25,11 +25,11 @@ be used on environmental data.
 
 # Prerequisites
 
-This lesson assumes you are familiar with the material in the lesson on
+This lesson assumes you are familiar with the lesson on
 [Functions and Importing Data](../2-Functions-and-Importing-Data/readme.md).
 
 Statistical functions are used in this lesson that require installation of the
-following packages. 
+`envstats` package. 
 
 ```{r, eval=FALSE}
 install.packages("envstats")
@@ -107,7 +107,7 @@ summary(ozone)
 
 The `IQR()` function gives us the interquartile range, which lets us know how large
 the spread is for the values in the central range of the distrubution, i.e. between
-the 1st quartile and the 3rd quartile.
+the 25th percentile and the 75th percentile.
 
 ```{r}
 
@@ -116,7 +116,7 @@ IQR(ozone, na.rm=TRUE)
 ```
 
 We can use the `boxplot()` function to visualize the interquartile range. The outline
-of the box itself shows the first and third quartile, while the line in the middle
+of the box itself shows the middle 50% of the data, while the line in the middle
 of the box shows the median.
 
 
@@ -203,11 +203,12 @@ ggplot(ozone_july_october, aes(ozone)) +
   geom_histogram()
 
 ```
+
 If plotting does not obviously show normality, we can use the built-in function
 `shapiro.test()`. This function performs the Shapiro-Wilk test on a dataset, which
 assumes that the data set is normal. So the null hypothesis is that the dataset
 comes from a normal distribution. If the p-value of the test is less than .05, 
- we reject the null hypothesis and conclude the data is not normal.
+we reject the null hypothesis and conclude the data is not normal.
 
 
 ```{r}
@@ -329,13 +330,13 @@ pairs(chicago_air[, c("ozone", "temp", "pressure")], lower.panel = panel.smooth)
 ```
 
 You can see from the lower panel plots the increasing slope of the line for ozone
-and temp; a decreesing slope for temp and pressure; and a flat line for ozone and
+and temp; a decreasing slope for temp and pressure; and a flat line for ozone and
 pressure.
 
 # Next Lesson
 
 The next lesson in this series is on 
-[Regression and Data Transformation](../7-Regression-and-Data-Transformation/readme.md).
+[Quality Assurance](../7-Quality-Assurance/readme.md).
 
 # Exercises
 
