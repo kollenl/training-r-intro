@@ -129,7 +129,7 @@ print_hello(text = "everybody!")
 
 We can create a function with more than one argument, and set default values when
 needed. Suppose we would like to make a function that checks if a measurement is below
-a criteria pollutant standard. We could make simple function that takes two arguments:
+a criteria pollutant standard. We could make a simple function that takes two arguments:
 one for the measurement value, and one for the standard value.
 
 ```{r}

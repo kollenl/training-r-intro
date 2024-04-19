@@ -40,10 +40,9 @@ used in many industries for performing a variety of data science tasks such as:
 R is one of several programming languages that can be used for data science, including
 [Python](https://www.python.org/) and [Julia](https://julialang.org/). They each 
 have advantages and disadvantages, but they are all powerful tools for 
-data science. These 
-[high-level languages](https://en.wikipedia.org/wiki/High-level_programming_language) 
-give you access to modern algorithms for processing
-large amounts of data in a few lines of code. 
+data science. These [high-level languages](https://en.wikipedia.org/wiki/High-level_programming_language) 
+give you access to modern algorithms for processing large amounts of data in a few 
+lines of code. 
 
 Many data analysis tasks can be accomplished with spreadsheets and other business 
 intelligence (BI) tools such as Looker and Power BI. When should you move beyond
@@ -52,21 +51,17 @@ scenarios where a language like R is more advantageous than a BI tool.
 
 - If you cannot access data easily in your BI tool, R can read just about any
 data source
-- If you need to save a large number of files, R can automate that process in a
-way that BI tools cannot
+- If you need to download, save, or otherwise process a large number of files, R
+can automate those tasks in a way that BI tools cannot
 - Custom data transformations that are not possible in BI tools can be done with R
 - Custom data visualizations that are not available in BI tools can be done with R
 - Predictive modeling that is not available in BI tools, or only in a rudimentary
 way, can be done in R
 
-
 BI tools are more advantageous if you need enterprise wide dashboards, or tools
 that are more easily accessible to a wider audience. If there are few occasions
 where you need custom visualizations or transformations, or if you do not
-need automation in your work, you may not need to learn a programming
-language.
-
-
+need automation in your work, you may not need to learn a programming language.
 
 
 # Install R and RStudio
@@ -74,7 +69,6 @@ language.
 This section covers the two pieces of software you need to download. R is the core
 software that must be installed. RStudio is a nice integrated development environment 
 (IDE) that makes it much easier to use R.
-
 
 To download R, [see this page](https://cran.r-project.org/). You will need to select
 the version that is compatible with your operating system (PC or Mac). Accept the 
@@ -110,7 +104,6 @@ and R will return the answer.
 ![](img/rstudio2.png)
 
 
-
 It's a good idea to use a script so you can save your code. Open a new script by 
 selecting "File" -> "New File" -> "R Script" and it will appear in the top left 
 panel of RStudio.
@@ -119,11 +112,9 @@ panel of RStudio.
 ![](img/rstudio3.png)
 
 
-
 This is a text document that can be saved. Go to "File" -> "Save As" and you can
-save the file with a `.R` extension. You can 
-type and run more than one line at a time by highlighting and clicking the "Run"
-button on the script tool bar.
+save the file with a `.R` extension. You can type and run more than one line at 
+a time by highlighting and clicking the "Run" button on the script tool bar.
 
 
 ![](img/rstudio4.png)
@@ -187,7 +178,7 @@ panel in RStudio).
 5^2 # partial line comment
 ```
 
-In the example above and the previous section, you have see the R code and it's
+In the example above and the previous section, you can see the R code and it's
 output. The code blocks with output look like this, with `1+1` being the R code
 and `## [1] 2` being the output:
 
@@ -321,6 +312,7 @@ with the number 3:
 fruit[3]
 
 ```
+
 We will cover more about accessing members of vectors in the 
 [lesson on subsetting](3-Subsetting-Sorting-and-Combining/readme.md).
 
@@ -336,7 +328,7 @@ x
 
 When a list is printed to the console, you will see double brackets `[[ ]]` with
 the index number inside. In the example above, the numeric value `1.3` is the 
-second value in the list, so it is show below the double bracket `[[2]]`. You can
+second value in the list, so it is shown below the double bracket `[[2]]`. You can
 access the second value by using the double brackets on the list.
 
 ```{r}

@@ -106,13 +106,12 @@ plot(x = chicago_air$date, y = chicago_air$ozone,
      pch = 16,
      col = "purple", 
      lwd = 2.5,
-     xlab="Date", 
+     xlab = "Date", 
      ylab = 'Ozone (ppm)', 
      main = 'Chicago Ozone Data')
 
 
 ```
-
 
 
 ## Histogram
@@ -127,7 +126,8 @@ hist(chicago_air$ozone)
 
 We can control the number of bars in the plot, or where the breakpoints are for
 each bar, with the `breaks` argument. For example, supplying `breaks = 20` will
-make a histogram with 20 bars. Other arguments allow you to control the titles and colors of the plot. Run `?hist` to see a complete list of arguments on the help
+make a histogram with 20 bars. Other arguments allow you to control the titles and
+colors of the plot. Run `?hist` to see a complete list of arguments on the help
 page.
 
 ```{r}
@@ -156,10 +156,10 @@ boxplot(chicago_air$ozone)
 The box shows the interquartile range (IQR), with the bold line indicating the
 median of the ozone values. The horizontal lines at the end of the dotted line 
 are the min and max ozone values within a certain range from the box (specifically,
-1.5 times the IQR). If a value falls outside that range, it will be reprsented by
+1.5 times the IQR). If a value falls outside that range, it will be represented by
 a point (the default point type is a circle). Overall, the plot gives an idea of
-where the middle half of the values are, and if there are extreme values beyond
-that.
+where the middle half of the values are, and if there are extreme values on either
+side of the distribution.
 
 The benefit of supplying a data frame to the `data` argument is to break the data
 up into groups and display each group in a box plot. If a data frame is used, then
@@ -167,7 +167,10 @@ the `x` argument must be a _formula_. In R, a formula is a data type that repres
 an equation like y = x. The way to represent this relationship in R is with the
 `~` character: `y ~ x`. The `boxplot()` function needs a formula to know which 
 column in the data frame is being plotted, and which column is used to do the 
-grouping. We can make a plot of ozone by month using the `chicag_air` data frame.
+grouping. 
+
+We can make a plot of ozone by month using the `chicag_air` data frame and the 
+formula `ozone ~ month`.
 
 
 ```{r}
@@ -178,15 +181,15 @@ boxplot(ozone ~ month, data = chicago_air)
 # ggplot2
 
 `ggplot2` is a popular data visualization package in R. It uses a layered approach
-to build plots which allows you to add, remove, or change components modular
+to build plots which allows you to add, remove, or change components in a modular
 way.
 
 To use `ggplot2`, we typically follow this sequence of steps:
 
-1.  Start with the `ggplot()` function where we specify the dataset and
-    map variables to aesthetics (visual properties of objects in the
+1.  Start with the `ggplot()` function where we specify the dataset, and then we
+    map variables to "aesthetics" (i.e. visual properties of objects in the
     plot like shapes or colors).
-2.  Add `geoms` – geometric objects like points (`geom_point` for
+2.  Add `geoms` which are geometric objects like points (`geom_point` for
     scatter plots), bars (`geom_bar` for bar plots), or lines
     (`geom_line` for line plots) that determine the type of the plot.
 3.  Finally, customize and refine the plot with additional layers like
@@ -198,11 +201,12 @@ Let's begin by loading the `ggplot2` package.
 library(ggplot2)
 ```
  
-Let's recreate the base scatter plot of ozone and temperature from the previous 
+First we will recreate the base scatter plot of ozone and temperature from the previous 
 section, starting with the `ggplot( )` function. The first argument `data` takes
 the data frame. The `mapping` argument takes another function named `aes()`, which
 is short for aesthetic. The primary arguments in the `aes( )` function are `x`
-and `y`. These determine which column from the data frame.
+and `y`. These determine which columns from the data frame are displayed on the
+graph.
 
 ```{r}
 
@@ -238,7 +242,6 @@ ggplot(chicago_air, aes(x = temp, y = ozone)) +
   ylab('Ozone (ppm)')
 
 ```
-
 
 
 The `aes()` function can also map aesthetic properties like color based on other
@@ -357,7 +360,7 @@ pane.
 
 ![](img/save_plot.png)
 
-You can also save a plot made by `ggplot2` using the `ggsave()` function..
+You can also save a plot made by `ggplot2` using the `ggsave()` function.
 
 ```{r, eval=FALSE}
 
@@ -482,3 +485,64 @@ ggplot(chicago_air, aes(pressure)) +
 
 </details>
 
+---
+
+### Exercise 5
+
+#### Challenging Exercise
+
+Use `ggplot2` and the data frame `ertac_egu_projections` from the `region5air` package
+to make a map of facility locations in the CONUS ERTAC region. 
+
+<details><summary>Click for Hint 1</summary>
+
+> Use the `data()` to load the `ertac_egu_projections` data frame and ?ertac_egu_projections
+to see the documentation. Which columns would be useful for the x and y coordinates?
+
+</details>
+
+<details><summary>Click for Hint 2</summary>
+
+> Use the `filter()` function from the `dplyr` package to filter down to the "CONUS"
+region and look at the documentation for the `geom_polygon()` function:
+https://ggplot2.tidyverse.org/reference/geom_polygon.html.
+
+</details> 
+
+<details><summary>Click for Hint 3</summary>
+
+> Use the `map_data()` function from the `maps` package to create a base map
+variable to use as the `data` parameter in the `geom_polygon()` function.
+
+</details> 
+
+<details><summary>Click for Solution</summary>
+
+#### Solution
+
+```{r}
+library(region5air)
+library(ggplot2)
+library(dplyr)
+library(maps)
+
+data(ertac_egu_projections)
+
+# filter to CONUS region
+conus <- filter(ertac_egu_projections, ertac_region == "CONUS")
+
+states_map <- map_data("state")
+
+
+ggplot() +
+    geom_polygon(data = states_map, aes(x = long, y = lat, group = group), 
+                 fill = "white", color = "black") +
+    geom_point(data = conus, aes(x = longitude, y = latitude), color = "red",
+               size = 3) +
+    coord_fixed(1.3) +
+    labs(title = "Map of the US with Points", x = "Longitude", y = "Latitude") +
+    theme_minimal()
+
+```
+
+</details>
