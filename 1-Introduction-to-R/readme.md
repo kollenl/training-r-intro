@@ -1,11 +1,3 @@
----
-title: "Introduction to R"
-output: 
-  html_document: 
-    keep_md: yes
-date: "2023-08-18"
----
-
 
 This lesson is a part of the Introduction to R for Air Quality Data Science. The
 sections below provide a basic introduction to R, including how to install and 
@@ -15,10 +7,11 @@ set up R and RStudio, an overview of R syntax, and how to perform simple operati
 - [Why Use a Programming Language](#why-use-a-programming-language)
 - [Install R and RStudio](#install-r-and-rstudio)
 - [Basic Math](#basic-math)
-- [Note on Comments and Code Blocks](#note-on-comments-and-code-blocks)
+- [Comments and Code Blocks](#comments-and-code-blocks)
 - [Variables](#variables)
 - [Data Types](#data-types)
 - [Grouping Data](#grouping-data)
+- [Further Reading](#further-reading)
 - [Exercises](#exercises)
 
 # What is R
@@ -40,10 +33,9 @@ used in many industries for performing a variety of data science tasks such as:
 R is one of several programming languages that can be used for data science, including
 [Python](https://www.python.org/) and [Julia](https://julialang.org/). They each 
 have advantages and disadvantages, but they are all powerful tools for 
-data science. These 
-[high-level languages](https://en.wikipedia.org/wiki/High-level_programming_language) 
-give you access to modern algorithms for processing
-large amounts of data in a few lines of code. 
+data science. These [high-level languages](https://en.wikipedia.org/wiki/High-level_programming_language) 
+give you access to modern algorithms for processing large amounts of data in a few 
+lines of code. 
 
 Many data analysis tasks can be accomplished with spreadsheets and other business 
 intelligence (BI) tools such as Looker and Power BI. When should you move beyond
@@ -52,21 +44,17 @@ scenarios where a language like R is more advantageous than a BI tool.
 
 - If you cannot access data easily in your BI tool, R can read just about any
 data source
-- If you need to save a large number of files, R can automate that process in a
-way that BI tools cannot
+- If you need to download, save, or otherwise process a large number of files, R
+can automate those tasks in a way that BI tools cannot
 - Custom data transformations that are not possible in BI tools can be done with R
 - Custom data visualizations that are not available in BI tools can be done with R
 - Predictive modeling that is not available in BI tools, or only in a rudimentary
 way, can be done in R
 
-
 BI tools are more advantageous if you need enterprise wide dashboards, or tools
 that are more easily accessible to a wider audience. If there are few occasions
 where you need custom visualizations or transformations, or if you do not
-need automation in your work, you may not need to learn a programming
-language.
-
-
+need automation in your work, you may not need to learn a programming language.
 
 
 # Install R and RStudio
@@ -75,12 +63,11 @@ This section covers the two pieces of software you need to download. R is the co
 software that must be installed. RStudio is a nice integrated development environment 
 (IDE) that makes it much easier to use R.
 
-
 To download R, [see this page](https://cran.r-project.org/). You will need to select
 the version that is compatible with your operating system (PC or Mac). Accept the 
 default options during the installation.
 
-Once you have installed R, you can open the program itself. On PC, if you have
+Once you have installed R, you can open the program itself. On a PC, if you have
 selected the desktop shortcut during installation, the R icon will look like this:
 
 ![](img/r_icon.png)
@@ -110,7 +97,6 @@ and R will return the answer.
 ![](img/rstudio2.png)
 
 
-
 It's a good idea to use a script so you can save your code. Open a new script by 
 selecting "File" -> "New File" -> "R Script" and it will appear in the top left 
 panel of RStudio.
@@ -119,11 +105,9 @@ panel of RStudio.
 ![](img/rstudio3.png)
 
 
-
 This is a text document that can be saved. Go to "File" -> "Save As" and you can
-save the file with a `.R` extension. You can 
-type and run more than one line at a time by highlighting and clicking the "Run"
-button on the script tool bar.
+save the file with a `.R` extension. You can type and run more than one line at 
+a time by highlighting and clicking the "Run" button on the script tool bar.
 
 
 ![](img/rstudio4.png)
@@ -184,7 +168,7 @@ values that are returned.
 ## [1] 1.4
 ```
 
-# Note on Comments and Code Blocks
+# Comments and Code Blocks
 
 To write a comment in your script that will not be evaluated, type `#` in front 
 of your comment. The text after `#` will not be evaluated. There is no multi-line
@@ -203,7 +187,7 @@ panel in RStudio).
 ## [1] 25
 ```
 
-In the example above and the previous section, you have see the R code and it's
+In the example above and the previous section, you can see the R code and it's
 output. The code blocks with output look like this, with `1+1` being the R code
 and `## [1] 2` being the output:
 
@@ -264,9 +248,9 @@ x
 ## [1] 10
 ```
 
-
 ```r
 x <- 20
+
 x
 ```
 
@@ -283,19 +267,19 @@ changed.
 
 There are 3 important rules to remember when creating variable names:
 
-  1. You can't start your variable with a number.
+  1. You can't start your variable name with a number.
   2. You can't use spaces or special characters ($,%,#,-). Periods `.` and underscores
   `_` are ok.
-  3. Capitalization __DOES__ matter in R. That is, R will consider `x` and
-  `X` to be different variables.
+  3. Capitalization __DOES__ matter in R. That is, R will consider `y` and
+  `Y` to be different variables.
 
 Try running the following code and you will see that in your global environment 
 there are two different objects listed.
 
 
 ```r
-x <- 5
-X <- 5
+y <- 5
+Y <- 10
 ```
 
 # Data Types
@@ -309,15 +293,17 @@ numeric	                    | numbers	          |`1`, `3.14`, `log(10)`
 logical                     |	binary            |	`TRUE`, `FALSE`
 
 
-The `character` type requires single or double quotes. The logical values
-`TRUE` and `FALSE` should not be quoted and require full caps.
+The `character` type requires single or double quotes. The numeric type must 
+be unquoted numbers, and the full-caps logical values `TRUE` and `FALSE` should 
+also be unquoted.
 
 # Grouping Data
 
-There are several ways to group data to make them easier to work with:
+There are several ways to store groups of data to make them easier to work with:
 
 - A __vector__ stores multiple values of the same type (e.g. all numeric values)
-- A __list__ stores multiple values of different types (e.g. some numbers and character values)
+- A __list__ stores multiple values of different types (e.g. some numbers and some
+  character values)
 - A __matrix__ is a table of values with only one data type
 - A __data frame__ is a table of values that can have columns with different data 
 types (e.g. a numeric column and a logical column)
@@ -377,6 +363,7 @@ fruit[3]
 ```
 ## [1] "oranges"
 ```
+
 We will cover more about accessing members of vectors in the 
 [lesson on subsetting](3-Subsetting-Sorting-and-Combining/readme.md).
 
@@ -404,7 +391,7 @@ x
 
 When a list is printed to the console, you will see double brackets `[[ ]]` with
 the index number inside. In the example above, the numeric value `1.3` is the 
-second value in the list, so it is show below the double bracket `[[2]]`. You can
+second value in the list, so it is shown below the double bracket `[[2]]`. You can
 access the second value by using the double brackets on the list.
 
 
@@ -415,7 +402,6 @@ x[[2]]
 ```
 ## [1] 1.3
 ```
-
 
 
 Lists can also contain vectors and other lists.
@@ -551,7 +537,6 @@ Create an R variable `x` that stores the value 10.
 
 <details><summary>Click for Solution</summary>
 
-
 	
 > The arrow symbol (`<-`) is used to assign a value to a variable in R. 
 
@@ -606,8 +591,7 @@ v <- 1:5
 
 ### Exercise 4
 
-Create a list `l` that contains a number (e.g., 5, a string (e.g., 'apple'), and
-a logical value (e.g., TRUE).
+Create a list `l` that contains a number, a string, and a logical value.
 
 <details><summary>Click for Solution</summary>
 
@@ -657,16 +641,12 @@ df <- data.frame(name = c('Alice', 'Bob', 'Charlie'), age = c(25, 32, 28))
 ---
 
 
-
-
-
 ### Exercise 7
 
-Create a numeric vector `nums` with the values 10, 20 and 30 and add 5 to each
+Create a numeric vector `nums` with the values 10, 20, and 30 and add 5 to each
 element of the vector.
 
 <details><summary>Click for Solution</summary>
-
 
 	
 > We can operate on every element of a vector at once in R.

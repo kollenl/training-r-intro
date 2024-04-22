@@ -15,10 +15,11 @@ set up R and RStudio, an overview of R syntax, and how to perform simple operati
 - [Why Use a Programming Language](#why-use-a-programming-language)
 - [Install R and RStudio](#install-r-and-rstudio)
 - [Basic Math](#basic-math)
-- [Note on Comments and Code Blocks](#note-on-comments-and-code-blocks)
+- [Comments and Code Blocks](#comments-and-code-blocks)
 - [Variables](#variables)
 - [Data Types](#data-types)
 - [Grouping Data](#grouping-data)
+- [Further Reading](#further-reading)
 - [Exercises](#exercises)
 
 # What is R
@@ -74,7 +75,7 @@ To download R, [see this page](https://cran.r-project.org/). You will need to se
 the version that is compatible with your operating system (PC or Mac). Accept the 
 default options during the installation.
 
-Once you have installed R, you can open the program itself. On PC, if you have
+Once you have installed R, you can open the program itself. On a PC, if you have
 selected the desktop shortcut during installation, the R icon will look like this:
 
 ![](img/r_icon.png)
@@ -164,7 +165,7 @@ values that are returned.
 (10 - 3) / 5  # subtraction is done first because of the parentheses
 ```
 
-# Note on Comments and Code Blocks
+# Comments and Code Blocks
 
 To write a comment in your script that will not be evaluated, type `#` in front 
 of your comment. The text after `#` will not be evaluated. There is no multi-line
@@ -221,10 +222,9 @@ If you’ve already created a variable, you can replace the value with another v
 
 ```{r}
 x
-```
 
-```{r}
 x <- 20
+
 x
 ```
 
@@ -237,18 +237,18 @@ changed.
 
 There are 3 important rules to remember when creating variable names:
 
-  1. You can't start your variable with a number.
+  1. You can't start your variable name with a number.
   2. You can't use spaces or special characters ($,%,#,-). Periods `.` and underscores
   `_` are ok.
-  3. Capitalization __DOES__ matter in R. That is, R will consider `x` and
-  `X` to be different variables.
+  3. Capitalization __DOES__ matter in R. That is, R will consider `y` and
+  `Y` to be different variables.
 
 Try running the following code and you will see that in your global environment 
 there are two different objects listed.
 
 ```{r}
-x <- 5
-X <- 5
+y <- 5
+Y <- 10
 ```
 
 # Data Types
@@ -262,15 +262,17 @@ numeric	                    | numbers	          |`1`, `3.14`, `log(10)`
 logical                     |	binary            |	`TRUE`, `FALSE`
 
 
-The `character` type requires single or double quotes. The logical values
-`TRUE` and `FALSE` should not be quoted and require full caps.
+The `character` type requires single or double quotes. The numeric type must 
+be unquoted numbers, and the full-caps logical values `TRUE` and `FALSE` should 
+also be unquoted.
 
 # Grouping Data
 
-There are several ways to group data to make them easier to work with:
+There are several ways to store groups of data to make them easier to work with:
 
 - A __vector__ stores multiple values of the same type (e.g. all numeric values)
-- A __list__ stores multiple values of different types (e.g. some numbers and character values)
+- A __list__ stores multiple values of different types (e.g. some numbers and some
+  character values)
 - A __matrix__ is a table of values with only one data type
 - A __data frame__ is a table of values that can have columns with different data 
 types (e.g. a numeric column and a logical column)
@@ -336,7 +338,6 @@ access the second value by using the double brackets on the list.
 x[[2]]
 
 ```
-
 
 
 Lists can also contain vectors and other lists.
@@ -434,7 +435,6 @@ Create an R variable `x` that stores the value 10.
 
 <details><summary>Click for Solution</summary>
 
-
 	
 > The arrow symbol (`<-`) is used to assign a value to a variable in R. 
 
@@ -484,8 +484,7 @@ v <- 1:5
 
 ### Exercise 4
 
-Create a list `l` that contains a number (e.g., 5, a string (e.g., 'apple'), and
-a logical value (e.g., TRUE).
+Create a list `l` that contains a number, a string, and a logical value.
 
 <details><summary>Click for Solution</summary>
 
@@ -533,16 +532,12 @@ df <- data.frame(name = c('Alice', 'Bob', 'Charlie'), age = c(25, 32, 28))
 ---
 
 
-
-
-
 ### Exercise 7
 
-Create a numeric vector `nums` with the values 10, 20 and 30 and add 5 to each
+Create a numeric vector `nums` with the values 10, 20, and 30 and add 5 to each
 element of the vector.
 
 <details><summary>Click for Solution</summary>
-
 
 	
 > We can operate on every element of a vector at once in R.
