@@ -8,8 +8,6 @@ date: "`r Sys.Date()`"
 
 
 
-
-
 This lesson covers how to write your own R functions. It also explains how to automate
 your code using `if()` and `ifelse()` functions, for loops, and the `apply`
 function.

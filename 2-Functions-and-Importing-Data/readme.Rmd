@@ -17,6 +17,10 @@ files and Excel documents.
 - [Importing Data](#importing-data)
 - [Exercises](#exercises)
 
+<br>
+<hr>
+<br>
+
 # Functions
 
 In R, there are two main types of objects: variables and functions. We covered 

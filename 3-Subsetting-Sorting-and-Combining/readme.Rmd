@@ -513,8 +513,7 @@ nrow(recombined) == nrow(chicago_air)
 
 # Next Lesson
 
-The next lesson in this series is on 
-[Writing Functions, Conditionals, and Loops](../4-Writing-Functions-Conditionals-and-Loops/readme.md).
+The next lesson in this series is on [Writing Functions, Conditionals, and Loops](../4-Writing-Functions-Conditionals-and-Loops/readme.md).
 
 # Exercises
 

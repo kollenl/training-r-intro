@@ -375,7 +375,7 @@ ggsave(filename = "my_plot.png", plot = my_plot)
 # Next Lesson
 
 The next lesson in this series is on 
-[Regression and Data Transformation](../7-Regression-and-Data-Transformation/readme.md).
+[Basic Statistics](../6-Basic-Statistics/readme.md).
 
 # Exercises
 
