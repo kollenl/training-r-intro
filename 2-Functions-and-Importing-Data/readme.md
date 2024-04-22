@@ -1,10 +1,3 @@
----
-title: "Functions and Importing Data"
-output: 
-  html_document: 
-    keep_md: yes
-date: "2023-08-28"
----
 
 
 This lesson covers the use of functions in R, including built-in functions and 
@@ -46,8 +39,7 @@ mean(x)
 ## [1] 12.2
 ```
 
-As you would expect, R has many built-in math functions. Below
-are a series of examples.
+As you would expect, R has many built-in math functions. Below are a few examples.
 
 
 ```r
@@ -138,6 +130,7 @@ round(12.3456, digits=1)
 ```
 ## [1] 12.3
 ```
+
 In the first example, you can see that we did not provide a value for the 
 `digits` argument. That's because there is a default value `digits = 0` (see
 the `Usage` section on the help page `?round`). If there is a default value,
@@ -154,6 +147,7 @@ packages, as explained in a later section of this lesson. Below is a list of a
 few commonly used built-in functions in R.
 
 ### 1. `sum( )` 
+
 Returns the sum of a vector of numeric values.
 
 
@@ -166,6 +160,7 @@ sum(c(2.3, 7.5, 9, -10))
 ```
 
 ### 2. `min()`
+
 Get the minimum value from a numeric vector.
 
 
@@ -176,9 +171,19 @@ min(c(6, 9, 3, 11, -2))
 ```
 ## [1] -2
 ```
+
 ### 3. `max()`
+
 Get the maximum value from a numeric vector.
 
+
+```r
+max(c(15, 2, 8.3, -10, 21))
+```
+
+```
+## [1] 21
+```
 
 ### 4. `seq()`
 Create a numeric vector with a certain sequence. The example below creates a 
@@ -205,8 +210,8 @@ Another way to create a sequence of integers is to use the colon.
 ```
 
 
-
 ### 5. `paste()`
+
 Concatenate two or more strings. 
 
 
@@ -236,6 +241,7 @@ paste(x, y, z, sep = "")
 
 
 ### 6. `substr()`
+
 The `substr()` function allows you to pull out a section from a string
 based on the position of the characters in the string. This is useful for vectors
 of dates, addresses, monitor IDs, parameter descriptions, etc.
@@ -244,12 +250,15 @@ For example, in AQS data a monitor ID may be written in the following format:
 
 > [State code - County code - Site number - Parameter code - POC]. 
 
-If we only wanted to pull out the site number for this monitor ID we could do the following:
+If we only wanted to pull out the site number for this monitor ID we could do the
+following:
 
 
 ```r
 wisconsin_monitor <- c('55-021-0015-44201-2')  # Ozone monitor in Columbia County, WI
+
 site_id <- substr(wisconsin_monitor, start = 8, stop = 11)  # start and stop position within the character string.
+
 site_id
 ```
 
@@ -259,6 +268,7 @@ site_id
 
 
 ## Nesting functions
+
 R allows you to place a function inside another function to perform multiple tasks 
 on data in one step.
 
@@ -291,7 +301,7 @@ _Note: Typically you don’t want to have too many nested functions because it b
 ## NA Values
 
 Most of the statistical summary functions in R have the argument `na.rm`. This
-stands for `NA` remove. `NA` value is how R represents a missing value, similar
+stands for `NA` remove. The `NA` value is how R represents a missing value, similar
 to the NULL value in a SQL database. 
 
 For example, there is a built-in data frame in R called `airquality` with 
@@ -360,7 +370,7 @@ If base R doesn't have a function you need, the best thing to do is a Google
 search. Use a search with key words describing what you want the function to do 
 and just add "R package" at the end.
 
-For example, if you wanted to  find serial correlation in an environmental data 
+For example, if you wanted to find serial correlation in an environmental data 
 set, Google would tell you that the R package `EnvStats` has a function called
 `serialCorrelationTest()`.
 
@@ -397,7 +407,6 @@ to do this.
 ```r
 library(EnvStats)
 ```
-
 
 Now we can use the function we want.
 
@@ -448,8 +457,9 @@ Here is a link to a page that lists many useful packages for environmental data
 analysis: https://cran.r-project.org/web/views/Environmetrics.html
 
 Remember, when you close down RStudio, then start it up again, you don’t have to
-download the package again. But you do have to load the package to use any function
-that's not in the R core functionality (this is very easy to forget).
+download the package again. But you do have to use the `library()` function to
+load the package before you can use any function that's not in the R core functionality 
+(this is very easy to forget).
 
 
 # Importing Data
@@ -526,7 +536,6 @@ Download the file to your working directory and read the first worksheet (named
 
 
 
-
 ```r
 emissions <- read_excel("emissions_IL_2022.xlsx", sheet = "UNIT_DATA", skip = 6)
 head(emissions)
@@ -564,7 +573,7 @@ Try these exercises to test your comprehension of material in this lesson.
 ### Exercise 1
 
 Use the `seq()` function to create a vector from 1 to 20 by 2. For help with the
-parameters, run `?seq()` in the console and use the documentation.
+parameters, run `?seq()` in the console and consult the documentation.
 
 <details><summary>Click for Solution</summary>
 
@@ -587,8 +596,8 @@ seq(from = 1, to = 20, by = 2)
 
 ### Exercise 2
 
-Use the `round( )` to round the number 13.5678 to two digits after the decimal
-point.
+Use the `round( )` function to round the number 13.5678 to two digits after the 
+decimal point.
 
 <details><summary>Click for Solution</summary>
 
@@ -684,4 +693,4 @@ read.csv("chicago_daily.csv", nrows = 10)
 ## 10 2021-02-15 22.6    NA  3.3 1.7
 ```
 
-
+</details>
