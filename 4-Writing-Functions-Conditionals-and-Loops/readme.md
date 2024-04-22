@@ -1,13 +1,3 @@
----
-title: "Writing Functions, Conditionals, and Loops"
-output: 
-  html_document: 
-    keep_md: yes
-date: "2023-08-28"
----
-
-
-
 
 
 This lesson covers how to write your own R functions. It also explains how to automate
@@ -57,13 +47,10 @@ library(region5air)
 data(chicago_air)
 ```
 
-You should see the `chicago_air` variable in the top right panel of RStudio, which
-means the data frame has been loaded to your R session from the `region5air`
-package.
 
 # Writing Functions
 
-As discussed in the [second lesson on functions](../2-Functions-and_Importing-Data/readme.md),
+As discussed in the [second lesson on functions](../2-Functions-and-Importing-Data/readme.md),
 R can execute a saved chunk of code by running the name of a function, like `mean()`.
 The name `mean` is saved like a variable name, but since the name refers to a function,
 the thing that's saved is not a data object but lines of R code. 
@@ -140,13 +127,13 @@ print_hello(text = "everybody!")
 ## Default Values
 
 We can create a function with more than one argument, and set default values when
-needed. Suppose we would like to make a function that checks if a measurement is below
-a criteria pollutant standard. We could make simple function that takes two arguments:
-one for the measurement value, and one for the standard value.
+needed. Suppose we would like to make a function that checks if a measurement is
+greater than a criteria pollutant standard. We could make a simple function that
+takes two arguments: one for the measurement value, and one for the standard value.
 
 
 ```r
-check_standard <- function(measurement, standard) {
+standard_violated <- function(measurement, standard) {
   
   measurement > standard
   
@@ -158,7 +145,7 @@ the measurement is greater than the standard or not.
 
 
 ```r
-check_standard(measurement = 84, standard = 70)
+standard_violated(measurement = 84, standard = 70)
 ```
 
 ```
@@ -169,13 +156,13 @@ We could write a more specific function for checking a value against the ozone
 standard. For this function, we want to keep the `standard` parameter but make sure
 the default is `70`. It may be that we typically want to use this function to 
 check against the current 8-hour ozone standard in parts per billion, but have
-then flexibility to use a different value. 
+the flexibility to use a different value. 
 
 To set a default value, we use `= 70` when we create the function.
 
 
 ```r
-check_standard <- function(measurement, standard = 70) {
+standard_violated <- function(measurement, standard = 70) {
   
   measurement > standard
   
@@ -186,21 +173,22 @@ Now, when we use the function, it is not necessary to set the `standard` argumen
 
 
 ```r
-check_standard(measurement = 50)
+standard_violated(measurement = 50)
 ```
 
 ```
 ## [1] FALSE
 ```
+
 ## Positional Arguments
 
 One final note on functions in R. When a function is created, the order of the 
 arguments are important. The user can supply values for the arguments in the order
-they appeared in the parentheses of the `function( ){}` call, without writing out
+they appeared in the parentheses of the `function( ){ }` call, without writing out
 the argument names. 
 
-For example, we can supply two numbers to the `check_standard()` function that we
-created above, without writing out the `measurement` and `standard` arguments.
+For example, we can supply two numbers to the `standard_violated()` function that
+we created above, without writing out the `measurement` and `standard` arguments.
 When R executes the function, it will assign the numbers to the arguments
 based on the position in the parentheses.
 
@@ -209,7 +197,7 @@ outputs.
 
 
 ```r
-check_standard(60, 70)
+standard_violated(60, 70)
 ```
 
 ```
@@ -218,7 +206,7 @@ check_standard(60, 70)
 
 
 ```r
-check_standard(70, 60)
+standard_violated(70, 60)
 ```
 
 ```
@@ -337,7 +325,7 @@ print(message)
 
 
 
-# For loop
+# For loops
 
 Like most programming languages, R has for and while loops. This tutorial will
 cover just for loops and move on to `apply()` functions, which are more commonly 
@@ -405,7 +393,7 @@ monitors
 In the code below, we create an empty vector called `max_values`. As the `for()`
 function loops through the vector `c(1, 2, 3)`, the data frame columns are accessed
 using square brackets `[ , i]`. Each max value is saved to the `max_values` vector 
-using square brackets as well `[i]`. 
+using square brackets `[i]`. 
 
 
 ```r
@@ -454,6 +442,22 @@ the `max()` function to the columns of the data frame. Also notice that we do
 not need to create an initial empty vector, as we did with the `for()` function.
 The returned value is a named vector that is as long as the number of columns
 in the data frame.
+
+We could also find the mean of each row in the `monitors` data frame. To do this,
+we would set the `MARGIN` argument to `1`.
+
+
+```r
+apply(monitors, MARGIN = 1, FUN = mean)
+```
+
+```
+## [1] 58.33333 60.33333 63.66667 61.33333
+```
+
+# Next Lesson
+
+The next lesson in this series is on [Plotting](../5-Plotting/readme.md).
 
 # Exercises
 
@@ -559,8 +563,8 @@ columns in the `chicago_air` data frame.
 
 > Subset the `chicago_air` data frame to a new data frame with just the numeric
 columns: `ozone`, `temp`, and `pressure`. Pass the subset data frame, and the 
-`mean` function, to the `apply()` function. Use `na.rm = TRUE` to make sure all
-`NA` values are removed.
+`mean` function, to the `apply()` function. Use `MARGIN = 2` and `na.rm = TRUE`
+to make sure all `NA` values are removed.
 
 
 
