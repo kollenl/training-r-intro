@@ -1,10 +1,4 @@
----
-title: "Quality Assurance and Common Pitfalls"
-output: 
-  html_document: 
-    keep_md: yes
-date: "2023-09-30"
----
+
 
 
 Quality assurance (QA) in R could refer to at least two things: the quality of the
