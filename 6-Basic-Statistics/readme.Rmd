@@ -76,7 +76,7 @@ Most of the functions we'll be using have an argument named `na.rm` that stands
 for `NA` remove. If the argument is set to `TRUE` then the function will remove
 all missing values from the data set. Otherwise the function will error.
 
-These functions let us know the range of the ozone values, i.e. the highest and 
+These functions tell us the range of the ozone values, i.e. the highest and 
 lowest values.
 
 ```{r}
@@ -106,7 +106,7 @@ summary(ozone)
 ```
 
 The `IQR()` function gives us the interquartile range, which lets us know how large
-the spread is for the values in the central range of the distrubution, i.e. between
+the spread is for the values in the central range of the distribution, i.e. between
 the 25th percentile and the 75th percentile.
 
 ```{r}
@@ -119,14 +119,11 @@ We can use the `boxplot()` function to visualize the interquartile range. The ou
 of the box itself shows the middle 50% of the data, while the line in the middle
 of the box shows the median.
 
-
-
 ```{r}
 
 boxplot(ozone)
 
 ```
-
 
 ## Measures of Central Tendency and Dispersion
 
@@ -144,7 +141,6 @@ median(ozone, na.rm=TRUE)
 
 ```
 
-
 The functions `var()` and `sd()`calculate the variance and standard 
 deviation respectively.
 
@@ -159,8 +155,6 @@ var(ozone, na.rm=TRUE)
 sd(ozone, na.rm=TRUE)
 
 ```
-
-
 
 # Statistical Tests
 
@@ -229,7 +223,7 @@ The p-values for the tests are well above 0.05, so we assume the null hypothesis
 is true. Meaning, we can assume the distributions of ozone in the two months
 are normal.
 
-Now we can do some comparisons between these 2 months of readings using the 
+Now we can do some comparisons between these 2 months of measurements using the 
 Student's t-test. The test is meant to determine if the two means from the two
 datasets are from the same distribution or not. The assumption, or null hypothesis,
 is that they are in fact mean values from the same distribution. 
@@ -239,7 +233,6 @@ is that they are in fact mean values from the same distribution.
 t.test(chicago_july$ozone, chicago_october$ozone)
 
 ```
-
 
 The `t.test()` output shows a p-value well below .05, so we reject the null hypothesis.
 Meaning, the two means are not from the same distribution, and we can consider the
@@ -272,13 +265,11 @@ library(EnvStats)
 If we are interested in how closely the variables in our dataset are related
 to each other, we can perform a correlation analysis.
 
-
 A correlation matrix tells us how positively or negatively correlated each variable
 is to the other variables. Below, we use the `cor()` function to print a correlation 
 matrix of the numeric columns in the `chicago_air` data frame, specifying in the
 arguments that we only want to include complete observations and the Pearson method
 of finding correlations.
-
 
 ```{r}
 
