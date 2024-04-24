@@ -1,5 +1,6 @@
 
 
+
 This lesson is a part of the Introduction to R for Air Quality Data Science. The
 sections below provide a basic introduction to R, including how to install and 
 set up R and RStudio, an overview of R syntax, and how to perform simple operations.
@@ -642,7 +643,7 @@ df <- data.frame(name = c('Alice', 'Bob', 'Charlie'), age = c(25, 32, 28))
 ---
 
 
-### Exercise 7
+### Exercise 6
 
 Create a numeric vector `nums` with the values 10, 20, and 30 and add 5 to each
 element of the vector.

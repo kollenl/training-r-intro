@@ -532,7 +532,7 @@ df <- data.frame(name = c('Alice', 'Bob', 'Charlie'), age = c(25, 32, 28))
 ---
 
 
-### Exercise 7
+### Exercise 6
 
 Create a numeric vector `nums` with the values 10, 20, and 30 and add 5 to each
 element of the vector.
