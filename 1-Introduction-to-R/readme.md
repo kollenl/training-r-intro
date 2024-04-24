@@ -1,4 +1,5 @@
 
+
 This lesson is a part of the Introduction to R for Air Quality Data Science. The
 sections below provide a basic introduction to R, including how to install and 
 set up R and RStudio, an overview of R syntax, and how to perform simple operations.
@@ -365,7 +366,7 @@ fruit[3]
 ```
 
 We will cover more about accessing members of vectors in the 
-[lesson on subsetting](3-Subsetting-Sorting-and-Combining/readme.md).
+[lesson on subsetting](../3-Subsetting-Sorting-and-Combining/readme.md).
 
 ## Lists
 

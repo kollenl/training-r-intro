@@ -316,7 +316,7 @@ fruit[3]
 ```
 
 We will cover more about accessing members of vectors in the 
-[lesson on subsetting](3-Subsetting-Sorting-and-Combining/readme.md).
+[lesson on subsetting](../3-Subsetting-Sorting-and-Combining/readme.md).
 
 ## Lists
 
