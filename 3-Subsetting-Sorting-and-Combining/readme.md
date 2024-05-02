@@ -1,10 +1,4 @@
----
-title: "Subsetting, Sorting, and Combining Data Frames"
-output: 
-  html_document: 
-    keep_md: yes
-date: "2023-08-18"
----
+
 
 This lesson covers how to subset data using indexing, logical operators, and
 the `filter( )` function from `dplyr`. It also covers how to sort and 
@@ -25,7 +19,7 @@ combine data frames.
 # Prerequisites
 
 This lesson assumes you are familiar with the material in the previous lesson on
-[Functions and Importing Data](../2-Functions-and_Importing-Data/readme.md).
+[Functions and Importing Data](../2-Functions-and-Importing-Data/readme.md).
 
 The data from the R package `region5air` is used throughout these lessons.
 To install the package from GitHub, use the `remotes` package. Run the code
@@ -64,8 +58,7 @@ You will need to install the package if you haven't already.
 install.package("dplyr")
 ```
 
-# Viewing Data Frames
-
+# Viewing Data Frames  
 
 We always want to make sure our data looks the way it is supposed to before we 
 begin working with it.
@@ -149,7 +142,7 @@ From the `Description` section of the help page, the `chicago_air` data frame is
 # Subsetting
 
 If we want to work with a particular subset of a data frame, we need to know how
-to select particular records. We will cover how to subset using numeric indexing,
+to select those records. We will cover how to subset using numeric indexing,
 logical conditions, and the `filter( )` function.
 
 ## Indexing
@@ -239,7 +232,7 @@ using the brackets `[ , ]` function. (This is a rare example of a function in
 R that does not have the form `function_name( )`.)
 
 To get one row of the data frame, specify the row number you would like in the 
-brackets, on the left side of the comma. By leaving the column value on the right
+brackets, on the left side of the comma. If you leave   the column value on the right
 side of the comma blank, it returns all the columns associated with row number 1.
 
 
@@ -358,7 +351,7 @@ chicago_air[1:5, c("temp", "pressure")]
 In R, the dollar sign `$` is a special character that can be used to access a 
 data frame column by name. The dollar sign is placed immediately after the variable
 name. For example, if we wanted to access the temperature values in the `chicago_air`
-data frame, then we would use `chicago_air$temp`. 
+data frame, then we could use `chicago_air$temp`. 
 
 
 ```r
@@ -421,8 +414,8 @@ Vectors can also be used in a logical expression. A vector of values on the left
 hand side of a logical operator will return a vector of the same length with
 boolean values. 
 
-Here, we check if any of the integers in a vector are above 60. A logical vector
-is returned.
+Here, we check if any of the integers in the vector on the left are above 60. A 
+logical vector is returned.
 
 
 ```r
@@ -545,10 +538,10 @@ library(dplyr)
 ```
 
 The benefit of using `filter( )` is that it works the way other functions in R
-typically work. It used braces with parameters, and not brackets `[ , ]`. The
-first parameter is the data frame you want to subset, and the second parameter
-is a logical expression. It also allows you to reference the columns in the data
-frame by name, without having to access the column using `$`.
+typically work. It used parentheses with parameters `( )`, and not brackets 
+`[ , ]`. The first parameter is the data frame you want to subset, and the second
+parameter is a logical expression. It also allows you to reference the columns in 
+the data frame by name, without having to access the column using `$`.
 
 If we want to filter down to records in the `chicago_air` data frame where ozone
 was above 60 ppb (.060 ppm), we would use the following code.
@@ -770,8 +763,7 @@ nrow(recombined) == nrow(chicago_air)
 
 # Next Lesson
 
-The next lesson in this series is on 
-[Writing Functions, Conditionals, and Loops](../4-Writing-Functions-Conditionals-and-Loops/readme.md).
+The next lesson in this series is on [Writing Functions, Conditionals, and Loops](../4-Writing-Functions-Conditionals-and-Loops/readme.md).
 
 # Exercises
 
@@ -786,7 +778,7 @@ Load the `chicago_air` dataset from the `region5air` package and display the fir
 
 > Use the `data()` function to load the data frame into your R session and a
 vector from 1 to 10 in the first position of the brackets `[ , ]`. Make sure the
-`regionair` package is loaded first with the `library()` function.
+`region5air` package is loaded first with the `library()` function.
 
 
 ```r
@@ -882,7 +874,43 @@ head(descending)
 
 </details>
 
+---
 
+### Exercise 4
+
+Create two data frames using the `data.frame()` function. The first data frame
+should have the columns `monitor_id` and `state` and at least one record. The second
+data frame should have the same column names and at least one record. Use the
+`dplyr` function `bind_rows()` to combine the two data frames.
+
+<details><summary>Click for Solution</summary>
+
+
+
+#### Solution
+
+
+```r
+library(dplyr)
+
+monitors_1 <- data.frame(monitor_id = c(1, 2, 3), state = c("IL", "IN", "WI"))
+
+monitors_2 <- data.frame(monitor_id = c(4, 5, 6), state = c("MI", "OH", "MN"))
+
+bind_rows(monitors_1, monitors_2)
+```
+
+```
+##   monitor_id state
+## 1          1    IL
+## 2          2    IN
+## 3          3    WI
+## 4          4    MI
+## 5          5    OH
+## 6          6    MN
+```
+
+</details>
 
 
 
