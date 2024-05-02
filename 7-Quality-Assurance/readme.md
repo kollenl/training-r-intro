@@ -1,10 +1,4 @@
----
-title: "Quality Assurance and Common Pitfalls"
-output: 
-  html_document: 
-    keep_md: yes
-date: "2023-09-30"
----
+
 
 
 Quality assurance (QA) in R could refer to at least two things: the quality of the
@@ -15,8 +9,8 @@ working the way they are intended to work. However, this lesson focuses on _data
 quality, and points out a few common mistakes when using R. 
 
 - [Prerequisites](#prerequisites)
-- [Quality Assurance](#quality-assurance)
-- [Common Mistakes](#common-pitfalls)
+- [Data Quality Assurance](#data-quality-assurance)
+- [Common Mistakes](#common-mistakes)
 - [Exercises](#exercises)
 
 <br>
@@ -126,6 +120,7 @@ str(pollution)
 ##  $ date : Date, format: "2022-08-01" "2022-08-02" ...
 ##  $ ozone: num  0.05 0.06 0.07
 ```
+
 ## Unallowed Data
 
 For both character and numeric data types, there may be values that should not 
@@ -208,10 +203,10 @@ monitor_values
 
 Handling outliers is difficult because we do not necessarily want to remove data
 that may be uncommon but within the realm of possibility. The best way to detect
-this is to look at the summary of your data and pay attention to min and max values.
-You can plot the data to see if you can detect anything weird through visual inspection.
-Boxplots with outliers plotted as points are handy for this. Below is a boxplot 
-of the ozone column in the `chicago_air` data frame.
+extreme values is to look at the summary of your data and pay attention to min and
+max values. You can plot the data to see if you can detect anything weird through
+visual inspection. Boxplots with outliers plotted as points are handy for this. 
+Below is a boxplot of the ozone column in the `chicago_air` data frame.
 
 
 
@@ -272,6 +267,7 @@ sum(c(1, 2, 3)
 ## 3: 
 ##   ^
 ```
+
 - the wrong type of closing brace [for example, an 
 opening square bracket but a closing parenthesis).
 
@@ -373,7 +369,7 @@ monitors
 
 ## Exercise 3
 
-Use the boxplot to check for outliers in the ozone column of the built-in `airquality`
+Use a boxplot to check for outliers in the ozone column of the built-in `airquality`
 data frame.
 
 <details><summary>Click for Solution</summary>
@@ -391,3 +387,5 @@ boxplot(airquality$Ozone)
 ```
 
 ![](readme_files/figure-html/unnamed-chunk-19-1.png)<!-- -->
+
+</details>

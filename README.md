@@ -1,8 +1,8 @@
 # Introduction to R for Air Quality Data Science
 
 This repository contains training materials for learning the R programming language,
-specifically tailored towards air quality data science. The training is structured into
-distinct lessons, each focusing on a different aspect using R. Each lesson
+specifically tailored towards air quality data science. The training is structured
+into distinct lessons, each focusing on a different aspect using R. Each lesson
 is contained in a separate folder, and includes a README.md file with the lesson 
 material.
 
@@ -34,11 +34,10 @@ topics are related but it's helpful to understand the distinction.
 - _Data Science_ is a collection of skills and methods for extracting insights from
 data. We are not using this phrase to include machine learning, as many do. In
 our use of the term, data science focuses on obtaining, storing, transforming, 
-and visualizing data. Modeling data and communicating results are also aspects
-of data science that we touch on. 
+and visualizing data. Basic statistics and quality assurance are also touched on. 
 
 - _Programming_, in our use of the term, is automating tasks using a computer
-language. In our case, we want to use programming to automate air quality data 
+language. In our case, we want to use R programming to automate air quality data 
 science tasks to make our life easier. We also want to use programming to handle
 a high volume of data and a wide variety of analyses.
 
@@ -59,29 +58,35 @@ basic introduction to R, including how to install and set up R and RStudio, an
 overview of R syntax, and how to perform simple operations.
 
 2. [Functions and Importing Data](2-Functions-and-Importing-Data/readme.md): This
-lesson covers the use of functions in R, including built-in functions and 
-functions from packages. It also discusses how to import data from in formats
-such as CSV and Excel.
+lesson covers how to use functions in R, including built-in functions and 
+functions from packages. It also discusses how to import data such as text data
+in CSV files and 
+Excel workbooks.
 
 3. [Subsetting, Sorting, and Combining Data Frames](3-Subsetting-Sorting-and-Combining/readme.md): 
-This lesson covers how to subset data using indexing, logical operators, and
-the `filter( )` function from `dplyr`. It also covers how to sort and 
-combine data frames.
+This lesson covers how to subset data using indexing, logical operators, and the
+`filter( )` function from `dplyr`. It also covers how to sort and combine data frames.
 
-4. [Writing Functions, Conditionals, and Loops](4-Writing-Functions-Conditionals-and-Loops): This lesson introduces the concept of writing functions in R, using conditionals to control the flow of execution, and implementing loops for repetitive tasks.
+4. [Writing Functions, Conditionals, and Loops](4-Writing-Functions-Conditionals-and-Loops): 
+This lesson introduces the concept of writing functions in R, using conditionals
+to control the flow of execution, and implementing loops for repetitive tasks.
     
-5. [Plotting](5-Plotting/readme.md): This lesson focuses on visualizing data using various plotting techniques in R, including scatter plots, line graphs, and histograms.
+5. [Plotting](5-Plotting/readme.md): This lesson focuses on visualizing data using
+various plotting techniques in R, including scatter plots, line graphs, and histograms.
 
-6. [Basic Statistics](6-Basic-Statistics/readme.md): This lesson covers the basics of statistical analysis in R, including calculating means, medians, standard deviations, and correlations.
+6. [Basic Statistics](6-Basic-Statistics/readme.md): This lesson covers the basics
+of statistical analysis in R, including calculating means, medians, standard deviations,
+and correlations.
 
-7. [Regression and Data Transformation](7-Regression-and-Data-Transformation/readme.md): This lesson explores the use of linear regression to understand relationships between variables, and how to transform data to fit linear models.
-
-8. [Quality Assurance](8-Quality-Assurance/readme.md): This lesson discusses quality assurance in data analysis, including checking data types, handling outliers, dealing with missing data, and other common pitfalls.
+7. [Quality Assurance](7-Quality-Assurance/readme.md): This lesson discusses quality
+assurance in data analysis, including checking data types, handling outliers, dealing
+with missing data, and other common pitfalls.
 
 ## Contributing
 
-Contributions to this repository are welcome. If you have a suggestion for improvement,
-please open an issue to discuss it before making any changes.
+Contributions to this repository are welcome. If you have a suggestion, please open
+an issue in this repository and let us know how we can improve the material. You 
+can also submit a pull request.
 
 ## License
 

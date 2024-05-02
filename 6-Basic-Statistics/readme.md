@@ -1,10 +1,3 @@
----
-title: "Basic Statistics"
-output: 
-  html_document: 
-    keep_md: yes
-date: "2023-09-15"
----
 
 R was originally developed as a statistical programming language and its built-in
 functions are commonly used for basic statistics. There are also many community 
@@ -25,11 +18,11 @@ be used on environmental data.
 
 # Prerequisites
 
-This lesson assumes you are familiar with the material in the lesson on
+This lesson assumes you are familiar with the lesson on
 [Functions and Importing Data](../2-Functions-and-Importing-Data/readme.md).
 
 Statistical functions are used in this lesson that require installation of the
-following packages. 
+`envstats` package. 
 
 
 ```r
@@ -76,7 +69,7 @@ Most of the functions we'll be using have an argument named `na.rm` that stands
 for `NA` remove. If the argument is set to `TRUE` then the function will remove
 all missing values from the data set. Otherwise the function will error.
 
-These functions let us know the range of the ozone values, i.e. the highest and 
+These functions tell us the range of the ozone values, i.e. the highest and 
 lowest values.
 
 
@@ -119,8 +112,8 @@ summary(ozone)
 ```
 
 The `IQR()` function gives us the interquartile range, which lets us know how large
-the spread is for the values in the central range of the distrubution, i.e. between
-the 1st quartile and the 3rd quartile.
+the spread is for the values in the central range of the distribution, i.e. between
+the 25th percentile and the 75th percentile.
 
 
 ```r
@@ -132,10 +125,8 @@ IQR(ozone, na.rm=TRUE)
 ```
 
 We can use the `boxplot()` function to visualize the interquartile range. The outline
-of the box itself shows the first and third quartile, while the line in the middle
+of the box itself shows the middle 50% of the data, while the line in the middle
 of the box shows the median.
-
-
 
 
 ```r
@@ -143,7 +134,6 @@ boxplot(ozone)
 ```
 
 ![](readme_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
-
 
 ## Measures of Central Tendency and Dispersion
 
@@ -167,7 +157,6 @@ median(ozone, na.rm=TRUE)
 ## [1] 0.036
 ```
 
-
 The functions `var()` and `sd()`calculate the variance and standard 
 deviation respectively.
 
@@ -188,8 +177,6 @@ sd(ozone, na.rm=TRUE)
 ```
 ## [1] 0.01018429
 ```
-
-
 
 # Statistical Tests
 
@@ -239,11 +226,12 @@ ggplot(ozone_july_october, aes(ozone)) +
 ```
 
 ![](readme_files/figure-html/unnamed-chunk-17-1.png)<!-- -->
+
 If plotting does not obviously show normality, we can use the built-in function
 `shapiro.test()`. This function performs the Shapiro-Wilk test on a dataset, which
 assumes that the data set is normal. So the null hypothesis is that the dataset
 comes from a normal distribution. If the p-value of the test is less than .05, 
- we reject the null hypothesis and conclude the data is not normal.
+we reject the null hypothesis and conclude the data is not normal.
 
 
 
@@ -280,7 +268,7 @@ The p-values for the tests are well above 0.05, so we assume the null hypothesis
 is true. Meaning, we can assume the distributions of ozone in the two months
 are normal.
 
-Now we can do some comparisons between these 2 months of readings using the 
+Now we can do some comparisons between these 2 months of measurements using the 
 Student's t-test. The test is meant to determine if the two means from the two
 datasets are from the same distribution or not. The assumption, or null hypothesis,
 is that they are in fact mean values from the same distribution. 
@@ -303,7 +291,6 @@ t.test(chicago_july$ozone, chicago_october$ozone)
 ##  mean of x  mean of y 
 ## 0.03938710 0.03119355
 ```
-
 
 The `t.test()` output shows a p-value well below .05, so we reject the null hypothesis.
 Meaning, the two means are not from the same distribution, and we can consider the
@@ -335,13 +322,11 @@ library(EnvStats)
 If we are interested in how closely the variables in our dataset are related
 to each other, we can perform a correlation analysis.
 
-
 A correlation matrix tells us how positively or negatively correlated each variable
 is to the other variables. Below, we use the `cor()` function to print a correlation 
 matrix of the numeric columns in the `chicago_air` data frame, specifying in the
 arguments that we only want to include complete observations and the Pearson method
 of finding correlations.
-
 
 
 ```r
@@ -426,13 +411,13 @@ pairs(chicago_air[, c("ozone", "temp", "pressure")], lower.panel = panel.smooth)
 ![](readme_files/figure-html/unnamed-chunk-25-1.png)<!-- -->
 
 You can see from the lower panel plots the increasing slope of the line for ozone
-and temp; a decreesing slope for temp and pressure; and a flat line for ozone and
+and temp; a decreasing slope for temp and pressure; and a flat line for ozone and
 pressure.
 
 # Next Lesson
 
 The next lesson in this series is on 
-[Regression and Data Transformation](../7-Regression-and-Data-Transformation/readme.md).
+[Quality Assurance](../7-Quality-Assurance/readme.md).
 
 # Exercises
 
