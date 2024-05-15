@@ -1,5 +1,4 @@
 
-
 This lesson covers how to subset data using indexing, logical operators, and
 the `filter( )` function from `dplyr`. It also covers how to sort and 
 combine data frames.
@@ -55,7 +54,7 @@ You will need to install the package if you haven't already.
 
 
 ```r
-install.package("dplyr")
+install.packages("dplyr")
 ```
 
 # Viewing Data Frames  
@@ -538,7 +537,7 @@ library(dplyr)
 ```
 
 The benefit of using `filter( )` is that it works the way other functions in R
-typically work. It used parentheses with parameters `( )`, and not brackets 
+typically work. It uses parentheses with parameters `( )`, and not brackets 
 `[ , ]`. The first parameter is the data frame you want to subset, and the second
 parameter is a logical expression. It also allows you to reference the columns in 
 the data frame by name, without having to access the column using `$`.
