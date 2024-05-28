@@ -92,11 +92,13 @@ can also submit a pull request.
 
 Below is a list of helpful resources for learning R:
 
-- [R Basics Cheat Sheet](https://www.datacamp.com/cheat-sheet/getting-started-r?utm_source=google&utm_medium=paid_search&utm_campaignid=19589720830&utm_adgroupid=152984017174&utm_device=c&utm_keyword=&utm_matchtype=&utm_network=g&utm_adpostion=&utm_creative=698229375316&utm_targetid=dsa-2219652735776&utm_loc_interest_ms=&utm_loc_physical_ms=9016149&utm_content=DSA~blog~R-Programming&utm_campaign=230119_1-sea~dsa~tofu_2-b2c_3-us_4-prc_5-na_6-na_7-le_8-pdsh-go_9-na_10-na_11-na-may24&gad_source=1&gclid=Cj0KCQjwu8uyBhC6ARIsAKwBGpThrUn-ZOHvH3_knynUXAX0O9G6UZ9s5Dp44elX1TAkLNzRbKMgpPUaAtbsEALw_wcB)
+- [R Basics Cheat Sheet](https://www.datacamp.com/cheat-sheet/getting-started-r)
+- [Posit Cheatsheets](https://posit.co/resources/cheatsheets/)
 - The R courses on [datacamp.com](https://www.datacamp.com/category/r)
 - [R for Data Science](https://r4ds.had.co.nz/)
-- AI applications are helpful for answering specific R programming questions, such as [ChatGPT](https://chatgpt.com/auth/login?sso=&oai-dm=1) and [Perplexity](perplexity.ai).
-- Using [GitHub Copilot directly in RStudio](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html) will help you learn R by giving suggestions for how to write your code. 
+- AI applications are helpful for answering specific R programming questions, such as [ChatGPT](https://chatgpt.com/) and [Perplexity](https://perplexity.ai).
+- Using [GitHub Copilot directly in RStudio](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html) will help you learn R by giving suggestions for how to write your code.
+
 
 ## License
 
