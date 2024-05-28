@@ -88,6 +88,18 @@ Contributions to this repository are welcome. If you have a suggestion, please o
 an issue in this repository and let us know how we can improve the material. You 
 can also submit a pull request.
 
+## Resources
+
+Below is a list of helpful resources for learning R:
+
+- [R Basics Cheat Sheet](https://www.datacamp.com/cheat-sheet/getting-started-r)
+- [Posit Cheatsheets](https://posit.co/resources/cheatsheets/)
+- The R courses on [datacamp.com](https://www.datacamp.com/category/r)
+- [R for Data Science](https://r4ds.had.co.nz/)
+- AI applications are helpful for answering specific R programming questions, such as [ChatGPT](https://chatgpt.com/) and [Perplexity](https://perplexity.ai).
+- Using [GitHub Copilot directly in RStudio](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html) will help you learn R by giving suggestions for how to write your code.
+
+
 ## License
 
 This project is licensed under the MIT License. 
