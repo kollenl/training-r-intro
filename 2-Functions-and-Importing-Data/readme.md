@@ -607,11 +607,11 @@ decimal point.
 
 
 ```r
-round(3.5678, digits=2)
+round(13.5678, digits=2)
 ```
 
 ```
-## [1] 3.57
+## [1] 13.57
 ```
 
 </details>
